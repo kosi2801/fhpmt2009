@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>at.fh-joanneum.swd.pmt.documentmanager.feature</name>
+	<comment></comment>
+	<projects>
+		<project>at.fh-joanneum.swd.pmt.documentmanager.bl</project>
+		<project>at.fh-joanneum.swd.pmt.documentmanager.data</project>
+		<project>at.fh-joanneum.swd.pmt.documentmanager.ui</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.pde.FeatureBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.pde.FeatureNature</nature>
+	</natures>
+</projectDescription>
