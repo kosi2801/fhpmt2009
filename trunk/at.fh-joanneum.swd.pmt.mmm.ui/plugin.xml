@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Sample Category"
+            id="at.fh_joanneum.swd.mmm.ui">
+      </category>
+      <view
+            name="Sample View"
+            icon="icons/sample.gif"
+            category="at.fh_joanneum.swd.mmm.ui"
+            class="at.fh_joanneum.swd.mmm.ui.views.SampleView"
+            id="at.fh_joanneum.swd.mmm.ui.views.SampleView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="at.fh_joanneum.swd.mmm.ui.views.SampleView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+
+</plugin>
