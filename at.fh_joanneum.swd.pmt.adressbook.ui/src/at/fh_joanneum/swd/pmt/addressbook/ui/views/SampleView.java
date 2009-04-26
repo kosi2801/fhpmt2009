@@ -1,4 +1,4 @@
-package at.fh_joanneum.swd.pmt.adressbook.ui.views;
+package at.fh_joanneum.swd.pmt.addressbook.ui.views;
 
 
 import org.eclipse.swt.widgets.Composite;
