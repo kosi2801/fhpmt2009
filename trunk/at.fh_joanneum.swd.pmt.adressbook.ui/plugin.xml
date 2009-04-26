@@ -12,7 +12,7 @@
             name="Sample View"
             icon="icons/sample.gif"
             category="at.fh_joanneum.swd.pmt.adressbook.ui"
-            class="at.fh_joanneum.swd.pmt.adressbook.ui.views.SampleView"
+            class="at.fh_joanneum.swd.pmt.addressbook.ui.views.SampleView"
             id="at.fh_joanneum.swd.pmt.adressbook.ui.views.SampleView">
       </view>
    </extension>

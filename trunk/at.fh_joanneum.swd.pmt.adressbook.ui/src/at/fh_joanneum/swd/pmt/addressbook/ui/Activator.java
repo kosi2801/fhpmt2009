@@ -1,4 +1,4 @@
-package at.fh_joanneum.swd.pmt.adressbook.ui;
+package at.fh_joanneum.swd.pmt.addressbook.ui;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
