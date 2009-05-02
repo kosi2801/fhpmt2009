@@ -5,15 +5,15 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            name="Sample Category"
-            id="at.joanneum.fh.swd.ptm.ui">
+            name="Personal Management Views"
+            id="at.fh_joanneum.swd.pmt.ui">
       </category>
       <view
-            name="Sample View"
+            name="Main View"
             icon="icons/sample.gif"
-            category="at.joanneum.fh.swd.ptm.ui"
+            category="at.fh_joanneum.swd.pmt.ui"
             class="at.joanneum.fh.swd.ptm.ui.views.SampleView"
-            id="at.joanneum.fh.swd.ptm.ui.views.SampleView">
+            id="at.fh_joanneum.swd.pmt.ui.views.PMTView">
       </view>
    </extension>
    <extension
