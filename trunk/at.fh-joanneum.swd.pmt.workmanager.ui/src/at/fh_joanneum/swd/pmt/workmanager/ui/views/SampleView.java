@@ -19,7 +19,11 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Text;
@@ -28,6 +32,9 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
+
+import at.fh_joanneum.swd.pmt.workmanager.data.WorkAction;
+import at.fh_joanneum.swd.pmt.workmanager.data.WorkLoader;
 
 
 /**
@@ -50,6 +57,7 @@ import org.eclipse.ui.part.ViewPart;
 
 public class SampleView extends ViewPart {
 	private TableViewer viewer;
+	private Text textField;
 	private Action action1;
 	private Action action2;
 	private Action doubleClickAction;
@@ -70,11 +78,9 @@ public class SampleView extends ViewPart {
 		public void dispose() {
 		}
 		public Object[] getElements(Object parent) {
-//			WorkAction action1 = new WorkAction("Pause");
-//			WorkAction action2 = new WorkAction("Jause");
-//			WorkAction action3 = new WorkAction("Schlafen");
-//			return new String[] { action1.getAction(),action2.getAction(),action3.getAction() };
-			return new String[] {"Eins","Zwei"};
+			WorkLoader loader = new WorkLoader();
+			return loader.getWorkActions();
+//			return new String[] {"Eins","Zwei","Drei"};
 		}
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
@@ -106,11 +112,21 @@ public class SampleView extends ViewPart {
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.setSorter(new NameSorter());
+		//viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
 
-		Text textField = new Text(parent,SWT.BORDER);
-		
+		Composite editPanel = new Composite(parent,SWT.NONE);
+		editPanel.setLayout(new RowLayout());
+		textField = new Text(editPanel,SWT.BORDER);
+		Button button = new Button(editPanel,SWT.PUSH);
+		button.setText("Save");
+		button.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				((WorkAction)textField.getData()).setDuration(Integer.parseInt(textField.getText()));
+				viewer.refresh();
+			}
+		});
+
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.fh_joanneum.swd.pmt.chat.ui.viewer");
 		makeActions();
@@ -159,7 +175,12 @@ public class SampleView extends ViewPart {
 	private void makeActions() {
 		action1 = new Action() {
 			public void run() {
-				showMessage("Action 1 executed");
+				if (!viewer.getSelection().isEmpty()) {
+					WorkAction selected = (WorkAction)(((IStructuredSelection)viewer.getSelection()).getFirstElement());
+					textField.setData(selected);
+					textField.setText(String.valueOf(selected.getDuration()));
+				}
+
 			}
 		};
 		action1.setText("Action 1");
