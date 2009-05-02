@@ -61,6 +61,8 @@ public class SampleView extends ViewPart {
 	private Action action1;
 	private Action action2;
 	private Action doubleClickAction;
+	
+	private WorkAction[] actions;
 
 	/*
 	 * The content provider class is responsible for
@@ -78,8 +80,7 @@ public class SampleView extends ViewPart {
 		public void dispose() {
 		}
 		public Object[] getElements(Object parent) {
-			WorkLoader loader = new WorkLoader();
-			return loader.getWorkActions();
+			return actions;
 //			return new String[] {"Eins","Zwei","Drei"};
 		}
 	}
@@ -102,6 +103,9 @@ public class SampleView extends ViewPart {
 	 * The constructor.
 	 */
 	public SampleView() {
+		//load data from data plugin
+		WorkLoader loader = new WorkLoader();
+		actions = loader.getWorkActions();
 	}
 
 	/**
@@ -184,6 +188,7 @@ public class SampleView extends ViewPart {
 			}
 		};
 		action1.setText("Action 1");
+		action1.setText("Edit");
 		action1.setToolTipText("Action 1 tooltip");
 		action1.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
 			getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
