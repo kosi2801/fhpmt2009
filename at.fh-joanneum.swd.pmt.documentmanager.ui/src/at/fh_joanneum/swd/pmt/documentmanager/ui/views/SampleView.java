@@ -28,8 +28,6 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
-import at.fh_joanneum.swd.pmt.documentmanager.data.DocumentObject;
-
 
 /**
  * This sample class demonstrates how to plug-in a new
@@ -71,7 +69,6 @@ public class SampleView extends ViewPart {
 		public void dispose() {
 		}
 		public Object[] getElements(Object parent) {
-			DocumentObject documentObject = new DocumentObject();
 			return new String[] { "One", "Two", "Three" };
 		}
 	}
