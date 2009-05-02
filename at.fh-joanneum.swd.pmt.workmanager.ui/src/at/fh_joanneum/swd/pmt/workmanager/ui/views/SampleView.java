@@ -29,8 +29,6 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
-import at.fh_joanneum.swd.pmt.workmanager.data.WorkAction;
-
 
 /**
  * This sample class demonstrates how to plug-in a new
@@ -72,11 +70,11 @@ public class SampleView extends ViewPart {
 		public void dispose() {
 		}
 		public Object[] getElements(Object parent) {
-			WorkAction action1 = new WorkAction("Pause");
-			WorkAction action2 = new WorkAction("Jause");
-			WorkAction action3 = new WorkAction("Schlafen");
-			
-			return new String[] { action1.getAction(),action2.getAction(),action3.getAction() };
+//			WorkAction action1 = new WorkAction("Pause");
+//			WorkAction action2 = new WorkAction("Jause");
+//			WorkAction action3 = new WorkAction("Schlafen");
+//			return new String[] { action1.getAction(),action2.getAction(),action3.getAction() };
+			return new String[] {"Eins","Zwei"};
 		}
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {

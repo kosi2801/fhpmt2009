@@ -5,7 +5,6 @@ Bundle-SymbolicName: at.fh_joanneum.swd.pmt.workmanager.ui;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: at.fh_joanneum.swd.pmt.workmanager.ui.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- at.fh_joanneum.swd.pmt.workmanager.data;bundle-version="1.0.0"
+ org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
