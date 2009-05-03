@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ui Plug-in
-Bundle-SymbolicName: at.fh_joanneum.swd.pmt.ui;singleton:=true
+Bundle-SymbolicName: at.fh_joanneum.swd.pmt.main.ui;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: at.joanneum.fh.swd.ptm.ui.Activator
 Require-Bundle: org.eclipse.ui,
