@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="at.fh_joanneum.swd.pmt.datainitializer" name="Data Initializer" schema="schema/at.fh_joanneum.swd.pmt.datainitializer.exsd"/>
+
+</plugin>
