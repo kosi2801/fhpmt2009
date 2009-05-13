@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="at.fh_joanneum.swd.pmt.ui.application.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="at.fh_joanneum.swd.pmt.ui.application.Perspective"
+            icon="icons/fh_16.gif"
+            id="at.fh_joanneum.swd.pmt.main.ui.perspective"
+            name="Personal Management Tool Perspective">
+      </perspective>
+   </extension>
 
    <extension
          point="org.eclipse.ui.views">
@@ -10,23 +28,23 @@
       </category>
       <view
             name="Main View"
-            icon="icons/sample.gif"
+            icon="icons/fh_16.gif"
             category="at.fh_joanneum.swd.pmt.ui"
-            class="at.joanneum.fh.swd.ptm.ui.views.SampleView"
+            class="at.fh_joanneum.swd.pmt.ui.views.SampleView"
             id="at.fh_joanneum.swd.pmt.ui.views.PMTView">
       </view>
    </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="org.eclipse.jdt.ui.JavaPerspective">
-         <view
-               ratio="0.5"
-               relative="org.eclipse.ui.views.TaskList"
-               relationship="right"
-               id="at.joanneum.fh.swd.ptm.ui.views.SampleView">
-         </view>
-      </perspectiveExtension>
+  <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="at.fh_joanneum.swd.pmt.main.ui.application"
+            name="Personal Management Tool">
+         <property
+               name="windowImages"
+               value="icons/fh_16.gif,icons/fh_32.gif">
+         </property>
+      </product>
    </extension>
    <extension
          point="org.eclipse.help.contexts">

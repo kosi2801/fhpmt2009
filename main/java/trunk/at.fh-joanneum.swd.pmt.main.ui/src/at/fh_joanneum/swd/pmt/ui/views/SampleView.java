@@ -1,4 +1,4 @@
-package at.joanneum.fh.swd.ptm.ui.views;
+package at.fh_joanneum.swd.pmt.ui.views;
 
 
 import org.eclipse.jface.action.Action;
@@ -19,7 +19,12 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
@@ -27,6 +32,10 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
+
+import at.fh_joanneum.swd.pmt.bl.DataInitializerTask;
+import at.fh_joanneum.swd.pmt.main.data.User;
+import at.fh_joanneum.swd.pmt.main.data.UserDataStore;
 
 
 /**
@@ -48,6 +57,8 @@ import org.eclipse.ui.part.ViewPart;
  */
 
 public class SampleView extends ViewPart {
+	public static final String ID = "at.fh_joanneum.swd.pmt.ui.views.PMTView";
+	
 	private TableViewer viewer;
 	private Action action1;
 	private Action action2;
@@ -70,7 +81,11 @@ public class SampleView extends ViewPart {
 		}
 		public Object[] getElements(Object parent) {
 //			return new TestData().getData();
-			return new String[] {"One","Two","Three"};
+			User user = UserDataStore.getInstance().getUser();
+			if (user != null)
+			return new String[] {user.getFirstName() + " " + user.getLastName()};
+			else
+				return new String[]{};
 		}
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
@@ -99,15 +114,28 @@ public class SampleView extends ViewPart {
 	 * to create the viewer and initialize it.
 	 */
 	public void createPartControl(Composite parent) {
-//		parent.setLayout(new RowLayout(SWT.VERTICAL));
+		parent.setLayout(new GridLayout());
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
+		GridData gd = new GridData();
+		gd.grabExcessHorizontalSpace = true;
+		gd.horizontalAlignment = SWT.FILL;
+		viewer.getControl().setLayoutData(gd);
+		
+		Button button = new Button(parent, SWT.PUSH);
+		button.setText("Load default values");
+		button.addSelectionListener(new SelectionAdapter() {
 
-//		Text text = new Text(parent,SWT.BORDER);
-//		text.setText("test");
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				new DataInitializerTask().run();
+				viewer.refresh();
+			}
+			
+		});
 		
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.joanneum.fh.swd.ptm.ui.viewer");

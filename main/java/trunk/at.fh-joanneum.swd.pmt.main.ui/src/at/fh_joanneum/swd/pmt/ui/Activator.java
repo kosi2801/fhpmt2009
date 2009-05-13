@@ -1,4 +1,4 @@
-package at.joanneum.fh.swd.ptm.ui;
+package at.fh_joanneum.swd.pmt.ui;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

@@ -1,4 +1,4 @@
-package at.joanneum.fh.swd.ptm.ui.views;
+package at.fh_joanneum.swd.pmt.ui.views;
 
 public class TestUI {
 public String test() {
