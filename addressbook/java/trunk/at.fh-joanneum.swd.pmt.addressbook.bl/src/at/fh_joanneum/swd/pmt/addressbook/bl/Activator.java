@@ -4,6 +4,8 @@ import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
+import at.fh_joanneum.swd.pmt.addressbook.data.IAddressDataStore;
+
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -51,6 +53,10 @@ public class Activator extends Plugin {
 	 */
 	public static Activator getDefault() {
 		return plugin;
+	}
+	
+	public IAddressDataStore getStore(){
+		return (IAddressDataStore)this.addressDataTracker.getService();
 	}
 
 }
