@@ -30,7 +30,7 @@ import org.eclipse.swt.SWT;
  * <p>
  */
 
-public class SampleView extends ViewPart {
+public class ChatUI extends ViewPart {
 	private TableViewer viewer;
 	private Action action1;
 	private Action action2;
@@ -84,7 +84,7 @@ public class SampleView extends ViewPart {
 	/**
 	 * The constructor.
 	 */
-	public SampleView() 
+	public ChatUI() 
 	{
 	}
 
@@ -111,7 +111,7 @@ public class SampleView extends ViewPart {
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager manager) {
-				SampleView.this.fillContextMenu(manager);
+				ChatUI.this.fillContextMenu(manager);
 			}
 		});
 		Menu menu = menuMgr.createContextMenu(viewer.getControl());
