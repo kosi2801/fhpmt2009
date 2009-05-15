@@ -8,6 +8,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -19,6 +20,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -146,6 +148,27 @@ public class SampleView extends ViewPart {
 			}
 			
 		});
+
+		button = new Button(parent, SWT.PUSH);
+		button.setText("Edit user");
+		button.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				User user = Activator.getDefault().getStore().getUser();
+				if (user != null) {
+					  InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
+					            "", "Change first namae", user.getFirstName(), null);
+					        if (dlg.open() == Window.OK) {
+					          // User clicked OK; update the label with the input
+					          user.setFirstName(dlg.getValue());
+					          viewer.refresh();
+					        }
+				}
+			}
+			
+		});
+
 		
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.joanneum.fh.swd.ptm.ui.viewer");
