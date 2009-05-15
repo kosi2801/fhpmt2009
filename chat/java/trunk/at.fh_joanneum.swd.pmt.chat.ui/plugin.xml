@@ -9,7 +9,7 @@
             icon="icons/sample.gif"
             category="at.fh_joanneum.swd.pmt.ui"
             class="at.fh_joanneum.swd.pmt.chat.ui.views.ChatUI"
-            id="at.fh_joanneum.swd.pmt.chat.ui.views.ChatUI">
+            id="Chat">
       </view>
    </extension>
    <extension

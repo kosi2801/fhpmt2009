@@ -30,7 +30,8 @@ import org.eclipse.swt.SWT;
  * <p>
  */
 
-public class ChatUI extends ViewPart {
+public class ChatUI extends ViewPart 
+{
 	private TableViewer viewer;
 	private Action action1;
 	private Action action2;
@@ -58,7 +59,7 @@ public class ChatUI extends ViewPart {
 		
 		public Object[] getElements(Object parent) 
 		{
-			return new String[] { "One", "Two", "Three" };
+			return new String[] { "Bla", "Bla", "Bla" };
 		}
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider 
