@@ -46,41 +46,54 @@ public class SampleView extends ViewPart {
 	 * (like Task List, for example).
 	 */
 	 
-	class ViewContentProvider implements IStructuredContentProvider {
-		public void inputChanged(Viewer v, Object oldInput, Object newInput) {
+	class ViewContentProvider implements IStructuredContentProvider 
+	{
+		public void inputChanged(Viewer v, Object oldInput, Object newInput) 
+		{
 		}
-		public void dispose() {
+		
+		public void dispose() 
+		{
 		}
-		public Object[] getElements(Object parent) {
+		
+		public Object[] getElements(Object parent) 
+		{
 			return new String[] { "One", "Two", "Three" };
 		}
 	}
-	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
-		public String getColumnText(Object obj, int index) {
+	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider 
+	{
+		public String getColumnText(Object obj, int index) 
+		{
 			return getText(obj);
 		}
-		public Image getColumnImage(Object obj, int index) {
+		public Image getColumnImage(Object obj, int index) 
+		{
 			return getImage(obj);
 		}
-		public Image getImage(Object obj) {
+		public Image getImage(Object obj) 
+		{
 			return PlatformUI.getWorkbench().
 					getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
 		}
 	}
-	class NameSorter extends ViewerSorter {
+	class NameSorter extends ViewerSorter 
+	{
 	}
 
 	/**
 	 * The constructor.
 	 */
-	public SampleView() {
+	public SampleView() 
+	{
 	}
 
 	/**
 	 * This is a callback that will allow us
 	 * to create the viewer and initialize it.
 	 */
-	public void createPartControl(Composite parent) {
+	public void createPartControl(Composite parent) 
+	{
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
@@ -92,7 +105,8 @@ public class SampleView extends ViewPart {
 		contributeToActionBars();
 	}
 
-	private void hookContextMenu() {
+	private void hookContextMenu() 
+	{
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
@@ -105,31 +119,36 @@ public class SampleView extends ViewPart {
 		getSite().registerContextMenu(menuMgr, viewer);
 	}
 
-	private void contributeToActionBars() {
+	private void contributeToActionBars() 
+	{
 		IActionBars bars = getViewSite().getActionBars();
 		fillLocalPullDown(bars.getMenuManager());
 		fillLocalToolBar(bars.getToolBarManager());
 	}
 
-	private void fillLocalPullDown(IMenuManager manager) {
+	private void fillLocalPullDown(IMenuManager manager) 
+	{
 		manager.add(action1);
 		manager.add(new Separator());
 		manager.add(action2);
 	}
 
-	private void fillContextMenu(IMenuManager manager) {
+	private void fillContextMenu(IMenuManager manager) 
+	{
 		manager.add(action1);
 		manager.add(action2);
 		// Other plug-ins can contribute there actions here
 		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
 	
-	private void fillLocalToolBar(IToolBarManager manager) {
+	private void fillLocalToolBar(IToolBarManager manager) 
+	{
 		manager.add(action1);
 		manager.add(action2);
 	}
 
-	private void makeActions() {
+	private void makeActions() 
+	{
 		action1 = new Action() {
 			public void run() {
 				showMessage("Action 1 executed");
