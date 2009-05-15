@@ -7,3 +7,4 @@ Bundle-Activator: at.fh_joanneum.swd.pmt.chat.data.Activator
 Require-Bundle: org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: at.fh_joanneum.swd.pmt.chat.data
