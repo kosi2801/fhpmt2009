@@ -26,7 +26,8 @@ public class Activator extends Plugin {
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		plugin = this;
+		plugin = this;		
+		context.registerService(IAddressDataStore.class.getName(), new AddressDataStore(), null);
 	}
 
 	/*
