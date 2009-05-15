@@ -1,5 +1,7 @@
 package at.fh_joanneum.swd.pmt.main.data;
 
+import java.util.Hashtable;
+
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
@@ -27,6 +29,8 @@ public class Activator extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		IUserDataStore store = new UserDataStore();
+		context.registerService(IUserDataStore.class.getName(), store, null);
 	}
 
 	/*

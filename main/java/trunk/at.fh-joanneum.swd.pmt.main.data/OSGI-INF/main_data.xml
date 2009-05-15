@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<component name="main_data">
+	<implementation class="at.fh_joanneum.swd.pmt.main.data.UserDataStore"/>
+	<service>
+		<provide interface="at.fh_joanneum.swd.pmt.main.data.IUserDataStore"/>
+	</service>
+</component>

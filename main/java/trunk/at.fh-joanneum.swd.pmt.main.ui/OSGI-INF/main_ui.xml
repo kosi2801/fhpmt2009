@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<component name="main_ui">
+	<implementation class="at.fh_joanneum.swd.pmt.ui.views"/>
+	<reference name="MAIN_DATA"
+		interface="at.fh_joanneum.swd.pmt.main.data.IUserDataStore"
+		bind="setUserDataStore"
+		unbind="unsetUserDataStore"
+		cardinality="0..1"
+		policy="dynamic"/>
+</component>
+
+

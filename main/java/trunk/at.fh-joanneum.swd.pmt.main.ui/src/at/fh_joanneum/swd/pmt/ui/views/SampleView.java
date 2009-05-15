@@ -1,6 +1,7 @@
 package at.fh_joanneum.swd.pmt.ui.views;
 
 
+
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -26,6 +27,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
@@ -35,7 +37,7 @@ import org.eclipse.ui.part.ViewPart;
 
 import at.fh_joanneum.swd.pmt.bl.DataInitializerTask;
 import at.fh_joanneum.swd.pmt.main.data.User;
-import at.fh_joanneum.swd.pmt.main.data.UserDataStore;
+import at.fh_joanneum.swd.pmt.ui.Activator;
 
 
 /**
@@ -73,7 +75,7 @@ public class SampleView extends ViewPart {
 	 * it and always show the same content 
 	 * (like Task List, for example).
 	 */
-	 
+	
 	class ViewContentProvider implements IStructuredContentProvider {
 		public void inputChanged(Viewer v, Object oldInput, Object newInput) {
 		}
@@ -81,7 +83,12 @@ public class SampleView extends ViewPart {
 		}
 		public Object[] getElements(Object parent) {
 //			return new TestData().getData();
-			User user = UserDataStore.getInstance().getUser();
+//			User user = UserDataStore.getInstance().getUser();
+			if (Activator.getDefault().getStore() == null) {
+				System.out.println("no store loaded!");
+				return new String[]{};
+			}
+			User user = Activator.getDefault().getStore().getUser();
 			if (user != null)
 			return new String[] {user.getFirstName() + " " + user.getLastName()};
 			else
@@ -96,8 +103,11 @@ public class SampleView extends ViewPart {
 			return getImage(obj);
 		}
 		public Image getImage(Object obj) {
-			return PlatformUI.getWorkbench().
-					getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
+//			return PlatformUI.getWorkbench().
+//					getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
+			return new Image(Display.getCurrent(),
+					SampleView.class.getResourceAsStream(
+					"../../../../../../icons/fh_16.gif"));
 		}
 	}
 	class NameSorter extends ViewerSorter {
@@ -178,8 +188,8 @@ public class SampleView extends ViewPart {
 	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(action1);
-		manager.add(action2);
+//		manager.add(action1);
+//		manager.add(action2);
 	}
 
 	private void makeActions() {

@@ -1,7 +1,9 @@
 package at.fh_joanneum.swd.pmt.ui.application;
 
+import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory;
@@ -21,6 +23,11 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	// in the fill methods. This ensures that the actions aren't recreated
 	// when fillActionBars is called with FILL_PROXY.
 	private IWorkbenchAction exitAction;
+	
+    // XXX we want to show all update preferences
+	private IWorkbenchAction aboutAction;
+    private IWorkbenchAction preferencesAction;
+
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
@@ -36,13 +43,41 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 		exitAction = ActionFactory.QUIT.create(window);
 		register(exitAction);
+		
+		//XXX preferences action
+        aboutAction = ActionFactory.ABOUT.create(window);
+        register(aboutAction);
+        preferencesAction = ActionFactory.PREFERENCES.create(window);
+        register(preferencesAction);
+        
+
+
 	}
 
 	protected void fillMenuBar(IMenuManager menuBar) {
 		MenuManager fileMenu = new MenuManager("&File",
 				IWorkbenchActionConstants.M_FILE);
+
 		menuBar.add(fileMenu);
 		fileMenu.add(exitAction);
+
+//		MenuManager windowMenu = new MenuManager("&Window", IWorkbenchActionConstants.M_WINDOW);
+//		MenuManager helpMenu = new MenuManager("&Help", IWorkbenchActionConstants.M_HELP);
+//		// XXX Window menu
+//		menuBar.add(windowMenu);
+//		// Add a group marker indicating where action set menus will appear.
+//		menuBar.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+//		menuBar.add(helpMenu);
+//		
+//		
+//		// XXX Window menu
+//		windowMenu.add(preferencesAction);
+//		
+//		// Help
+//		// XXX add an additions group because this is what SDK UI expects
+//		helpMenu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+//		helpMenu.add(new Separator());
+//		helpMenu.add(aboutAction);
 	}
 
 }
