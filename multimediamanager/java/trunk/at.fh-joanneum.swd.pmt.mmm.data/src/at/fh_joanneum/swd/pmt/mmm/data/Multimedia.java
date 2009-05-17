@@ -2,14 +2,23 @@ package at.fh_joanneum.swd.pmt.mmm.data;
 
 public class Multimedia {
 	
-	String Titel;
+	String titel;
+	String note;
 
-	public String getTitel() {
-		return Titel;
+	public String getNote() {
+		return note;
 	}
 
-	public void setTitel(String titel) {
-		Titel = titel;
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public String getTitel() {
+		return titel;
+	}
+
+	public void setTitel(String title) {
+		titel = title;
 	}
 	
 	
