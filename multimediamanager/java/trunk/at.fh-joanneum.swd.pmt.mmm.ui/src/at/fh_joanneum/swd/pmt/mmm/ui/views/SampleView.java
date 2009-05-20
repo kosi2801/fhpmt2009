@@ -1,4 +1,4 @@
-package at.fh_joanneum.swd.mmm.ui.views;
+package at.fh_joanneum.swd.pmt.mmm.ui.views;
 
 
 import org.eclipse.swt.widgets.Composite;
@@ -88,7 +88,7 @@ public class SampleView extends ViewPart {
 		viewer.setInput(getViewSite());
 
 		// Create the help context id for the viewer's control
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.fh_joanneum.swd.mmm.ui.viewer");
+		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.fh_joanneum.swd.pmt.mmm.ui.viewer");
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();

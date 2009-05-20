@@ -1,4 +1,4 @@
-package at.fh_joanneum.swd.mmm.ui;
+package at.fh_joanneum.swd.pmt.mmm.ui;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -10,7 +10,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "at.fh_joanneum.swd.mmm.ui";
+	public static final String PLUGIN_ID = "at.fh_joanneum.swd.pmt.mmm.ui";
 
 	// The shared instance
 	private static Activator plugin;
