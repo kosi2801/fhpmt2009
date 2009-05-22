@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Version 1.1 erzeugen">
+   <intro>
+      <description>
+         Anapssungen für Feature Version 1.1. durchführen. Um den zweiten Teil der Aufgabe zu erfüllen, kann die Data Initializer Extension der main Businesslogik verwendet werden. Dadurch werden bei Druck auf den Initialize Button des Main View des PMT Tools alle entsprechenden Data Stores mit Default Werten gefüllt.
+      </description>
+   </intro>
+   
+   <item
+         title="Main Businesslogik Extension implementieren">
+      <description>
+         Im META-INF/MANIFEST.MF der bl Komponente unter Dependencies das Plugin at.fh_joanneum.swd.pmt.main.bl als Required Plugin hinzufügen. Jetzt kann unter Extensions mit Add.. eine neue Extension für den Extension Point at.fh_joanneum.swd.pmt.datainitializer angelegt werden. Diese Extension stellt als Detail einen initializer Eintrag bereit, der eine Klasse angibt, die das DataInitializer Interface implementiert. Ein Klick auf class ruft den Wizard zum Erzeugen dieser Klasse auf.
+      </description>
+   </item>
+   <item
+         title="DataInitializer implementieren">
+      <description>
+         Die neu angelegte Klasse soll so implementiert werden, dass sie Datenobjekte anlegt, und diese im DataStore speichert. Eine Beispielklasse ist unter /at.fh-joanneum.swd.pmt.main.bl/src/at/fh_joanneum/swd/pmt/main/bl/MainDataInitializer.java zu finden.
+      </description>
+   </item>
+   <item
+         title="Versionsnummer erhöhen">
+      <description>
+         Die Versionsnummer des veränderten bl Plugins und des Features soll entsprechend erhöht werden. Weiters sollen jetzt im Feature Abhängigkeiten auf andere Plugins eingetragen werden (wobei für jede identifizierte Abhängigkeit in Task 1 ein Plugin des entsprechenden Features ausgewählt werden soll).
+      </description>
+   </item>
+   <item
+         title="Updatesite anpassen">
+      <description>
+         Das geänderte Feature muss mit add zur Updatesite dazugefügt werden. Danach muss dieses Feature in der Liste markiert werden und mit dem Befehl Build die neuen Feature und Plugin Daten erstellt werden.
+      </description>
+   </item>
+</cheatsheet>
