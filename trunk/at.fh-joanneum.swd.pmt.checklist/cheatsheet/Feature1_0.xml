@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Title">
+   <intro>
+      <description>
+         Feature definieren und UpdateSite erzeugen.
+      </description>
+   </intro>
+ <item
+         title="Feature definieren">
+      <description>
+         Im Included Plugins Eintrag der feature.xml Datei im .feature Project sollten alle drei Plugins (.ui, .bl,.data) enthalten sein. Im Overview Eintrag des Features den Namen auf &lt;komponente&gt; Feature ändern, die Updateseite eintragen http://localhost:8080/swd/task2/&lt;komponente&gt; und den Namen der Updatesite mit &lt;komponente&gt; Updatesite angeben
+      </description>
+   </item>
+   <item
+         title="UpdateSite erzeugen">
+      <description>
+         Unter File.. New -&gt; Project.. soll im Plugin Development Folder das Updatesite Projekt ausgewählt werden. Die UpdateSeite sollte mit dem gleichen Präfix wie alle anderen Plugins und der Endung .updatesite angelegt werden. (zB. Updatesite für main Feature at.fh-joanneum.swd.pmt.main.updatesite).
+
+In der site.xml des Updatesite Projektes in Site Map das entsprechende Feature dazufügen und die URL  http://localhost:8080/swd/task2/&lt;komponente&gt; unter Archives angeben. In Site Map dann den Button Build all drücken. Es sollten dann im Folder features und plugins die entsprechenden jar Files angelegt worden sein.
+      </description>
+   </item>
+   <item
+         title="Updatesite testen">
+      <description>
+         Starten sie eine neue Eclipse Instanz und rufen sie unter Help -&gt; Software Updates... den Updatemanager auf.
+      </description>
+   </item>
+</cheatsheet>

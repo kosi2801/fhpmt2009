@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Title">
+   <intro>
+      <description>
+         Schritte zur Anpassungen des UserInterfaces und der Businesslogik.
+      </description>
+   </intro>
+    <item
+         title="Dependencies setzen">
+      <description>
+         Im MANIFEST.MF des Businesslogic Plugins soll unter Dependencies euer .data Plugin als required Plugin dazugefügt werden. Ebenso soll im META-INF/MANIFEST.MF des .ui Plugins eine Dependency auf das .data Plugin und das .bl Plugin eingetragen werden
+      </description>
+   </item>
+   <item
+         title="DatenService nutzen">
+      <description>
+         Im Activator des BL Plugins und des UI Plugins muss das DataStore Service des data Plugins bei der Aktivierung geholt werden.  Dazu sind folgende Schritte durchzuführen:
+
+- private ServiceTracker userDataTracker Attribut anlegen&lt;br&gt;
+- 		Die Zeilen &lt;br&gt;this.userDataTracker = new ServiceTracker(context,at.fh_joanneum.swd.pmt.main.data.IUserDataStore.class.getName(),null); &lt;br&gt;
+		userDataTracker.open();&lt;br&gt;
+		in der StartMethode des Activators hinzufügen.&lt;br&gt;
+- Die Methode	&lt;br&gt;public IUserDataStore getStore() {&lt;br&gt;
+		return (IUserDataStore)userDataTracker.getService();&lt;br&gt;
+	}&lt;br&gt;
+	im Activator hinzufügen.
+	
+	Siehe /at.fh-joanneum.swd.pmt.main.bl/src/at/fh_joanneum/swd/pmt/main/bl/Activator.java bzw. /at.fh-joanneum.swd.pmt.main.ui/src/at/fh_joanneum/swd/pmt/ui/Activator.java
+      </description>
+   </item>
+   <item
+         title="UserInterface Plugin verändern">
+      <description>
+         im META-INF/MANIFEST.MF des ui Plugins müssen im Bereich Extensions folgende Anpassungen durchgeführt werden.
+
+Löschen der SampleView category in der Extension org.eclipse.ui.views. 
+
+Umbenennen des Sample View und ändern der Category auf at.fh_joanneum.swd.pmt.ui in der View Extension unter org.eclipse.ui.views
+      </description>
+   </item>
+   <item
+         title="Anpassen des UserInterface">
+      <description>
+         In der Methode createPartControl der Klasse SampleView im .ui Plugin sollen zusätzliche SWT Widgets hinzugefügt werden, um ein für die jeweilige Domäne spezifisches User Interface zu erzeugen.
+
+siehe /at.fh-joanneum.swd.pmt.main.ui/src/at/fh_joanneum/swd/pmt/ui/views/SampleView.java
+      </description>
+   </item>
+   <item
+         title="Anpassen des Datenlieferanten">
+      <description>
+         die getElements Methode des ViewContentProvider in der Klasse SampleView liefert ein Object Array mit den Daten zurück, die dann im Widget des Views angezeigt werden. Das fixe String Array soll durch folgende Zeilen ersetzt werden, wodurch das DataStore Service des data Plugins verwendet wird:
+
+			if (Activator.getDefault().getStore() == null) {
+				System.out.println(&quot;no store loaded!&quot;);
+				return new String[]{};
+			}
+			User user = Activator.getDefault().getStore().getUser();
+			if (user != null)
+				return new String[] {user.getFirstName() + &quot; &quot; + user.getLastName()};
+			else
+				return new String[]{};
+
+Die Verwendung des domänenspezifischen Datenobjektes ist an die eigene Datenstruktur anzupassen.
+      </description>
+   </item>
+</cheatsheet>
