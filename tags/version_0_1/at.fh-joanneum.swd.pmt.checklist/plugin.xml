@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="at.fh-joanneum.swd.pmt.checklist.category2"
+            name="FH Joanneum SWD">
+      </category>
+      <cheatsheet
+            category="at.fh-joanneum.swd.pmt.checklist.category2"
+            composite="true"
+            contentFile="cheatsheet/SWD Task 2 Checklist.xml"
+            id="at.fh-joanneum.swd.pmt.checklist.cheatsheet1083018522"
+            name="SWD Task 2">
+      </cheatsheet>
+   </extension>
+
+</plugin>

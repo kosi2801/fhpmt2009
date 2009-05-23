@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compositeCheatsheet name="SWD Task 2">
+   <taskGroup kind="set" name="Task 2" skip="false">
+      <intro>
+         <b>Introduction</b>
+      </intro>
+      <onCompletion>
+         <b>Conclusion</b>
+      </onCompletion>
+      <task kind="cheatsheet" name="Data" skip="false">
+         <intro>
+            <b>Introduction</b>
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b>
+         </onCompletion>
+         <param name="path" value="Data.xml">
+         </param>
+      </task>
+      <task kind="cheatsheet" name="Businesslogic &amp; Userinterface" skip="false">
+         <intro>
+            <b>Introduction</b>
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b>
+         </onCompletion>
+         <param name="path" value="BLUI.xml">
+         </param>
+      </task>
+      <task kind="cheatsheet" name="Feature &amp; Updatesite" skip="false">
+         <intro>
+            <b>Introduction</b>
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b>
+         </onCompletion>
+         <param name="path" value="Feature1_0.xml">
+         </param>
+      </task>
+      <task kind="cheatsheet" name="Version 1.1" skip="false">
+         <intro>
+            <b>Introduction</b>
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b>
+         </onCompletion>
+         <param name="path" value="Version 1.1.xml">
+         </param>
+      </task>
+   </taskGroup>
+</compositeCheatsheet>

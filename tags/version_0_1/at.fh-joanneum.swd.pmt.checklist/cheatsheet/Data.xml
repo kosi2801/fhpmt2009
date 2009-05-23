@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Version 1.0">
+   <intro>
+      <description>
+         Diese Checkliste fasst die Tätigkeiten, die zur Erfüllung des ersten Teils der zweiten Aufgabe notwendig sind zusammen
+      </description>
+   </intro>
+   <item
+         title="Datenklassen erstellen">
+      <description>
+         Erstellen sie in ihrem .*.data Plugin Datenklassen, die für ihre Anwendungsdomäne wichtige Informationen beinhalten. Beispielsweise gibt es im Plugin at.fh-joanneum.swd.pmt.main.data eine User Klasse, die die Daten des aktuellen Benutzers des PMT hält.
+      </description>
+   </item>
+   <item
+         title="DatenStore Interface erstellen">
+      <description>
+         Es muss nun ein Datenstore erstellt werden, der die aktuellen Daten eures Plugins enthält. Zuerst müssen aber die getter und setter Methoden dieses Datenstores in einem Interface definiert werden (siehe /at.fh-joanneum.swd.pmt.main.data/src/at/fh_joanneum/swd/pmt/main/data/IUserDataStore.java)
+      </description>
+   </item>
+   <item
+         title="DatenStore erstellen">
+      <description>
+         Jetzt kann eine Klasse erstellt werden, die dieses Interface implementiert, und entsprechende Attribute enthält,die die Daten zur Laufzeit des Plugins halten (siehe /at.fh-joanneum.swd.pmt.main.data/src/at/fh_joanneum/swd/pmt/main/data/UserDataStore.java).
+      </description>
+   </item>
+   <item
+         title="DateStore Service registrieren">
+      <description>
+         Nun muss das Datenstore Service registriert werden. Dieses Service verwenden die Businesslogik und das UserInterface um auf die aktuellen Daten des Features zugreifen zu können. Dafür muss in der Methode  start(BundleContext context) des Activators im Data Plugin die Zeile
+<br/>	<br/>		context.registerService(IUserDataStore.class.getName(), new UserDataStore(), null); 
+<br/>	<br/>			hinzugefügt werden, wobei der erste Parameter euer DataStore Interface ist, und das zweite eine neue Instanz des Interfaces.
+      </description>
+   </item>
+ 
+ 
+</cheatsheet>
