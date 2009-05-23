@@ -1,7 +1,5 @@
 package at.fh_joanneum.swd.pmt.main.data;
 
-import java.util.Hashtable;
-
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
