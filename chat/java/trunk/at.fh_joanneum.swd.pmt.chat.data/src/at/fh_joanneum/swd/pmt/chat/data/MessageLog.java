@@ -20,7 +20,7 @@ public class MessageLog implements IMessageLog
 	@Override
 	public Message[] getAllMessages() 
 	{
-		return (Message[]) messageLog.toArray();
+		return messageLog.toArray(new Message[0]);
 	}
 
 	@Override
