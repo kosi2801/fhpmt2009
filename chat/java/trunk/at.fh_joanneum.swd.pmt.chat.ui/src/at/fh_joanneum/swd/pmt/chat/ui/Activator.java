@@ -20,6 +20,11 @@ public class Activator extends AbstractUIPlugin {
 	
 	private ServiceTracker messagesTracker;
 	
+	public IMessageLog getMessageLog()
+	{
+		return (IMessageLog)messagesTracker.getService();
+	}
+	
 	/**
 	 * The constructor
 	 */

@@ -1,16 +1,36 @@
 package at.fh_joanneum.swd.pmt.chat.ui.views;
 
 
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.*;
-import org.eclipse.jface.viewers.*;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.jface.action.*;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.*;
-import org.eclipse.swt.widgets.Menu;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchActionConstants;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.ViewPart;
 
+import at.fh_joanneum.swd.pmt.chat.data.IMessageLog;
+import at.fh_joanneum.swd.pmt.chat.data.Message;
+import at.fh_joanneum.swd.pmt.chat.ui.Activator;
 
 /**
  * This sample class demonstrates how to plug-in a new
@@ -59,19 +79,29 @@ public class ChatUI extends ViewPart
 		
 		public Object[] getElements(Object parent) 
 		{
-			return new String[] { "Bla", "Bla", "Bla" };
+			if (Activator.getDefault() == null ||
+					Activator.getDefault().getMessageLog() == null) 
+			{
+				return new String[]{};
+			}
+			
+			IMessageLog log = Activator.getDefault().getMessageLog();
+			return log.getAllMessages();
 		}
 	}
+	
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider 
 	{
 		public String getColumnText(Object obj, int index) 
 		{
 			return getText(obj);
 		}
+		
 		public Image getColumnImage(Object obj, int index) 
 		{
 			return getImage(obj);
 		}
+		
 		public Image getImage(Object obj) 
 		{
 			return PlatformUI.getWorkbench().
@@ -100,6 +130,7 @@ public class ChatUI extends ViewPart
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
+		
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
