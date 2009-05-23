@@ -92,7 +92,7 @@ public class SampleView extends ViewPart {
 			}
 			User user = Activator.getDefault().getStore().getUser();
 			if (user != null)
-			return new String[] {user.getFirstName() + " " + user.getLastName()};
+				return new String[] {user.getFirstName() + " " + user.getLastName()};
 			else
 				return new String[]{};
 		}
