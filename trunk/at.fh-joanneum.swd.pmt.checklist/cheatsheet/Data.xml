@@ -9,7 +9,7 @@
    <item
          title="Datenklassen erstellen">
       <description>
-         Erstellen sie in ihrem .*.data Plugin Datenklassen, die für ihre Anwendungsdomäne wichtige Informationen beinhalten. Beispielsweise gibt es im Plugin at.fh-joanneum.swd.pmt.main.data eine User Klasse, die die Daten des aktuellen Benutzers des PMT hält. Zur Anzeige dieser Klasse auf Ausführen klicken und den Dialog mit OK bestätigen.
+         Erstellen sie in ihrem .*.data Plugin Datenklassen, die für ihre Anwendungsdomäne wichtige Informationen beinhalten. Beispielsweise gibt es im Plugin at.fh-joanneum.swd.pmt.main.data eine User Klasse, die die Daten des aktuellen Benutzers des PMT hält.
       </description>
    </item>
    <item
@@ -27,7 +27,9 @@
    <item
          title="DateStore Service registrieren">
       <description>
-         Nun muss das Datenstore Service registriert werden. Dieses Service verwenden die Businesslogik und das UserInterface um auf die aktuellen Daten des Features zugreifen zu können. dafür muss in der Methode start(BundleContext context) des Activators im Data Plugin die Zeile 		context.registerService(IUserDataStore.class.getName(), new UserDataStore(), null); hinzugefügt werden, wobei der erste Parameter euer DataStore Interface ist, und das zweite eine neue Instanz des Interfaces.
+         Nun muss das Datenstore Service registriert werden. Dieses Service verwenden die Businesslogik und das UserInterface um auf die aktuellen Daten des Features zugreifen zu können. Dafür muss in der Methode  start(BundleContext context) des Activators im Data Plugin die Zeile
+<br/>	<br/>		context.registerService(IUserDataStore.class.getName(), new UserDataStore(), null); 
+<br/>	<br/>			hinzugefügt werden, wobei der erste Parameter euer DataStore Interface ist, und das zweite eine neue Instanz des Interfaces.
       </description>
    </item>
  

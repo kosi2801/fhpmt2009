@@ -16,16 +16,16 @@
          title="DatenService nutzen">
       <description>
          Im Activator des BL Plugins und des UI Plugins muss das DataStore Service des data Plugins bei der Aktivierung geholt werden.  Dazu sind folgende Schritte durchzuführen:
-
-- private ServiceTracker userDataTracker Attribut anlegen&lt;br&gt;
-- 		Die Zeilen &lt;br&gt;this.userDataTracker = new ServiceTracker(context,at.fh_joanneum.swd.pmt.main.data.IUserDataStore.class.getName(),null); &lt;br&gt;
-		userDataTracker.open();&lt;br&gt;
-		in der StartMethode des Activators hinzufügen.&lt;br&gt;
-- Die Methode	&lt;br&gt;public IUserDataStore getStore() {&lt;br&gt;
-		return (IUserDataStore)userDataTracker.getService();&lt;br&gt;
-	}&lt;br&gt;
+<br/>	
+- private ServiceTracker userDataTracker Attribut anlegen<br/>	
+- 		Die Zeilen <br/><br/>	this.userDataTracker = new ServiceTracker(context,at.fh_joanneum.swd.pmt.main.data.IUserDataStore.class.getName(),null); <br/>	
+		userDataTracker.open();<br/>	
+		in der StartMethode des Activators hinzufügen.<br/>	
+- Die Methode	<br/>	public IUserDataStore getStore() {<br/>	
+		return (IUserDataStore)userDataTracker.getService();<br/>	
+	}<br/><br/>	
 	im Activator hinzufügen.
-	
+	<br/>	
 	Siehe /at.fh-joanneum.swd.pmt.main.bl/src/at/fh_joanneum/swd/pmt/main/bl/Activator.java bzw. /at.fh-joanneum.swd.pmt.main.ui/src/at/fh_joanneum/swd/pmt/ui/Activator.java
       </description>
    </item>
@@ -33,17 +33,17 @@
          title="UserInterface Plugin verändern">
       <description>
          im META-INF/MANIFEST.MF des ui Plugins müssen im Bereich Extensions folgende Anpassungen durchgeführt werden.
-
-Löschen der SampleView category in der Extension org.eclipse.ui.views. 
-
-Umbenennen des Sample View und ändern der Category auf at.fh_joanneum.swd.pmt.ui in der View Extension unter org.eclipse.ui.views
+<br/>	<br/>	
+- Löschen der SampleView category in der Extension org.eclipse.ui.views. 
+<br/>	<br/>	
+- Umbenennen des Sample View und ändern der Category auf at.fh_joanneum.swd.pmt.ui in der View Extension unter org.eclipse.ui.views
       </description>
    </item>
    <item
          title="Anpassen des UserInterface">
       <description>
          In der Methode createPartControl der Klasse SampleView im .ui Plugin sollen zusätzliche SWT Widgets hinzugefügt werden, um ein für die jeweilige Domäne spezifisches User Interface zu erzeugen.
-
+<br/>	
 siehe /at.fh-joanneum.swd.pmt.main.ui/src/at/fh_joanneum/swd/pmt/ui/views/SampleView.java
       </description>
    </item>
@@ -51,17 +51,17 @@ siehe /at.fh-joanneum.swd.pmt.main.ui/src/at/fh_joanneum/swd/pmt/ui/views/Sample
          title="Anpassen des Datenlieferanten">
       <description>
          die getElements Methode des ViewContentProvider in der Klasse SampleView liefert ein Object Array mit den Daten zurück, die dann im Widget des Views angezeigt werden. Das fixe String Array soll durch folgende Zeilen ersetzt werden, wodurch das DataStore Service des data Plugins verwendet wird:
-
-			if (Activator.getDefault().getStore() == null) {
-				System.out.println(&quot;no store loaded!&quot;);
-				return new String[]{};
-			}
-			User user = Activator.getDefault().getStore().getUser();
-			if (user != null)
-				return new String[] {user.getFirstName() + &quot; &quot; + user.getLastName()};
-			else
-				return new String[]{};
-
+<br/>	<br/>	
+			if (Activator.getDefault().getStore() == null) {<br/>	
+				System.out.println(&quot;no store loaded!&quot;);<br/>	
+				return new String[]{};<br/>	
+			}<br/>	
+			User user = Activator.getDefault().getStore().getUser();<br/>	
+			if (user != null)<br/>	
+				return new String[] {user.getFirstName() + &quot; &quot; + user.getLastName()};<br/>	
+			else<br/>	
+				return new String[]{};<br/>	
+<br/>	
 Die Verwendung des domänenspezifischen Datenobjektes ist an die eigene Datenstruktur anzupassen.
       </description>
    </item>
