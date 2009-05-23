@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="at.fh_joanneum.swd.pmt.ui.application.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="at.fh_joanneum.swd.pmt.ui.application.Perspective"
+            icon="icons/fh_16.gif"
+            id="at.fh_joanneum.swd.pmt.main.ui.perspective"
+            name="Personal Management Tool Perspective">
+      </perspective>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Personal Management Views"
+            id="at.fh_joanneum.swd.pmt.ui">
+      </category>
+      <view
+            name="Main View"
+            icon="icons/fh_16.gif"
+            category="at.fh_joanneum.swd.pmt.ui"
+            class="at.fh_joanneum.swd.pmt.ui.views.SampleView"
+            id="at.fh_joanneum.swd.pmt.ui.views.PMTView">
+      </view>
+   </extension>
+  <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="at.fh_joanneum.swd.pmt.main.ui.application"
+            name="Personal Management Tool">
+         <property
+               name="windowImages"
+               value="icons/fh_16.gif,icons/fh_32.gif">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+
+</plugin>
