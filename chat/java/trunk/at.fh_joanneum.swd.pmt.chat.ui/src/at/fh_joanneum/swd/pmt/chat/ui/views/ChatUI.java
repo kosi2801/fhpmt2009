@@ -22,6 +22,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
+import at.fh_joanneum.swd.pmt.bl.DataInitializerTask;
 import at.fh_joanneum.swd.pmt.chat.data.IMessageLog;
 import at.fh_joanneum.swd.pmt.chat.data.Message;
 import at.fh_joanneum.swd.pmt.chat.ui.Activator;
@@ -109,6 +110,15 @@ public class ChatUI extends ViewPart
 
 		Button buttonDefault = new Button(parent, SWT.PUSH);
 		buttonDefault.setText("Fill with default");
+		buttonDefault.addSelectionListener(new SelectionAdapter() 
+		{
+			@Override
+			public void widgetSelected(SelectionEvent e) 
+			{
+				new DataInitializerTask().run();
+				viewer.refresh();
+			}
+		});
 
 		Button buttonAdd = new Button(parent, SWT.PUSH);
 		buttonAdd.setText("Add chat message");
