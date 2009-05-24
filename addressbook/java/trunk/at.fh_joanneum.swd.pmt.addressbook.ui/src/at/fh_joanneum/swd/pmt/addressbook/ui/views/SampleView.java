@@ -44,8 +44,6 @@ import at.fh_joanneum.swd.pmt.addressbook.ui.Activator;
 
 public class SampleView extends ViewPart {
 	private TableViewer viewer;
-	private Action action1;
-	private Action action2;
 	private Action doubleClickAction;
 	private Text tName;
 	private Text tStreet;
@@ -99,10 +97,7 @@ public class SampleView extends ViewPart {
 		}
 		public Image getImage(Object obj) {
 			return PlatformUI.getWorkbench().
-					getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
-			/*return new Image(Display.getCurrent(),
-					SampleView.class.getResourceAsStream(
-					"../../../../../../icons/fh_16.gif"));*/
+					getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);			
 		}
 	}
 	class NameSorter extends ViewerSorter {
@@ -119,23 +114,25 @@ public class SampleView extends ViewPart {
 	 * to create the viewer and initialize it.
 	 */
 	public void createPartControl(Composite parent) {
+		GridLayout gridLayout = new GridLayout(4, false);
+		gridLayout.verticalSpacing = 8;
 		parent.setLayout(new GridLayout());
+		
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
-
+		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = SWT.FILL;
 		viewer.getControl().setLayoutData(gd);
 		
-		Label name = new Label(parent, SWT.LEFT);
-		//name.setLayoutData(new GridData(SWT.FILL));
+		
+		Label name = new Label(parent, SWT.NULL);
 		name.setText("Name:");		
-		this.tName = new Text(parent,SWT.SINGLE);		
-		//this.tName.setLayoutData(new GridData(SWT.LEFT, SWT.END, true, false));
+		this.tName = new Text(parent,SWT.SINGLE | SWT.BORDER);		
 		
 		Label street = new Label(parent,SWT.LEFT);
 		street.setText("Street:");		
@@ -170,6 +167,7 @@ public class SampleView extends ViewPart {
 		Button add = new Button(parent,SWT.PUSH);
 		add.setText("Add");
 		add.addSelectionListener(new SelectionAdapter(){
+			@Override
 			public void widgetSelected(SelectionEvent e){
 				
 				if( tName.getText().isEmpty()){
@@ -200,14 +198,17 @@ public class SampleView extends ViewPart {
 		Button bClear = new Button(parent,SWT.PUSH);
 		bClear.setText("Clear");
 		bClear.addSelectionListener(new SelectionAdapter(){
+			@Override
 			public void widgetSelected(SelectionEvent e){
 				clearControlls();
+				viewer.refresh();
 			}
 		});
 		
 		Button bDelete = new Button(parent,SWT.PUSH);
 		bDelete.setText("Delete");
 		bDelete.addSelectionListener(new SelectionAdapter(){
+			@Override
 			public void widgetSelected(SelectionEvent e){
 				if(!Activator.getDefault().getStore().removeAddress(tName.getText()))
 					showMessage("Unable to delete this entry!");
@@ -217,6 +218,7 @@ public class SampleView extends ViewPart {
 		Button bUpdate = new Button(parent, SWT.PUSH);
 		bUpdate.setText("Update");
 		bUpdate.addSelectionListener(new SelectionAdapter(){
+			@Override
 			public void widgetSelected(SelectionEvent e){
 				if(tName.getText().isEmpty()){
 					showMessage("The attribute Name must not be empty!");
@@ -243,82 +245,28 @@ public class SampleView extends ViewPart {
 				}
 			}
 		});
+		
+
+		
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.fh_joanneum.swd.pmt.adressbook.ui.viewer");
 		makeActions();
-		hookContextMenu();
 		hookDoubleClickAction();
-		contributeToActionBars();
 	}
 
 	private void clearControlls(){
-		this.tName.setText(null);
-		this.tStreet.setText(null);
-		this.tZip.setText(null);
-		this.tCity.setText(null);
-		this.tCountry.setText(null);
-		this.tEmail.setText(null);
-		this.tPhone.setText(null);
-		this.tMobile.setText(null);		
-	}
-	
-	private void hookContextMenu() {
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
-		menuMgr.addMenuListener(new IMenuListener() {
-			public void menuAboutToShow(IMenuManager manager) {
-				SampleView.this.fillContextMenu(manager);
-			}
-		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
-	}
-
-	private void contributeToActionBars() {
-		IActionBars bars = getViewSite().getActionBars();
-		fillLocalPullDown(bars.getMenuManager());
-		fillLocalToolBar(bars.getToolBarManager());
-	}
-
-	private void fillLocalPullDown(IMenuManager manager) {
-		manager.add(action1);
-		manager.add(new Separator());
-		manager.add(action2);
-	}
-
-	private void fillContextMenu(IMenuManager manager) {
-		manager.add(action1);
-		manager.add(action2);
-		// Other plug-ins can contribute there actions here
-		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-	}
-	
-	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(action1);
-		manager.add(action2);
-	}
-
-	private void makeActions() {
-		action1 = new Action() {
-			public void run() {
-				showMessage("Action 1 executed");
-			}
-		};
-		action1.setText("Action 1");
-		action1.setToolTipText("Action 1 tooltip");
-		action1.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-			getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
+		this.tName.setText("");
+		this.tStreet.setText("");
+		this.tZip.setText("");
+		this.tCity.setText("");
+		this.tCountry.setText("");
+		this.tEmail.setText("");
+		this.tPhone.setText("");
+		this.tMobile.setText("");
 		
-		action2 = new Action() {
-			public void run() {
-				showMessage("Action 2 executed");
-			}
-		};
-		action2.setText("Action 2");
-		action2.setToolTipText("Action 2 tooltip");
-		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-				getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
+	}
+	
+	private void makeActions() {
 		doubleClickAction = new Action() {
 			public void run() {
 				ISelection selection = viewer.getSelection();
@@ -348,7 +296,7 @@ public class SampleView extends ViewPart {
 	private void showMessage(String message) {
 		MessageDialog.openInformation(
 			viewer.getControl().getShell(),
-			"Sample View",
+			"AddressBook View",
 			message);
 	}
 
