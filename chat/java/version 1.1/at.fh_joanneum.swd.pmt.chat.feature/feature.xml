@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="at.fh_joanneum.swd.pmt.chat.feature"
+      label="Chat Feature"
+      version="1.1.0">
+
+   <description url="http://www.example.com/description">
+      Chat feature. Not really a Chat.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="Chat Updatesite" url="http://localhost:8080/swd/task2/chat"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="at.fh_joanneum.swd.pmt.chat.data" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="at.fh_joanneum.swd.pmt.main.bl" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="at.fh_joanneum.swd.pmt.chat.bl" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="at.fh_joanneum.swd.pmt.main.data" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.chat.bl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.chat.data"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.chat.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.addressbook.data"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.main.bl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.mmm.data"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
