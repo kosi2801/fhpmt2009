@@ -1,15 +1,26 @@
 package at.fh_joanneum.swd.pmt.addressbook.ui.views;
 
 
+import java.util.Vector;
+
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.part.*;
 import org.eclipse.jface.viewers.*;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.jface.action.*;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
+
+import at.fh_joanneum.swd.pmt.addressbook.data.Address;
+import at.fh_joanneum.swd.pmt.addressbook.ui.Activator;
 
 
 /**
@@ -52,7 +63,22 @@ public class SampleView extends ViewPart {
 		public void dispose() {
 		}
 		public Object[] getElements(Object parent) {
-			return new String[] { "One", "Two", "Three" };
+			// Check if the Dataservice is registered
+			if (Activator.getDefault().getStore() == null) {
+				System.out.println("no store loaded!");
+				return new String[]{};
+			}
+			Vector<Address> addr = Activator.getDefault().getStore().getAllAddresses();
+			
+			// Read all existing Addresses if present
+			if (addr != null){
+				String[] names = new String[addr.size()];
+				for(int i=0;i<addr.size();i++)
+					names[i] = addr.get(i).getName();
+				return names;
+			}
+			else
+				return new String[]{};
 		}
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
@@ -65,6 +91,9 @@ public class SampleView extends ViewPart {
 		public Image getImage(Object obj) {
 			return PlatformUI.getWorkbench().
 					getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
+			/*return new Image(Display.getCurrent(),
+					SampleView.class.getResourceAsStream(
+					"../../../../../../icons/fh_16.gif"));*/
 		}
 	}
 	class NameSorter extends ViewerSorter {
@@ -81,12 +110,31 @@ public class SampleView extends ViewPart {
 	 * to create the viewer and initialize it.
 	 */
 	public void createPartControl(Composite parent) {
+		parent.setLayout(new GridLayout());
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
 
+		GridData gd = new GridData();
+		gd.grabExcessHorizontalSpace = true;
+		gd.horizontalAlignment = SWT.FILL;
+		viewer.getControl().setLayoutData(gd);
+		/*
+		Button button = new Button(parent, SWT.PUSH);
+		button.setText("Load default values");
+		button.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				new DataInitializerTask().run();
+				viewer.refresh();
+			}
+			
+		});*/
+		
+		
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.fh_joanneum.swd.pmt.adressbook.ui.viewer");
 		makeActions();
