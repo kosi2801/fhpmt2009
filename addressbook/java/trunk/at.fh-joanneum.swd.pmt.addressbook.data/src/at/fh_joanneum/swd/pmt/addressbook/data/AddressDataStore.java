@@ -18,7 +18,10 @@ public class AddressDataStore implements IAddressDataStore {
 	
 	@Override
 	public boolean addAddress(Address newAddr) {
-		return this.address.add(newAddr);		
+		if(findAddress(newAddr.getName()) == -1)
+			return this.address.add(newAddr);
+		else
+			return false;
 	}
 
 	@Override

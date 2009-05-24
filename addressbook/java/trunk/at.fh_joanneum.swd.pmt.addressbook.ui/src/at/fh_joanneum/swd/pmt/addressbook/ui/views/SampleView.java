@@ -212,8 +212,7 @@ public class SampleView extends ViewPart {
 				
 				if(!Activator.getDefault().getStore().addAddress(tmp))
 					showMessage("Failed to save this entry!");
-				else{
-					clearControlls();	
+				else{					
 					viewer.add(tmp.getName());
 					viewer.refresh();
 				};
@@ -271,8 +270,7 @@ public class SampleView extends ViewPart {
 				
 				if(!Activator.getDefault().getStore().setAddress((String)name, tmp))
 					showMessage("Unable to update current entry!");
-				else{
-					clearControlls();					
+				else{									
 					viewer.refresh();
 				}
 			}
