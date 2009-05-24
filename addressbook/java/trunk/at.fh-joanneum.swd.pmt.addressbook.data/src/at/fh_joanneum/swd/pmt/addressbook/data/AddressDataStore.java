@@ -36,11 +36,13 @@ public class AddressDataStore implements IAddressDataStore {
 	}
 
 	@Override
-	public void setAddress(Address address) {
-		int idx = findAddress(address.getName());
+	public boolean setAddress(String name, Address address) {
+		int idx = findAddress(name);
 		if(idx>=0){
 			this.address.setElementAt(address, idx);
-		}
+			return true;
+		}else
+			return false;
 		
 	}
 	
