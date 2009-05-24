@@ -2,6 +2,8 @@ package at.fh_joanneum.swd.pmt.addressbook.data;
 
 import java.util.Vector;
 
+import javax.print.attribute.standard.Fidelity;
+
 public class AddressDataStore implements IAddressDataStore {
 
 	private Vector<Address> address;
@@ -15,8 +17,8 @@ public class AddressDataStore implements IAddressDataStore {
 	}
 	
 	@Override
-	public void addAddress(Address newAddr) {
-		this.address.add(newAddr);		
+	public boolean addAddress(Address newAddr) {
+		return this.address.add(newAddr);		
 	}
 
 	@Override
@@ -48,5 +50,13 @@ public class AddressDataStore implements IAddressDataStore {
 				return i;
 		}
 		return -1;
+	}
+
+	@Override
+	public boolean removeAddress(String name) {
+		int idx = findAddress(name);
+		if(idx>=0)
+			return this.address.remove(this.address.get(idx));
+		return false;
 	}
 }

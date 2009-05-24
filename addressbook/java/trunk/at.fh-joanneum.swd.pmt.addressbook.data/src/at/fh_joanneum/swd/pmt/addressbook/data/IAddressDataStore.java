@@ -5,6 +5,7 @@ import java.util.Vector;
 public interface IAddressDataStore {
 	Address getAddressByName(String name);
 	void setAddress(Address address);
-	void addAddress(Address newAddr);
+	boolean addAddress(Address newAddr);
+	boolean removeAddress(String name);
 	Vector<Address> getAllAddresses();
 }
