@@ -19,6 +19,11 @@ public class Activator extends Plugin {
 	
 	private ServiceTracker messagesTracker;
 	
+	public IMessageLog getMessageLog()
+	{
+		return (IMessageLog)messagesTracker.getService();
+	}
+	
 	/**
 	 * The constructor
 	 */
