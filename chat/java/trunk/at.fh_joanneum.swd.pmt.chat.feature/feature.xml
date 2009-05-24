@@ -33,42 +33,42 @@
          id="at.fh_joanneum.swd.pmt.chat.bl"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.1.0"
          unpack="false"/>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.chat.data"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.chat.ui"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.fh_joanneum.swd.pmt.addressbook.data"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         version="1.1.0"
          unpack="false"/>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.main.data"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.mmm.data"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.addressbook.data"
+         download-size="0"
+         install-size="0"
+         version="1.0.0"
          unpack="false"/>
 
 </feature>
