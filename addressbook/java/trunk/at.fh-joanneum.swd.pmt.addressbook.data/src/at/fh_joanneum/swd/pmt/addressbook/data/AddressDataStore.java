@@ -47,7 +47,7 @@ public class AddressDataStore implements IAddressDataStore {
 	}
 	
 	private int findAddress(String name){
-		for(int i=0; i<=this.address.size();i++){
+		for(int i=0; i<this.address.size();i++){
 			if(this.address.elementAt(i).getName().equalsIgnoreCase(name))
 				return i;
 		}
@@ -56,7 +56,7 @@ public class AddressDataStore implements IAddressDataStore {
 
 	@Override
 	public boolean removeAddress(String name) {
-		int idx = findAddress(name);
+		int idx = findAddress(name);		
 		if(idx>=0)
 			return this.address.remove(this.address.get(idx));
 		return false;
