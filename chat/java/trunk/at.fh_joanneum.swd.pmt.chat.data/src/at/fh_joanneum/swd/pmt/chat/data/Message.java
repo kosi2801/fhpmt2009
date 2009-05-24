@@ -5,6 +5,12 @@ public class Message
 	String message;
 	String userName;
 	
+	public Message()
+	{
+		this.setMessage("");
+		this.setUserName("Unknown User");
+	}
+	
 	public String getMessage() 
 	{
 		return message;
