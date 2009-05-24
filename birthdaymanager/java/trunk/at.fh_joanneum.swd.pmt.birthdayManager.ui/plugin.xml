@@ -4,14 +4,10 @@
 
    <extension
          point="org.eclipse.ui.views">
-      <category
-            name="Sample Category"
-            id="at.fh-joanneum.swd.pmt.birthdaymanager.ui">
-      </category>
       <view
-            name="Sample View"
+            name="BirthdayManager"
             icon="icons/sample.gif"
-            category="at.fh-joanneum.swd.pmt.birthdaymanager.ui"
+            category="at.fh_joanneum.swd.pmt.ui"
             class="at.fhjoanneum.swd.pmt.birthdaymanager.ui.views.SampleView"
             id="at.fhjoanneum.swd.pmt.birthdaymanager.ui.views.SampleView">
       </view>
