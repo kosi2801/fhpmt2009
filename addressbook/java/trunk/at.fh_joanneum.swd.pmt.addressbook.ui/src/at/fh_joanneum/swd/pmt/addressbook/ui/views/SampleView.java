@@ -116,54 +116,51 @@ public class SampleView extends ViewPart {
 	public void createPartControl(Composite parent) {
 		GridLayout gridLayout = new GridLayout(4, false);
 		gridLayout.verticalSpacing = 8;
-		parent.setLayout(new GridLayout());
+		parent.setLayout(gridLayout);
 		
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
-		viewer.setInput(getViewSite());
+		viewer.setInput(getViewSite());		
 		
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = SWT.FILL;
+		gd.horizontalSpan = 4;		
 		viewer.getControl().setLayoutData(gd);
 		
-		
-		
 		Label name = new Label(parent, SWT.NULL);
-		name.setText("Name:");		
-		this.tName = new Text(parent,SWT.SINGLE | SWT.BORDER);		
+		name.setText("Name:");
+		this.tName = new Text(parent,SWT.SINGLE | SWT.BORDER);
 		
 		Label street = new Label(parent,SWT.LEFT);
 		street.setText("Street:");		
-		this.tStreet = new Text(parent,SWT.SINGLE);
+		this.tStreet = new Text(parent,SWT.SINGLE | SWT.BORDER);
 		
 		Label zip = new Label(parent,SWT.LEFT);
 		zip.setText("ZIP-Code:");
-		this.tZip = new Text(parent,SWT.SINGLE);
+		this.tZip = new Text(parent,SWT.SINGLE | SWT.BORDER);
 		
 		Label city = new Label(parent,SWT.LEFT);
 		city.setText("City:");
-		this.tCity = new Text(parent,SWT.SINGLE);
+		this.tCity = new Text(parent,SWT.SINGLE | SWT.BORDER);
 		
 		Label country = new Label(parent,SWT.LEFT);
 		country.setText("Country:");
-		this.tCountry = new Text(parent,SWT.SINGLE);
+		this.tCountry = new Text(parent,SWT.SINGLE | SWT.BORDER);
 		
 		Label email = new Label(parent, SWT.LEFT);
 		email.setText("E-Mail Address:");
-		this.tEmail = new Text(parent,SWT.SINGLE);
+		this.tEmail = new Text(parent,SWT.SINGLE | SWT.BORDER);
 		
 		Label phone = new Label(parent, SWT.LEFT);
 		phone.setText("Phone:");
-		this.tPhone = new Text(parent, SWT.SINGLE);
+		this.tPhone = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		
 		Label mobile = new Label(parent, SWT.LEFT);
 		mobile.setText("Mobile:");
-		this.tMobile = new Text(parent, SWT.SINGLE);
-		
-		new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
+		this.tMobile = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		
 		Button add = new Button(parent,SWT.PUSH);
 		add.setText("Add");
@@ -215,6 +212,7 @@ public class SampleView extends ViewPart {
 					showMessage("Unable to delete this entry!");
 					return;
 				}
+				clearControlls();
 				viewer.refresh();
 			}
 		});
