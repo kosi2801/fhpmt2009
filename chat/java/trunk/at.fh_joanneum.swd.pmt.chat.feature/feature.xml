@@ -20,6 +20,15 @@
       <update label="Chat Updatesite" url="http://localhost:8080/swd/task2/chat"/>
    </url>
 
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="at.fh_joanneum.swd.pmt.chat.data" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="at.fh_joanneum.swd.pmt.main.bl" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="at.fh_joanneum.swd.pmt.chat.bl" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="at.fh_joanneum.swd.pmt.main.data" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="at.fh_joanneum.swd.pmt.chat.bl"
          download-size="0"
