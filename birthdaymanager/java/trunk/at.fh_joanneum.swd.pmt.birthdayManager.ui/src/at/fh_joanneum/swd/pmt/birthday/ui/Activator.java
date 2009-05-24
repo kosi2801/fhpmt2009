@@ -3,6 +3,9 @@ package at.fh_joanneum.swd.pmt.birthday.ui;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.util.tracker.ServiceTracker;
+
+import at.fh_joanneum.swd.pmt.birthday.data.IUserDataStore;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -14,6 +17,7 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
+	private ServiceTracker dataTracker;
 	
 	/**
 	 * The constructor
@@ -40,8 +44,6 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns the shared instance
-	 *
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
@@ -49,13 +51,18 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns an image descriptor for the image file at the given
 	 * plug-in relative path
 	 *
 	 * @param path the path
-	 * @return the image descriptor
+	 * @return the image descriptor for the image file at the given
 	 */
-	public static ImageDescriptor getImageDescriptor(String path) {
+	public static ImageDescriptor getImageDescriptor(String path) 
+	{
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+
+	public IUserDataStore getFromStore()
+	{
+		return (IUserDataStore)this.dataTracker.getService();
 	}
 }

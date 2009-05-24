@@ -1,14 +1,27 @@
 package at.fhjoanneum.swd.pmt.birthdaymanager.ui.views;
 
+import java.util.Date;
+import java.util.Vector;
+
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.*;
 import org.eclipse.jface.viewers.*;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.jface.action.*;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
+
+import at.fh_joanneum.swd.pmt.birthday.data.User;
+import at.fh_joanneum.swd.pmt.birthday.ui.Activator;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -27,6 +40,9 @@ import org.eclipse.swt.SWT;
 
 public class SampleView extends ViewPart
 {
+	private String firstName;
+	private String lastName;
+	private String birthday;
 	private TableViewer viewer;
 	private Action action1;
 	private Action action2;
@@ -52,8 +68,21 @@ public class SampleView extends ViewPart
 
 		public Object[] getElements(Object parent)
 		{
-			return new String[]
-			{ "One", "Two", "Three" };
+			if (Activator.getDefault().getFromStore() == null) {
+				System.out.println("store is not loaded!");
+				return new String[]{};
+			}
+			Vector<User> users = Activator.getDefault().getFromStore().getAllUser();
+			
+			if (users != null)
+			{
+				String[] fullnames = new String[users.size()];
+				for(int i=0; i<users.size(); i++)
+					fullnames[i] = users.get(i).getFirstName() + " " + users.get(i).getLastName();
+				return fullnames;
+			}
+			else
+				return new String[]{};
 		}
 	}
 
@@ -91,22 +120,42 @@ public class SampleView extends ViewPart
 	 * This is a callback that will allow us to create the viewer and initialize
 	 * it.
 	 */
-	// //////////////////////////////DO OABEITEN
 	public void createPartControl(Composite parent)
 	{
+		GridLayout gridLayout = new GridLayout(4, false);
+		gridLayout.verticalSpacing = 8;
+		parent.setLayout(gridLayout);
+
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
 
+
+		GridData gd = new GridData();
+		gd.grabExcessHorizontalSpace = true;
+		gd.horizontalAlignment = SWT.FILL;
+		gd.horizontalSpan = 4;		
+		viewer.getControl().setLayoutData(gd);
+		
+		Label firstName = new Label(parent, SWT.LEFT);
+		firstName.setText("Firstname:");
+		this.firstName = (new Text(parent,SWT.SINGLE | SWT.BORDER)).toString();
+
+		Label lastName = new Label(parent, SWT.LEFT);
+		lastName.setText("Lastname:");
+		this.lastName = (new Text(parent,SWT.SINGLE | SWT.BORDER)).toString();
+
+		Label birthday = new Label(parent, SWT.LEFT);
+		birthday.setText("Birthday:");
+		this.birthday = (new Text(parent,SWT.SINGLE | SWT.BORDER)).toString();
+
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(),
 				"at.fh-joanneum.swd.pmt.birthdaymanager.ui.viewer");
 		makeActions();
-		hookContextMenu();
 		hookDoubleClickAction();
-		contributeToActionBars();
 	}
 
 	private void hookContextMenu()

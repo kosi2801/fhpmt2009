@@ -8,8 +8,14 @@ public class User {
 	
 	private String lastName;
 	
-	private Date birthday;
+	private String  birthday;
 	
+	
+	public User (String firstName, String lastName, String birthday) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthday = birthday;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -27,12 +33,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public void setBirthday(Date birthday)
+	public void setBirthday(String birthday)
 	{
 		this.birthday = birthday;
 	}
 
-	public Date getBirthday()
+	public String getBirthday()
 	{
 		return birthday;
 	}
