@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="at.fh_joanneum.swd.pmt.chat.feature"
-      label="PMT Chat"
+      label="Chat Feature"
       version="1.0.0">
 
    <description url="http://www.example.com/description">
@@ -17,7 +17,7 @@
    </license>
 
    <url>
-      <update label="PMT Chat" url="http://localhost:8080/swd/task2/chat"/>
+      <update label="Chat Updatesite" url="http://localhost:8080/swd/task2/chat"/>
    </url>
 
    <plugin
