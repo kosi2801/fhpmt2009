@@ -22,11 +22,7 @@
 
    <requires>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="at.fh_joanneum.swd.pmt.chat.data" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="at.fh_joanneum.swd.pmt.main.bl" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui"/>
-      <import plugin="at.fh_joanneum.swd.pmt.chat.bl" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="at.fh_joanneum.swd.pmt.main.data" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -58,14 +54,7 @@
          unpack="false"/>
 
    <plugin
-         id="at.fh_joanneum.swd.pmt.main.bl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.fh_joanneum.swd.pmt.mmm.data"
+         id="at.fh_joanneum.swd.pmt.main.data"
          download-size="0"
          install-size="0"
          version="0.0.0"
