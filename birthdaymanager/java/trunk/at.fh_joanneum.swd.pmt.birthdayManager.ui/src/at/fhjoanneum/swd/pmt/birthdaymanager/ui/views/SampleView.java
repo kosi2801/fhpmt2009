@@ -40,12 +40,11 @@ import at.fh_joanneum.swd.pmt.birthday.ui.Activator;
 
 public class SampleView extends ViewPart
 {
-	private String firstName;
-	private String lastName;
-	private String birthday;
+	private Text firstName;
+	private Text lastName;
+	private Text birthday;
+	
 	private TableViewer viewer;
-	private Action action1;
-	private Action action2;
 	private Action doubleClickAction;
 
 	/*
@@ -55,7 +54,6 @@ public class SampleView extends ViewPart
 	 * or ignore it and always show the same content (like Task List, for
 	 * example).
 	 */
-
 	class ViewContentProvider implements IStructuredContentProvider
 	{
 		public void inputChanged(Viewer v, Object oldInput, Object newInput)
@@ -68,11 +66,12 @@ public class SampleView extends ViewPart
 
 		public Object[] getElements(Object parent)
 		{
-			if (Activator.getDefault().getFromStore() == null) {
-				System.out.println("store is not loaded!");
+			if (Activator.getDefault().getStore() == null) 
+			{
+				System.out.println("no store loaded!");
 				return new String[]{};
 			}
-			Vector<User> users = Activator.getDefault().getFromStore().getAllUser();
+			Vector<User> users = Activator.getDefault().getStore().getAllUser();
 			
 			if (users != null)
 			{
@@ -141,15 +140,15 @@ public class SampleView extends ViewPart
 		
 		Label firstName = new Label(parent, SWT.LEFT);
 		firstName.setText("Firstname:");
-		this.firstName = (new Text(parent,SWT.SINGLE | SWT.BORDER)).toString();
+		this.firstName = new Text(parent,SWT.SINGLE | SWT.BORDER);
 
 		Label lastName = new Label(parent, SWT.LEFT);
 		lastName.setText("Lastname:");
-		this.lastName = (new Text(parent,SWT.SINGLE | SWT.BORDER)).toString();
+		this.lastName = new Text(parent,SWT.SINGLE | SWT.BORDER);
 
 		Label birthday = new Label(parent, SWT.LEFT);
 		birthday.setText("Birthday:");
-		this.birthday = (new Text(parent,SWT.SINGLE | SWT.BORDER)).toString();
+		this.birthday = new Text(parent,SWT.SINGLE | SWT.BORDER);
 
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(),
@@ -158,82 +157,19 @@ public class SampleView extends ViewPart
 		hookDoubleClickAction();
 	}
 
-	private void hookContextMenu()
-	{
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
-		menuMgr.addMenuListener(new IMenuListener()
-		{
-			public void menuAboutToShow(IMenuManager manager)
-			{
-				SampleView.this.fillContextMenu(manager);
-			}
-		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
-	}
-
-	private void contributeToActionBars()
-	{
-		IActionBars bars = getViewSite().getActionBars();
-		fillLocalPullDown(bars.getMenuManager());
-		fillLocalToolBar(bars.getToolBarManager());
-	}
-
-	private void fillLocalPullDown(IMenuManager manager)
-	{
-		manager.add(action1);
-		manager.add(new Separator());
-		manager.add(action2);
-	}
-
-	private void fillContextMenu(IMenuManager manager)
-	{
-		manager.add(action1);
-		manager.add(action2);
-		// Other plug-ins can contribute there actions here
-		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-	}
-
-	private void fillLocalToolBar(IToolBarManager manager)
-	{
-		manager.add(action1);
-		manager.add(action2);
-	}
-
-	private void makeActions()
-	{
-		action1 = new Action()
-		{
-			public void run()
-			{
-				showMessage("Action 1 executed");
-			}
-		};
-		action1.setText("Action 1");
-		action1.setToolTipText("Action 1 tooltip");
-		action1.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(
-				ISharedImages.IMG_OBJS_INFO_TSK));
-
-		action2 = new Action()
-		{
-			public void run()
-			{
-				showMessage("Action 2 executed");
-			}
-		};
-		action2.setText("Action 2");
-		action2.setToolTipText("Action 2 tooltip");
-		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(
-				ISharedImages.IMG_OBJS_INFO_TSK));
+	private void makeActions() {
 		doubleClickAction = new Action()
 		{
 			public void run()
 			{
 				ISelection selection = viewer.getSelection();
 				Object obj = ((IStructuredSelection) selection).getFirstElement();
-				showMessage("Double-click detected on " + obj.toString());
+				String tmpLastName = (obj.toString().split(" "))[1];
+				
+				User tmpUser = Activator.getDefault().getStore().getUserByLastName(tmpLastName);
+				firstName.setText(tmpUser.getFirstName());
+				lastName.setText(tmpUser.getLastName());
+				birthday.setText(tmpUser.getBirthday());
 			}
 		};
 	}

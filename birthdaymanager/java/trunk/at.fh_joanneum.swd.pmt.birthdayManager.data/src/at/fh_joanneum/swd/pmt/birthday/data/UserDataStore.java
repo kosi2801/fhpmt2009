@@ -6,7 +6,6 @@ import at.fh_joanneum.swd.pmt.birthday.data.User;
 
 public class UserDataStore implements IUserDataStore
 {
-	private User user;
 	private Vector<User> users;
 
 	public UserDataStore()
@@ -16,15 +15,26 @@ public class UserDataStore implements IUserDataStore
 		this.users.add(new User("Andreas", "Überbacher", "20.09.1984"));
 	}
 
-	public User getUser()
-	{
-		return user;
-	}
-
 	public boolean setUser(User user)
 	{
-		this.user = user;
-		return true;
+		int index = findUser(user.getLastName());
+		if(index >= 0)
+		{
+			this.users.setElementAt(user, index);
+			return true;
+		}
+		else
+			return false;
+	}
+
+	private int findUser(String lastName)
+	{
+		for(int i=0; i<this.users.size();i++)
+		{
+			if(this.users.elementAt(i).getLastName().equalsIgnoreCase(lastName))
+				return i;
+		}
+		return -1;
 	}
 
 	@Override

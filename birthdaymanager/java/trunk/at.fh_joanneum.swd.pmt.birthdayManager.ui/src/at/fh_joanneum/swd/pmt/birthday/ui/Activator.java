@@ -32,7 +32,8 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-	}
+		this.dataTracker = new ServiceTracker(context, at.fh_joanneum.swd.pmt.birthday.data.IUserDataStore.class.getName(), null);
+		this.dataTracker.open();	}
 
 	/*
 	 * (non-Javadoc)
@@ -61,7 +62,7 @@ public class Activator extends AbstractUIPlugin {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
-	public IUserDataStore getFromStore()
+	public IUserDataStore getStore()
 	{
 		return (IUserDataStore)this.dataTracker.getService();
 	}
