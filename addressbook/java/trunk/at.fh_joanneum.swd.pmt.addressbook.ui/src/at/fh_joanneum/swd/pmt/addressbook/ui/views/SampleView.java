@@ -130,6 +130,7 @@ public class SampleView extends ViewPart {
 		viewer.getControl().setLayoutData(gd);
 		
 		
+		
 		Label name = new Label(parent, SWT.NULL);
 		name.setText("Name:");		
 		this.tName = new Text(parent,SWT.SINGLE | SWT.BORDER);		
@@ -210,8 +211,11 @@ public class SampleView extends ViewPart {
 		bDelete.addSelectionListener(new SelectionAdapter(){
 			@Override
 			public void widgetSelected(SelectionEvent e){
-				if(!Activator.getDefault().getStore().removeAddress(tName.getText()))
+				if(!Activator.getDefault().getStore().removeAddress(tName.getText())){
 					showMessage("Unable to delete this entry!");
+					return;
+				}
+				viewer.refresh();
 			}
 		});
 		
