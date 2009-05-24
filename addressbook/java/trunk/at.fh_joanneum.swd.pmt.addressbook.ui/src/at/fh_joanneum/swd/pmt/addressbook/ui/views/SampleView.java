@@ -12,8 +12,10 @@ import org.eclipse.jface.viewers.*;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowData;
 import org.eclipse.jface.action.*;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
@@ -124,46 +126,71 @@ public class SampleView extends ViewPart {
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());		
 		
-		GridData gd = new GridData();
+		GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = SWT.FILL;
-		gd.horizontalSpan = 4;		
+		gd.horizontalSpan = 4;
 		viewer.getControl().setLayoutData(gd);
+		
+		GridData gd2 = new GridData(SWT.FILL, SWT.FILL, true, false);
+		gd2.horizontalSpan = 1;		
+		gd2.horizontalIndent = 5;
+		gd2.verticalIndent = 5;
+		gd2.grabExcessHorizontalSpace = true;		
+		
 		
 		Label name = new Label(parent, SWT.NULL);
 		name.setText("Name:");
-		this.tName = new Text(parent,SWT.SINGLE | SWT.BORDER);
+		name.setLayoutData(gd2);
+		
+		this.tName = new Text(parent,SWT.SINGLE | SWT.BORDER );		
+		this.tName.setLayoutData(gd2);
 		
 		Label street = new Label(parent,SWT.LEFT);
-		street.setText("Street:");		
+		street.setText("Street:");
+		street.setLayoutData(gd2);
 		this.tStreet = new Text(parent,SWT.SINGLE | SWT.BORDER);
+		this.tStreet.setLayoutData(gd2);
 		
 		Label zip = new Label(parent,SWT.LEFT);
 		zip.setText("ZIP-Code:");
+		zip.setLayoutData(gd2);
 		this.tZip = new Text(parent,SWT.SINGLE | SWT.BORDER);
+		this.tZip.setLayoutData(gd2);
 		
 		Label city = new Label(parent,SWT.LEFT);
 		city.setText("City:");
+		city.setLayoutData(gd2);
 		this.tCity = new Text(parent,SWT.SINGLE | SWT.BORDER);
+		this.tCity.setLayoutData(gd2);
 		
 		Label country = new Label(parent,SWT.LEFT);
 		country.setText("Country:");
+		country.setLayoutData(gd2);
 		this.tCountry = new Text(parent,SWT.SINGLE | SWT.BORDER);
+		this.tCountry.setLayoutData(gd2);		
 		
 		Label email = new Label(parent, SWT.LEFT);
 		email.setText("E-Mail Address:");
+		email.setLayoutData(gd2);
 		this.tEmail = new Text(parent,SWT.SINGLE | SWT.BORDER);
+		this.tEmail.setLayoutData(gd2);
 		
 		Label phone = new Label(parent, SWT.LEFT);
 		phone.setText("Phone:");
+		phone.setLayoutData(gd2);
 		this.tPhone = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		this.tPhone.setLayoutData(gd2);
 		
 		Label mobile = new Label(parent, SWT.LEFT);
 		mobile.setText("Mobile:");
+		mobile.setLayoutData(gd2);
 		this.tMobile = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		this.tMobile.setLayoutData(gd2);
 		
-		Button add = new Button(parent,SWT.PUSH);
-		add.setText("Add");
+		Button add = new Button(parent,SWT.PUSH );
+		add.setText("Add");		
+		add.setLayoutData(gd2);
 		add.addSelectionListener(new SelectionAdapter(){
 			@Override
 			public void widgetSelected(SelectionEvent e){
@@ -195,6 +222,7 @@ public class SampleView extends ViewPart {
 		
 		Button bClear = new Button(parent,SWT.PUSH);
 		bClear.setText("Clear");
+		bClear.setLayoutData(gd2);
 		bClear.addSelectionListener(new SelectionAdapter(){
 			@Override
 			public void widgetSelected(SelectionEvent e){
@@ -205,6 +233,7 @@ public class SampleView extends ViewPart {
 		
 		Button bDelete = new Button(parent,SWT.PUSH);
 		bDelete.setText("Delete");
+		bDelete.setLayoutData(gd2);
 		bDelete.addSelectionListener(new SelectionAdapter(){
 			@Override
 			public void widgetSelected(SelectionEvent e){
@@ -219,6 +248,7 @@ public class SampleView extends ViewPart {
 		
 		Button bUpdate = new Button(parent, SWT.PUSH);
 		bUpdate.setText("Update");
+		bUpdate.setLayoutData(gd2);
 		bUpdate.addSelectionListener(new SelectionAdapter(){
 			@Override
 			public void widgetSelected(SelectionEvent e){
