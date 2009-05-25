@@ -10,6 +10,10 @@ public class User {
 	
 	private String  birthday;
 	
+	public User()
+	{
+		
+	}
 	
 	public User (String firstName, String lastName, String birthday) {
 		this.firstName = firstName;

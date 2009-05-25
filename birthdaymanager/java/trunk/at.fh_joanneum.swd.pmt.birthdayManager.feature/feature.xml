@@ -28,24 +28,24 @@
    </requires>
 
    <plugin
-         id="at.fh_joanneum.swd.pmt.birthday.bl"
+         id="at.fh_joanneum.swd.pmt.birthdaymanager.bl"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.birthdayManager.data"
+         download-size="0"
+         install-size="0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.birthdaymanager.ui"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.fh_joanneum.swd.pmt.birthday.data"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
 </feature>
