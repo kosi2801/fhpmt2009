@@ -2,7 +2,7 @@
 <feature
       id="at.fh_joanneum.swd.pmt.birthday.feature"
       label="BirthdayManager Feature"
-      version="1.0.0">
+      version="1.1.0">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -20,32 +20,47 @@
       <update label="BirthdayManager Updatesite" url="http://localhost:8080/swd/task2/birthdayManager"/>
    </url>
 
+   <includes
+         id="at.fh_joanneum.swd.pmt.addressbook.feature"
+         version="1.0.0"
+         name="AddressBook"/>
+
+   <includes
+         id="at.fh_joanneum.swd.pmt.appointmentmanager.feature"
+         version="1.0.0"
+         name="AppointmentManager"/>
+
+   <includes
+         id="at.fh_joanneum.swd.pmt.documentmanager.feature"
+         version="1.0.0"
+         name="Doc Manager"/>
+
    <requires>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="at.fh_joanneum.swd.pmt.birthdayManager.data" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="at.fh_joanneum.swd.pmt.birthdaymanager.bl" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="at.fh_joanneum.swd.pmt.birthdayManager.data" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="at.fh_joanneum.swd.pmt.birthdaymanager.bl" version="1.1.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.birthdaymanager.bl"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.1.0"
          unpack="false"/>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.birthdayManager.data"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.1.0"
          unpack="false"/>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.birthdaymanager.ui"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.1.0"
          unpack="false"/>
 
 </feature>
