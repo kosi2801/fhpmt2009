@@ -2,6 +2,10 @@ package at.fh_joanneum.swd.pmt.taskmanager.bl;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.util.tracker.ServiceTracker;
+
+
+import at.fh_joanneum.swd.pmt.taskmanager.data.ITaskDataStore;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -13,6 +17,8 @@ public class Activator extends Plugin {
 
 	// The shared instance
 	private static Activator plugin;
+	
+	private ServiceTracker taskDataTracker;
 	
 	/**
 	 * The constructor
@@ -27,6 +33,8 @@ public class Activator extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		this.taskDataTracker = new ServiceTracker(context,at.fh_joanneum.swd.pmt.taskmanager.data.ITaskDataStore.class.getName(),null);
+		taskDataTracker.open();
 	}
 
 	/*
@@ -47,4 +55,7 @@ public class Activator extends Plugin {
 		return plugin;
 	}
 
+	public ITaskDataStore getStore() {
+		return (ITaskDataStore)taskDataTracker.getService();
+	}
 }

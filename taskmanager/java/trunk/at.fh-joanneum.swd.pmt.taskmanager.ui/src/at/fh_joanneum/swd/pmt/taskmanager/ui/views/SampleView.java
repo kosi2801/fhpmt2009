@@ -1,10 +1,14 @@
 package at.fh_joanneum.swd.pmt.taskmanager.ui.views;
 
 
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.*;
 import org.eclipse.jface.viewers.*;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.jface.action.*;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
@@ -86,6 +90,20 @@ public class SampleView extends ViewPart {
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
+		
+		Label lblSubject = new Label(parent, SWT.NONE);
+		lblSubject.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
+				false));
+		lblSubject.setText("Subject:");
+		
+		Text txtSubject = new Text(parent, SWT.SINGLE | SWT.LEAD | SWT.BORDER);
+		txtSubject.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		txtSubject.setText("");
+		
+		
+		
+		
+		
 
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.fh_joanneum.swd.pmt.taskmanager.ui.viewer");

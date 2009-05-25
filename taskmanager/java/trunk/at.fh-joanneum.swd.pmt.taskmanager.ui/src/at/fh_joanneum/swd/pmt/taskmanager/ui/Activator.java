@@ -3,6 +3,9 @@ package at.fh_joanneum.swd.pmt.taskmanager.ui;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.util.tracker.ServiceTracker;
+
+import at.fh_joanneum.swd.pmt.taskmanager.data.ITaskDataStore;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -14,6 +17,8 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
+	
+	private ServiceTracker taskDataTracker;
 	
 	/**
 	 * The constructor
@@ -28,6 +33,8 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		this.taskDataTracker = new ServiceTracker(context,at.fh_joanneum.swd.pmt.taskmanager.data.ITaskDataStore.class.getName(),null);
+		taskDataTracker.open();
 	}
 
 	/*
@@ -37,6 +44,7 @@ public class Activator extends AbstractUIPlugin {
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
+		
 	}
 
 	/**
@@ -57,5 +65,8 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+	public ITaskDataStore getStore() {
+		return (ITaskDataStore)taskDataTracker.getService();
 	}
 }

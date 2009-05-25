@@ -5,11 +5,11 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            name="Sample View"
-            icon="icons/sample.gif"
             category="at.fh_joanneum.swd.pmt.ui"
             class="at.fh_joanneum.swd.pmt.taskmanager.ui.views.SampleView"
-            id="at.fh_joanneum.swd.pmt.taskmanager.ui.views.SampleView">
+            icon="icons/sample.gif"
+            id="at.fh_joanneum.swd.pmt.taskmanager.ui.views.SampleView"
+            name="Sample View">
       </view>
    </extension>
    <extension
