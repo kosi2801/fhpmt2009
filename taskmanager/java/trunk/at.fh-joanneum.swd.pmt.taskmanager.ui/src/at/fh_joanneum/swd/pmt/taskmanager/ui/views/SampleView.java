@@ -3,6 +3,7 @@ package at.fh_joanneum.swd.pmt.taskmanager.ui.views;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.*;
@@ -99,6 +100,38 @@ public class SampleView extends ViewPart {
 		Text txtSubject = new Text(parent, SWT.SINGLE | SWT.LEAD | SWT.BORDER);
 		txtSubject.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		txtSubject.setText("");
+		
+		Label lblOwner = new Label(parent, SWT.NONE);
+		lblOwner.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
+				false));
+		lblOwner.setText("Ownwer:");
+		
+		Text txtOwner = new Text(parent, SWT.SINGLE | SWT.LEAD | SWT.BORDER);
+		txtOwner.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		txtOwner.setText("");
+		
+		Label lblStartDate = new Label(parent, SWT.NONE);
+		lblStartDate.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
+				false));
+		lblStartDate.setText("Startdate:");
+		
+		DateTime dtStartDate = new DateTime(parent, SWT.CALENDAR | SWT.SHORT);
+		dtStartDate.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		
+		Label lblEndDate = new Label(dtStartDate, SWT.NONE);
+		lblEndDate.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
+				false));
+		lblEndDate.setText("Enddate:");
+		
+		DateTime dtEndDate = new DateTime(dtStartDate, SWT.CALENDAR | SWT.SHORT);
+		dtEndDate.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		
+		
+		Button btnDone = new Button(dtEndDate, SWT.CHECK);
+		btnDone.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
+				false));
+		btnDone.setText("Done");
+		
 		
 		
 		
