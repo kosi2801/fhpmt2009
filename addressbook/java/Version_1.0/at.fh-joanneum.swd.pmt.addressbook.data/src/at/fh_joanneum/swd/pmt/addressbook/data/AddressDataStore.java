@@ -2,14 +2,17 @@ package at.fh_joanneum.swd.pmt.addressbook.data;
 
 import java.util.Vector;
 
-import javax.print.attribute.standard.Fidelity;
-
 public class AddressDataStore implements IAddressDataStore {
 
 	private Vector<Address> address;
 
 	public AddressDataStore(){
-		this.address = new Vector<Address>();		
+		this.address = new Vector<Address>();
+		this.address.add(new Address("SchnurliBrum", "Langer Weg", "666", "Hintertupfing",
+				"Niemandsland", "schnurlibrum@hintertupfing.ht", "123456", "789123456"));
+		this.address.add(	
+		new Address("name", "street", "zip", "city",
+					"country", "e-mail", "phone", "mobile"));
 	}
 	
 	@Override
