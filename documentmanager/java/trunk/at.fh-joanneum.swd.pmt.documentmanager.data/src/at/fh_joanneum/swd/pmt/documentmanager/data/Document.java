@@ -1,16 +1,18 @@
 package at.fh_joanneum.swd.pmt.documentmanager.data;
 
-public class DocumentObject {
+public class Document {
 
+	private String owner;
 	private String identifier;
 	private String path;
 	
-	public DocumentObject(String identifier, String path) {
+	public Document(String owner, String identifier, String path) {
+		this.setOwner(owner);
 		this.identifier = identifier;
 		this.path = path;
 	}
 	
-	public DocumentObject() {
+	public Document() {
 		//empty
 	}
 
@@ -25,6 +27,14 @@ public class DocumentObject {
 	}
 	public String getPath() {
 		return path;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	public String getOwner() {
+		return owner;
 	}
 	
 }

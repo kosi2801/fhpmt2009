@@ -27,6 +27,7 @@ public class Activator extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		context.registerService(IDocumentDataStore.class.getName(), new DocumentDataStore(), null);
 	}
 
 	/*
