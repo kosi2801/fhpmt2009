@@ -1,6 +1,8 @@
 package at.fh_joanneum.swd.pmt.taskmanager.ui.views;
 
 
+import java.util.Vector;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DateTime;
@@ -10,11 +12,18 @@ import org.eclipse.ui.part.*;
 import org.eclipse.jface.viewers.*;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.jface.action.*;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
+
+
+import at.fh_joanneum.swd.pmt.taskmanager.data.Task;
+
+import at.fh_joanneum.swd.pmt.taskmanager.ui.Activator;
+
 
 
 /**
@@ -57,7 +66,22 @@ public class SampleView extends ViewPart {
 		public void dispose() {
 		}
 		public Object[] getElements(Object parent) {
-			return new String[] { "Eins", "Zwei", "Drei" };
+			//return new String[] { "Eins", "Zwei", "Drei" };
+			if (Activator.getDefault().getStore() == null) {
+				System.out.println("no store loaded!");
+				return new String[]{};
+			}
+		Vector<Task> tasklist = Activator.getDefault().getStore().getAllTasks();
+			
+	
+			if (!tasklist.isEmpty()){
+				String[] names = new String[tasklist.size()];
+				for(int i=0;i<tasklist.size();i++)
+					names[i] = tasklist.get(i).getSubject();
+				return names;
+			}
+			else
+				return new String[]{};
 		}
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
@@ -86,51 +110,77 @@ public class SampleView extends ViewPart {
 	 * to create the viewer and initialize it.
 	 */
 	public void createPartControl(Composite parent) {
+		
+		GridLayout gridLayout = new GridLayout(2, false);
+		gridLayout.verticalSpacing = 8;
+		parent.setLayout(gridLayout);
+		
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
 		
+		GridData gridDataViewer = new GridData(SWT.FILL, SWT.FILL, true, true);
+		gridDataViewer.grabExcessHorizontalSpace = true;
+		gridDataViewer.horizontalAlignment = SWT.FILL;
+		gridDataViewer.horizontalSpan = 4;
+		viewer.getControl().setLayoutData(gridDataViewer);
+		
+		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
+		gridData.horizontalSpan = 1;		
+		gridData.horizontalIndent = 5;
+		gridData.verticalIndent = 5;
+		gridData.grabExcessHorizontalSpace = true;	
+		
 		Label lblSubject = new Label(parent, SWT.NONE);
-		lblSubject.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
-				false));
+		lblSubject.setLayoutData(gridData);
 		lblSubject.setText("Subject:");
 		
 		Text txtSubject = new Text(parent, SWT.SINGLE | SWT.LEAD | SWT.BORDER);
-		txtSubject.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		txtSubject.setLayoutData(gridData);
 		txtSubject.setText("");
 		
 		Label lblOwner = new Label(parent, SWT.NONE);
-		lblOwner.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
-				false));
-		lblOwner.setText("Ownwer:");
+		lblOwner.setLayoutData(gridData);
+		lblOwner.setText("Owner:");
 		
 		Text txtOwner = new Text(parent, SWT.SINGLE | SWT.LEAD | SWT.BORDER);
-		txtOwner.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		txtOwner.setLayoutData(gridData);
 		txtOwner.setText("");
 		
 		Label lblStartDate = new Label(parent, SWT.NONE);
-		lblStartDate.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
-				false));
+		lblStartDate.setLayoutData(gridData);
 		lblStartDate.setText("Startdate:");
 		
-		DateTime dtStartDate = new DateTime(parent, SWT.CALENDAR | SWT.SHORT);
-		dtStartDate.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		DateTime dtStartDate = new DateTime(parent, SWT.DATE | SWT.SHORT);
+		dtStartDate.setLayoutData(gridData);
 		
-		Label lblEndDate = new Label(dtStartDate, SWT.NONE);
-		lblEndDate.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
-				false));
+		Label lblEndDate = new Label(parent, SWT.NONE);
+		lblEndDate.setLayoutData(gridData);
 		lblEndDate.setText("Enddate:");
 		
-		DateTime dtEndDate = new DateTime(dtStartDate, SWT.CALENDAR | SWT.SHORT);
-		dtEndDate.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		DateTime dtEndDate = new DateTime(parent, SWT.DATE | SWT.SHORT);
+		dtEndDate.setLayoutData(gridData);
 		
 		
-		Button btnDone = new Button(dtEndDate, SWT.CHECK);
-		btnDone.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
-				false));
+		Button btnDone = new Button(parent, SWT.CHECK);
+		btnDone.setLayoutData(gridData);
 		btnDone.setText("Done");
+		
+		Label label = new Label(parent, SWT.NONE);
+		label.setLayoutData(gridData);
+		label.setText("");
+		
+		
+		Button btnSave = new Button(parent, SWT.PUSH);
+		btnSave.setLayoutData(gridData);
+		btnSave.setText("Save");
+		
+		Button btnCancel = new Button(parent, SWT.PUSH);
+		btnCancel.setLayoutData(gridData);
+		btnCancel.setText("Cancel");
+		
 		
 		
 		
