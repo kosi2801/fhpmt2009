@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://localhost:8080/swd/task2/addressbook">
+      PMT AddressBook. Authors: Bittinger Rudolf, Schnedl Susanne
+   </description>
+   <feature url="features/at.fh_joanneum.swd.pmt.addressbook.feature_1.0.0.jar" id="at.fh_joanneum.swd.pmt.addressbook.feature" version="1.0.0"/>
+</site>
