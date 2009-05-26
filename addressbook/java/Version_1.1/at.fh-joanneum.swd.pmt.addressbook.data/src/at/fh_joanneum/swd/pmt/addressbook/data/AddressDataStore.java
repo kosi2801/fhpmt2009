@@ -2,8 +2,6 @@ package at.fh_joanneum.swd.pmt.addressbook.data;
 
 import java.util.Vector;
 
-import javax.print.attribute.standard.Fidelity;
-
 public class AddressDataStore implements IAddressDataStore {
 
 	private Vector<Address> address;
