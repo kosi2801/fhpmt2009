@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="at.fh_joanneum.swd.pmt.taskmanager.feature"
-      label="Feature Feature"
+      label="Taskmanager Feature"
       version="1.0.0">
 
    <description url="http://www.example.com/description">
@@ -16,8 +16,26 @@
       [Enter License Description here.]
    </license>
 
+   <url>
+      <update label="Taskmanager UpdateSite" url="http://localhost:8080/swd/task2/Taskmanager"/>
+   </url>
+
    <plugin
          id="at.fh_joanneum.swd.pmt.taskmanager.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.taskmanager.bl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.taskmanager.data"
          download-size="0"
          install-size="0"
          version="0.0.0"
