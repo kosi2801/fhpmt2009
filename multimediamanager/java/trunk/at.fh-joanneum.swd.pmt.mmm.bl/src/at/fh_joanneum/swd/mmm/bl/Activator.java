@@ -2,6 +2,9 @@ package at.fh_joanneum.swd.mmm.bl;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.util.tracker.ServiceTracker;
+
+import at.fh_joanneum.swd.pmt.mmm.data.IMultimediaDataStore;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -13,6 +16,8 @@ public class Activator extends Plugin {
 
 	// The shared instance
 	private static Activator plugin;
+
+	private ServiceTracker multimediaDataTracker;
 	
 	/**
 	 * The constructor
@@ -27,6 +32,8 @@ public class Activator extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		this.multimediaDataTracker = new ServiceTracker(context,at.fh_joanneum.swd.pmt.mmm.data.IMultimediaDataStore.class.getName(),null);
+		multimediaDataTracker.open();
 	}
 
 	/*
@@ -47,4 +54,8 @@ public class Activator extends Plugin {
 		return plugin;
 	}
 
+
+	public IMultimediaDataStore getStore() {
+		return (IMultimediaDataStore)multimediaDataTracker.getService();
+	}
 }
