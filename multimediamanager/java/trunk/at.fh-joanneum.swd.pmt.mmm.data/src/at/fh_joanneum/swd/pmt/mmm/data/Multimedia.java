@@ -3,14 +3,16 @@ package at.fh_joanneum.swd.pmt.mmm.data;
 public class Multimedia {
 	
 	String titel;
-	String note;
+	MultimediaTyp typ;
 
-	public String getNote() {
-		return note;
+	public Multimedia(String titel, MultimediaTyp typ) {
+		super();
+		this.titel = titel;
+		this.typ = typ;
 	}
 
-	public void setNote(String note) {
-		this.note = note;
+	public Multimedia() {
+		super();
 	}
 
 	public String getTitel() {
@@ -20,7 +22,14 @@ public class Multimedia {
 	public void setTitel(String title) {
 		titel = title;
 	}
-	
-	
 
+	public MultimediaTyp getTyp() {
+		return typ;
+	}
+
+	public void setTyp(MultimediaTyp typ) {
+		this.typ = typ;
+	}
+	
+	
 }
