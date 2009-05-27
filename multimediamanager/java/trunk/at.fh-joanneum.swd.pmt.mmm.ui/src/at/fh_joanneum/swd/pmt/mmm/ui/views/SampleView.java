@@ -1,15 +1,30 @@
 package at.fh_joanneum.swd.pmt.mmm.ui.views;
 
 
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.ui.part.*;
 import org.eclipse.jface.viewers.*;
+import org.eclipse.jface.window.Window;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.jface.action.*;
+import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
+
+import at.fh_joanneum.swd.pmt.mmm.data.Multimedia;
+import at.fh_joanneum.swd.mmm.bl.Activator;
 
 
 /**
@@ -32,6 +47,7 @@ import org.eclipse.swt.SWT;
 
 public class SampleView extends ViewPart {
 	private TableViewer viewer;
+	private TabFolder tabFolder;
 	private Action action1;
 	private Action action2;
 	private Action doubleClickAction;
@@ -52,7 +68,18 @@ public class SampleView extends ViewPart {
 		public void dispose() {
 		}
 		public Object[] getElements(Object parent) {
-			return new String[] { "One", "Two", "Three" };
+			//return new String[] { "One1", "Two2", "Three2" };
+//			return new TestData().getData();
+//			User user = UserDataStore.getInstance().getUser();
+			if (Activator.getDefault().getStore() == null) {
+				System.out.println("no store loaded!");
+				return new String[]{};
+			}
+			Multimedia multimedia = Activator.getDefault().getStore().getMultimedia();
+			if (multimedia != null)
+				return new String[] {multimedia.getTitel()};
+			else
+				return new String[]{};
 		}
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
@@ -81,7 +108,26 @@ public class SampleView extends ViewPart {
 	 * to create the viewer and initialize it.
 	 */
 	public void createPartControl(Composite parent) {
-		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		tabFolder = new TabFolder (parent, SWT.BORDER);
+		TabItem itemImage = new TabItem (tabFolder, SWT.NONE);
+		itemImage.setText ("Images");
+		Button buttonImage = new Button (tabFolder, SWT.PUSH);
+		buttonImage.setText ("Page Images");
+		itemImage.setControl (getTabImageControl(tabFolder));
+		TabItem itemVideo = new TabItem (tabFolder, SWT.NONE);
+		itemVideo.setText ("Videos");
+		Button buttonVideo = new Button (tabFolder, SWT.PUSH);
+		buttonVideo.setText ("Page Videos");
+		itemVideo.setControl (getTabVideoControl(tabFolder));
+		TabItem itemAudio = new TabItem (tabFolder, SWT.NONE);
+		itemAudio.setText ("Audios");
+		Button buttonAudio = new Button (tabFolder, SWT.PUSH);
+		buttonAudio.setText ("Page Audios");
+		itemAudio.setControl (getTabAudioControl(tabFolder));
+		
+		
+
+/*		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
@@ -92,8 +138,162 @@ public class SampleView extends ViewPart {
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
-		contributeToActionBars();
+		contributeToActionBars();*/
 	}
+	
+	/**
+	   * Gets the control for tab one
+	   * 
+	   * @param tabFolder the parent tab folder
+	   * @return Control
+	   */
+	  private Control getTabImageControl(TabFolder tabFolder) {
+	    // Create a composite and add four buttons to it
+	    Composite composite = new Composite(tabFolder, SWT.NONE);
+	    composite.setLayout(new GridLayout());
+	    viewer = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		viewer.setContentProvider(new ViewContentProvider());
+		viewer.setLabelProvider(new ViewLabelProvider());
+		viewer.setSorter(new NameSorter());
+		viewer.setInput(getViewSite());
+		GridData gd = new GridData();
+		gd.grabExcessHorizontalSpace = true;
+		gd.horizontalAlignment = SWT.FILL;
+		viewer.getControl().setLayoutData(gd);
+		
+		Button button = new Button(composite, SWT.PUSH);
+		button.setText("Load default images");
+		button.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				//new DataInitializerTask().run();
+				viewer.refresh();
+			}
+			
+		});
+
+		button = new Button(composite, SWT.PUSH);
+		button.setText("Edit Image");
+		button.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Multimedia image = Activator.getDefault().getStore().getMultimedia();
+				if (image != null) {
+					  InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
+					            "", "Change Titel", image.getTitel(), null);
+					        if (dlg.open() == Window.OK) {
+					          // User clicked OK; update the label with the input
+					        	image.setTitel(dlg.getValue());
+					          viewer.refresh();
+					        }
+				}
+			}
+			
+		});
+	    
+	    return composite;
+	  }
+	  
+	  private Control getTabVideoControl(TabFolder tabFolder) {
+		    // Create a composite and add four buttons to it
+		    Composite composite = new Composite(tabFolder, SWT.NONE);
+		    composite.setLayout(new GridLayout());
+		    viewer = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+			viewer.setContentProvider(new ViewContentProvider());
+			viewer.setLabelProvider(new ViewLabelProvider());
+			viewer.setSorter(new NameSorter());
+			viewer.setInput(getViewSite());
+			GridData gd = new GridData();
+			gd.grabExcessHorizontalSpace = true;
+			gd.horizontalAlignment = SWT.FILL;
+			viewer.getControl().setLayoutData(gd);
+			
+			Button button = new Button(composite, SWT.PUSH);
+			button.setText("Load default videos");
+			button.addSelectionListener(new SelectionAdapter() {
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					//new DataInitializerTask().run();
+					viewer.refresh();
+				}
+				
+			});
+
+			button = new Button(composite, SWT.PUSH);
+			button.setText("Edit Video");
+			button.addSelectionListener(new SelectionAdapter() {
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					Multimedia image = Activator.getDefault().getStore().getMultimedia();
+					if (image != null) {
+						  InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
+						            "", "Change Titel", image.getTitel(), null);
+						        if (dlg.open() == Window.OK) {
+						          // User clicked OK; update the label with the input
+						        	image.setTitel(dlg.getValue());
+						          viewer.refresh();
+						        }
+					}
+				}
+				
+			});
+		    
+		    return composite;
+		  }
+	  
+	  private Control getTabAudioControl(TabFolder tabFolder) {
+		    // Create a composite and add four buttons to it
+		    Composite composite = new Composite(tabFolder, SWT.NONE);
+		    composite.setLayout(new GridLayout());
+		    viewer = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+			viewer.setContentProvider(new ViewContentProvider());
+			viewer.setLabelProvider(new ViewLabelProvider());
+			viewer.setSorter(new NameSorter());
+			viewer.setInput(getViewSite());
+			GridData gd = new GridData();
+			gd.grabExcessHorizontalSpace = true;
+			gd.horizontalAlignment = SWT.FILL;
+			viewer.getControl().setLayoutData(gd);
+			
+			Button button = new Button(composite, SWT.PUSH);
+			button.setText("Load default audios");
+			button.addSelectionListener(new SelectionAdapter() {
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					//new DataInitializerTask().run();
+					viewer.refresh();
+				}
+				
+			});
+
+			button = new Button(composite, SWT.PUSH);
+			button.setText("Edit Audio");
+			button.addSelectionListener(new SelectionAdapter() {
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					Multimedia image = Activator.getDefault().getStore().getMultimedia();
+					if (image != null) {
+						  InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
+						            "", "Change Titel", image.getTitel(), null);
+						        if (dlg.open() == Window.OK) {
+						          // User clicked OK; update the label with the input
+						        	image.setTitel(dlg.getValue());
+						          viewer.refresh();
+						        }
+					}
+				}
+				
+			});
+		    
+		    return composite;
+		  }
+
 
 	private void hookContextMenu() {
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
@@ -171,7 +371,7 @@ public class SampleView extends ViewPart {
 	private void showMessage(String message) {
 		MessageDialog.openInformation(
 			viewer.getControl().getShell(),
-			"Sample View",
+			"Multimedia View",
 			message);
 	}
 
