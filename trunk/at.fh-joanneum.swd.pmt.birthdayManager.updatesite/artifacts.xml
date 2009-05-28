@@ -3,14 +3,14 @@
 <repository name='file:/C:/Users/uebi/SWD07/SS2009/AppSP/workspace/at.fh-joanneum.swd.pmt.birthdayManager.updatesite/ - artifacts' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1.0.0'>
   <properties size='2'>
     <property name='p2.compressed' value='false'/>
-    <property name='p2.timestamp' value='1243269904722'/>
+    <property name='p2.timestamp' value='1243539533624'/>
   </properties>
   <mappings size='3'>
     <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
     <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
     <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
   </mappings>
-  <artifacts size='20'>
+  <artifacts size='21'>
     <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.documentmanager.ui' version='1.0.0'>
       <properties size='3'>
         <property name='artifact.size' value='12587'/>
@@ -113,6 +113,12 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.addressbook.feature' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='767'/>
+        <property name='download.size' value='767'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.birthdayManager.data' version='1.1.0'>
       <properties size='3'>
         <property name='artifact.size' value='4403'/>
@@ -120,10 +126,11 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
-    <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.addressbook.feature' version='1.0.0'>
-      <properties size='2'>
-        <property name='artifact.size' value='767'/>
-        <property name='download.size' value='767'/>
+    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.appointmentmanager.bl' version='1.0.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='1919'/>
+        <property name='download.size' value='1919'/>
+        <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.birthday.feature' version='1.1.0'>
@@ -132,11 +139,10 @@
         <property name='download.size' value='922'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.appointmentmanager.bl' version='1.0.0'>
-      <properties size='3'>
-        <property name='artifact.size' value='1919'/>
-        <property name='download.size' value='1919'/>
-        <property name='download.contentType' value='application/zip'/>
+    <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.birthday.feature' version='1.1.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='940'/>
+        <property name='download.size' value='940'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.documentmanager.bl' version='1.0.0'>

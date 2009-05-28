@@ -40,6 +40,9 @@
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="at.fh_joanneum.swd.pmt.birthdayManager.data" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="at.fh_joanneum.swd.pmt.birthdaymanager.bl" version="1.1.0" match="greaterOrEqual"/>
+      <import feature="at.fh_joanneum.swd.pmt.addressbook.feature" version="1.0.0"/>
+      <import feature="at.fh_joanneum.swd.pmt.appointmentmanager.feature" version="1.0.0"/>
+      <import feature="at.fh_joanneum.swd.pmt.documentmanager.feature" version="1.0.0"/>
    </requires>
 
    <plugin
