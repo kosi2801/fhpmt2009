@@ -19,7 +19,7 @@ public class MultimediaDataInitializer implements DataInitializerInterface {
 		System.out.println("MultimediaIniliazer");
 //		UserDataStore.getInstance().setUser(user);
 		if (Activator.getDefault().getStore() != null)
-			Activator.getDefault().getStore().setMultimedia(multimedia);
+			Activator.getDefault().getStore().addMultimedia(multimedia);
 		
 	}
 
