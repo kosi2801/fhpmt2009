@@ -1,9 +1,19 @@
 package at.fh_joanneum.swd.pmt.mmm.data;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
 public interface IMultimediaDataStore {
 
-		Multimedia getMultimedia();
+		List<Multimedia> getMultimedias();
 		
-		void setMultimedia(Multimedia multimedia);
+		void setMultimedias(ArrayList<Multimedia> multimedias);
+		
+		void addMultimedia(Multimedia multimedia);
+		
+		Multimedia getMultimediaTitelTyp(String titel, MultimediaTyp mt);
+
+		void setMultimedias(List<Multimedia> multimedias);
 	
 }
