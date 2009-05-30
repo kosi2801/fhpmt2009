@@ -4,4 +4,5 @@
       Dies ist das Plugin DocumentManager für PMT.
    </description>
    <feature url="features/at.fh_joanneum.swd.pmt.documentmanager.feature_1.0.0.jar" id="at.fh_joanneum.swd.pmt.documentmanager.feature" version="1.0.0"/>
+   <feature url="features/at.fh_joanneum.swd.pmt.documentmanager.feature_1.1.0.jar" id="at.fh_joanneum.swd.pmt.documentmanager.feature" version="1.1.0"/>
 </site>

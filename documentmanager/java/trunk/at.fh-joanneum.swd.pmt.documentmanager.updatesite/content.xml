@@ -3,13 +3,13 @@
 <repository name='file:/E:/workspace-EE/at.fh-joanneum.swd.pmt.documentmanager.updatesite/ - metadata' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'>
   <properties size='2'>
     <property name='p2.compressed' value='false'/>
-    <property name='p2.timestamp' value='1243693877171'/>
+    <property name='p2.timestamp' value='1243695409484'/>
   </properties>
   <references size='2'>
     <repository url='http://localhost:8080/swd/task2/documentmanager' type='0' options='0'/>
     <repository url='http://localhost:8080/swd/task2/documentmanager' type='1' options='0'/>
   </references>
-  <units size='10'>
+  <units size='13'>
     <unit id='at.fh_joanneum.swd.pmt.documentmanager.feature.feature.jar' version='1.0.0'>
       <update id='at.fh_joanneum.swd.pmt.documentmanager.feature.feature.jar' range='[0.0.0,1.0.0)' severity='0'/>
       <properties size='3'>
@@ -386,6 +386,106 @@
         <provided namespace='java.package' name='org.xml.sax.helpers' version='0.0.0'/>
       </provides>
       <touchpoint id='org.eclipse.equinox.p2.native' version='1.0.0'/>
+    </unit>
+    <unit id='at.fh_joanneum.swd.pmt.documentmanager.feature.feature.jar' version='1.1.0'>
+      <update id='at.fh_joanneum.swd.pmt.documentmanager.feature.feature.jar' range='[0.0.0,1.1.0)' severity='0'/>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='PMT DocumentManager Plugin'/>
+        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.documentmanager.feature.feature.jar' version='1.1.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='at.fh_joanneum.swd.pmt.documentmanager.feature' version='1.1.0'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.documentmanager.feature' version='1.1.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size='1'>
+        <license url='http://www.example.com/license'>
+          [Enter License Description here.]
+        </license>
+      </licenses>
+      <copyright url='http://www.example.com/copyright'>
+        [Enter Copyright Description here.]
+      </copyright>
+    </unit>
+    <unit id='at.fh_joanneum.swd.pmt.documentmanager.feature.feature.group' version='1.1.0' singleton='false'>
+      <update id='at.fh_joanneum.swd.pmt.documentmanager.feature.feature.group' range='[0.0.0,1.1.0)' severity='0'/>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='PMT DocumentManager Plugin'/>
+        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.documentmanager.feature.feature.group' version='1.1.0'/>
+      </provides>
+      <requires size='11'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.addressbook.feature.feature.group' range='[1.0.0,2.0.0)'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.checklist.feature.feature.group' range='[1.0.1,2.0.0)'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.documentmanager.data' range='1.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.main.bl' range='1.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.documentmanager.bl' range='1.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.documentmanager.bl' range='[1.1.0,1.1.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.documentmanager.data' range='[1.0.0,1.0.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.documentmanager.ui' range='[1.0.0,1.0.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.documentmanager.feature.feature.jar' range='[1.1.0,1.1.0]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license url='http://www.example.com/license'>
+          [Enter License Description here.]
+        </license>
+      </licenses>
+      <copyright url='http://www.example.com/copyright'>
+        [Enter Copyright Description here.]
+      </copyright>
+    </unit>
+    <unit id='at.fh_joanneum.swd.pmt.documentmanager.bl' version='1.1.0'>
+      <update id='at.fh_joanneum.swd.pmt.documentmanager.bl' range='[0.0.0,1.1.0)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='Bl Plug-in'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='at.fh_joanneum.swd.pmt.documentmanager.bl' version='1.1.0'/>
+        <provided namespace='osgi.bundle' name='at.fh_joanneum.swd.pmt.documentmanager.bl' version='1.1.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='3'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='at.fh_joanneum.swd.pmt.documentmanager.data' range='1.0.0'/>
+        <required namespace='osgi.bundle' name='at.fh_joanneum.swd.pmt.main.bl' range='1.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.documentmanager.bl' version='1.1.0'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-Name: Bl Plug-in&#xA;Bundle-Version: 1.1.0&#xA;Require-Bundle: org.eclipse.core.runtime,at.fh_joanneum.swd.pmt.documentmanager.data;bundle-version=&quot;1.0.0&quot;,at.fh_joanneum.swd.pmt.main.bl;bundle-version=&quot;1.0.0&quot;&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-SymbolicName: at.fh_joanneum.swd.pmt.documentmanager.bl;singleton:=true&#xA;Manifest-Version: 1.0&#xA;Bundle-Activator: at.fh_joanneum.swd.pmt.documentmanager.bl.Activator&#xA;
+          </instruction>
+        </instructions>
+      </touchpointData>
     </unit>
   </units>
 </repository>

@@ -3,14 +3,20 @@
 <repository name='file:/E:/workspace-EE/at.fh-joanneum.swd.pmt.documentmanager.updatesite/ - artifacts' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1.0.0'>
   <properties size='2'>
     <property name='p2.compressed' value='false'/>
-    <property name='p2.timestamp' value='1243693877171'/>
+    <property name='p2.timestamp' value='1243695409468'/>
   </properties>
   <mappings size='3'>
     <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
     <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
     <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
   </mappings>
-  <artifacts size='5'>
+  <artifacts size='7'>
+    <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.documentmanager.feature' version='1.1.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='899'/>
+        <property name='download.size' value='899'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.documentmanager.bl' version='1.0.0'>
       <properties size='3'>
         <property name='artifact.size' value='2157'/>
@@ -42,6 +48,13 @@
       <properties size='2'>
         <property name='artifact.size' value='782'/>
         <property name='download.size' value='782'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.documentmanager.bl' version='1.1.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='3275'/>
+        <property name='download.size' value='3275'/>
+        <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
   </artifacts>

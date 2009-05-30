@@ -2,7 +2,7 @@
 <feature
       id="at.fh_joanneum.swd.pmt.documentmanager.feature"
       label="PMT DocumentManager Plugin"
-      version="1.0.0">
+      version="1.1.0">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -19,6 +19,16 @@
    <url>
       <update label="Updatesite DocumentManager" url="http://localhost:8080/swd/task2/documentmanager"/>
    </url>
+
+   <requires>
+      <import feature="at.fh_joanneum.swd.pmt.addressbook.feature" version="1.0.0"/>
+      <import feature="at.fh_joanneum.swd.pmt.checklist.feature" version="1.0.1"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="at.fh_joanneum.swd.pmt.documentmanager.data" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="at.fh_joanneum.swd.pmt.main.bl" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="at.fh_joanneum.swd.pmt.documentmanager.bl" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.documentmanager.bl"
