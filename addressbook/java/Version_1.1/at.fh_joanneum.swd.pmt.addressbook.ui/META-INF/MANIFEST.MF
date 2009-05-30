@@ -8,6 +8,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  at.fh_joanneum.swd.pmt.addressbook.bl;bundle-version="1.1.0",
  at.fh_joanneum.swd.pmt.addressbook.data;bundle-version="1.0.0",
- at.fh_joanneum.swd.pmt.main.bl;bundle-version="1.0.0"
+ at.fh_joanneum.swd.pmt.main.bl;bundle-version="1.0.0",
+ at.fh_joanneum.swd.pmt.mmm.data;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

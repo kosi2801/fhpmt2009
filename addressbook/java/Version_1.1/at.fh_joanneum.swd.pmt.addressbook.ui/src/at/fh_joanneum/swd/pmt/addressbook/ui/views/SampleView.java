@@ -5,16 +5,19 @@ import java.util.Vector;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.*;
 import org.eclipse.jface.viewers.*;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.jface.action.*;
+import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
 import org.eclipse.swt.SWT;
@@ -22,6 +25,8 @@ import org.eclipse.swt.SWT;
 import at.fh_joanneum.swd.pmt.addressbook.bl.AddressManipulator;
 import at.fh_joanneum.swd.pmt.addressbook.data.Address;
 import at.fh_joanneum.swd.pmt.bl.DataInitializerTask;
+import at.fh_joanneum.swd.pmt.mmm.data.Multimedia;
+import at.fh_joanneum.swd.pmt.mmm.data.MultimediaTyp;
 import at.fh_joanneum.swd.pmt.addressbook.ui.Activator;
 
 
@@ -287,6 +292,62 @@ public class SampleView extends ViewPart {
 			}
 		});
 		
+		Button bAddPicture = new Button (parent, SWT.PUSH);
+		bAddPicture.setText("Add Image");
+		bAddPicture.setLayoutData(gd2);
+		bAddPicture.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e){
+				InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(), "Add", "Add Image", null, null);
+			        if (dlg.open() == Window.OK)
+			        	Activator.getDefault().getMMStore().setMultimedia(new Multimedia(dlg.getValue(), MultimediaTyp.IMAGE));			        
+			}
+		});
+		
+		Button bShwPicture = new Button(parent,SWT.PUSH);
+		bShwPicture.setText("Modify Image");
+		bShwPicture.setLayoutData(gd2);
+		bShwPicture.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e){
+				boolean end = false;
+				if(Activator.getDefault().getMMStore().getMultimedia() == null ){
+					end = true;					
+				}else{
+					if(Activator.getDefault().getMMStore().getMultimedia().getTyp() != MultimediaTyp.IMAGE )
+						end = true;
+				}
+				if( end ){
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", "No picture defined");
+					return;
+				};
+				
+				InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
+						"Show", "Show Image", 
+						Activator.getDefault().getMMStore().getMultimedia().getTitel(), null);
+				if(dlg.open() == Window.OK)
+					Activator.getDefault().getMMStore().getMultimedia().setTitel(dlg.getValue());
+			}
+		});
+		
+		Button bDelPicture = new Button(parent, SWT.PUSH);
+		bDelPicture.setText("Delete Image");
+		bDelPicture.setLayoutData(gd2);
+		bDelPicture.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e){
+				boolean end = false;
+				if(Activator.getDefault().getMMStore().getMultimedia() == null ){
+					end = true;		
+				}else{
+					if(Activator.getDefault().getMMStore().getMultimedia().getTyp() != MultimediaTyp.IMAGE )
+						end = true;		
+				}
+				if(end){
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", "No picture defined");
+					return;
+				}
+				if(MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), "Delete?", "Do you really want to delete the picture"))
+					Activator.getDefault().getMMStore().setMultimedia(null);
+			}
+		});
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.fh_joanneum.swd.pmt.adressbook.ui.viewer");
 		makeActions();

@@ -6,6 +6,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
 import at.fh_joanneum.swd.pmt.addressbook.data.IAddressDataStore;
+import at.fh_joanneum.swd.pmt.mmm.data.IMultimediaDataStore;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -19,6 +20,7 @@ public class Activator extends AbstractUIPlugin {
 	private static Activator plugin;
 	
 	private ServiceTracker dataTracker;
+	private ServiceTracker mmTracker;
 	
 	/**
 	 * The constructor
@@ -35,6 +37,8 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 		this.dataTracker = new ServiceTracker(context, at.fh_joanneum.swd.pmt.addressbook.data.IAddressDataStore.class.getName(), null);
 		this.dataTracker.open();
+		this.mmTracker = new ServiceTracker(context, at.fh_joanneum.swd.pmt.mmm.data.IMultimediaDataStore.class.getName(), null);
+		this.mmTracker.open();
 	}
 
 	/*
@@ -67,5 +71,8 @@ public class Activator extends AbstractUIPlugin {
 	}
 	public IAddressDataStore getStore(){
 		return (IAddressDataStore)this.dataTracker.getService();
+	}
+	public IMultimediaDataStore getMMStore(){
+		return (IMultimediaDataStore)this.mmTracker.getService();
 	}
 }
