@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="at.fh_joanneum.swd.pmt.documentmanager.feature"
-      label="Feature Feature"
+      label="PMT DocumentManager Plugin"
       version="1.0.0">
 
    <description url="http://www.example.com/description">
@@ -15,6 +15,10 @@
    <license url="http://www.example.com/license">
       [Enter License Description here.]
    </license>
+
+   <url>
+      <update label="Updatesite DocumentManager" url="http://localhost:8080/swd/task2/documentmanager"/>
+   </url>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.documentmanager.bl"
