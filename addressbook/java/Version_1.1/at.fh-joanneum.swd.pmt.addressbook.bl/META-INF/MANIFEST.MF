@@ -9,3 +9,5 @@ Require-Bundle: org.eclipse.core.runtime,
  at.fh_joanneum.swd.pmt.main.bl;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: at.fh_joanneum.swd.pmt.bl
+Export-Package: at.fh_joanneum.swd.pmt.addressbook.bl

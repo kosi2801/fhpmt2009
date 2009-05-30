@@ -34,7 +34,6 @@ public class Activator extends Plugin {
 		plugin = this;
 		this.addressDataTracker = new ServiceTracker(context, at.fh_joanneum.swd.pmt.addressbook.data.IAddressDataStore.class.getName(), null);
 		this.addressDataTracker.open();
-		
 	}
 
 	/*
