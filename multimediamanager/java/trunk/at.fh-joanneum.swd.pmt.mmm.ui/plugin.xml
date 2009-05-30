@@ -6,7 +6,7 @@
          point="org.eclipse.ui.views">
       <view
             name="Multimedia View"
-            icon="icons/sample.gif"
+            icon="icons/camera.png"
             category="at.fh_joanneum.swd.pmt.ui"
             class="at.fh_joanneum.swd.pmt.mmm.ui.views.SampleView"
             id="at.fh_joanneum.swd.pmt.mmm.ui.views.SampleView">

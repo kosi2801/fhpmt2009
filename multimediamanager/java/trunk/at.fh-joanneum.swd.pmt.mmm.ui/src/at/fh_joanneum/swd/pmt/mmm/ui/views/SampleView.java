@@ -1,5 +1,8 @@
 package at.fh_joanneum.swd.pmt.mmm.ui.views;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -12,8 +15,8 @@ import org.eclipse.jface.viewers.*;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.jface.action.*;
@@ -48,11 +51,14 @@ import at.fh_joanneum.swd.pmt.mmm.data.MultimediaTyp;
  */
 
 public class SampleView extends ViewPart {
-	private TableViewer viewer;
+	private TableViewer viewImages, viewVideos, viewAudios;
 	private TabFolder tabFolder;
 	private Action action1;
 	private Action action2;
 	private Action doubleClickAction;
+	private MultimediaTyp active = MultimediaTyp.IMAGE;
+	private String[] auswahl;
+	
 	public static final String ID = "at.fh_joanneum.swd.pmt.mmm.ui.views.SampleView";
 	/*
 	 * The content provider class is responsible for
@@ -70,26 +76,23 @@ public class SampleView extends ViewPart {
 		public void dispose() {
 		}
 		public Object[] getElements(Object parent) {
-			//return new String[] { "One1", "Two2", "Three2" };
-//			return new TestData().getData();
-			//User user = UserDataStore.getInstance().getUser();
-			Multimedia multimedia = new Multimedia();
-			multimedia.setTitel("Ferien am Strand");
-			multimedia.setTyp(MultimediaTyp.AUDIO);
-			System.out.println("MultimediaIniliazer");
-//			UserDataStore.getInstance().setUser(user);
-			if (Activator.getDefault().getStore() != null)
-				Activator.getDefault().getStore().setMultimedia(multimedia);
 			
 			if (Activator.getDefault().getStore() == null) {
 				System.out.println("no store loaded (Sample View)!");
 				return new String[]{};
 			}
-			//Multimedia multimedia = Activator.getDefault().getStore().getMultimedia();
-			if (multimedia != null)
-				return new String[] {multimedia.getTitel()};
-			else
-				return new String[]{};
+			
+			List<Multimedia> multimedias = Activator.getDefault().getStore().getMultimedias();
+			List<String> teil = new ArrayList<String>(); 
+			
+			for(int i=0; i<multimedias.size(); i++)
+				if (multimedias.get(i).getTyp() == active) teil.add(multimedias.get(i).getTitel());
+			auswahl = new String[teil.size()];;
+			Iterator<String> itr = teil.iterator();
+			for (int i = 0; i < teil.size(); i++) auswahl[i] = itr.next(); 
+			
+			return auswahl;
+			
 		}
 	}
 	
@@ -101,8 +104,10 @@ public class SampleView extends ViewPart {
 			return getImage(obj);
 		}
 		public Image getImage(Object obj) {
-			return PlatformUI.getWorkbench().
-					getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
+			if (active == MultimediaTyp.IMAGE)	return new Image(Display.getCurrent(), SampleView.class.getResourceAsStream("../../../../../../../icons/camera.png"));
+			if (active == MultimediaTyp.VIDEO)	return new Image(Display.getCurrent(), SampleView.class.getResourceAsStream("../../../../../../../icons/film.png"));
+			if (active == MultimediaTyp.AUDIO)	return new Image(Display.getCurrent(), SampleView.class.getResourceAsStream("../../../../../../../icons/music.png"));
+			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
 		}
 	}
 	class NameSorter extends ViewerSorter {
@@ -124,41 +129,40 @@ public class SampleView extends ViewPart {
 		itemImage.setText ("Images");
 		Button buttonImage = new Button (tabFolder, SWT.PUSH);
 		buttonImage.setText ("Page Images");
-		itemImage.setControl (getTabImageControl(tabFolder));
+		itemImage.setControl (getTabControl(tabFolder, MultimediaTyp.IMAGE));
 		TabItem itemVideo = new TabItem (tabFolder, SWT.NONE);
 		itemVideo.setText ("Videos");
 		Button buttonVideo = new Button (tabFolder, SWT.PUSH);
 		buttonVideo.setText ("Page Videos");
-		itemVideo.setControl (getTabVideoControl(tabFolder));
+		itemVideo.setControl (getTabControl(tabFolder, MultimediaTyp.VIDEO));
 		TabItem itemAudio = new TabItem (tabFolder, SWT.NONE);
 		itemAudio.setText ("Audios");
 		Button buttonAudio = new Button (tabFolder, SWT.PUSH);
 		buttonAudio.setText ("Page Audios");
-		itemAudio.setControl (getTabAudioControl(tabFolder));
+		itemAudio.setControl (getTabControl(tabFolder, MultimediaTyp.AUDIO));
+		tabFolder.addSelectionListener(new SelectionListener() {
+		      public void widgetSelected(SelectionEvent e) {
+		    	  	if (tabFolder.getSelectionIndex() == 0) active = MultimediaTyp.IMAGE;
+					if (tabFolder.getSelectionIndex() == 1) active = MultimediaTyp.VIDEO;
+					if (tabFolder.getSelectionIndex() == 2) active = MultimediaTyp.AUDIO;
+		      }
+		      
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
+			}
+		});
+		
 		
 		// Create the help context id for the viewer's control
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.joanneum.fh.swd.ptm.mmm.ui.viewer");
+		//PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.joanneum.fh.swd.ptm.mmm.ui.viewer");
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
 		
 	}
-		
 
-/*		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		viewer.setContentProvider(new ViewContentProvider());
-		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.setSorter(new NameSorter());
-		viewer.setInput(getViewSite());
-
-		// Create the help context id for the viewer's control
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.fh_joanneum.swd.pmt.mmm.ui.viewer");
-		makeActions();
-		hookContextMenu();
-		hookDoubleClickAction();
-		contributeToActionBars();
-	}*/
 	
 	/**
 	   * Gets the control for tab one
@@ -166,11 +170,24 @@ public class SampleView extends ViewPart {
 	   * @param tabFolder the parent tab folder
 	   * @return Control
 	   */
-	  private Control getTabImageControl(TabFolder tabFolder) {
+	  private Control getTabControl(TabFolder tabFolder, MultimediaTyp mt) {
 	    // Create a composite and add four buttons to it
+		this.active = mt;
 	    Composite composite = new Composite(tabFolder, SWT.NONE);
 	    composite.setLayout(new GridLayout());
-	    viewer = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+	    TableViewer viewer = null;
+	    if (active == MultimediaTyp.IMAGE) {
+	    	viewImages = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+	    	viewer = viewImages;
+	    }
+	    if (active == MultimediaTyp.VIDEO) {
+	    	viewVideos = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+	    	viewer = viewVideos;
+	    }
+	    if (active == MultimediaTyp.AUDIO) {
+	    	viewAudios = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+	    	viewer = viewAudios;
+	    }
 		viewer.setContentProvider(new ViewContentProvider());
 	    viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
@@ -179,25 +196,32 @@ public class SampleView extends ViewPart {
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = SWT.FILL;
 		viewer.getControl().setLayoutData(gd);
-		Button button = new Button(composite, SWT.PUSH);
-		button.setText("Load default images");
-		button.addSelectionListener(new SelectionAdapter() {
+		Button button1 = new Button(composite, SWT.PUSH);
+		button1.setText("Load default images");
+		button1.addSelectionListener(new SelectionAdapter() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 //				new DataInitializerTask().run();
-				viewer.refresh();
+				//viewer.refresh();
 			}
 			
 		});
 
-		button = new Button(composite, SWT.PUSH);
-		button.setText("Edit Image");
-		button.addSelectionListener(new SelectionAdapter() {
+		Button button2 = new Button(composite, SWT.PUSH);
+		button2.setText("Edit ...");
+		button2.addSelectionListener(new SelectionAdapter() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Multimedia image = Activator.getDefault().getStore().getMultimedia();
+				TableViewer viewer = null;
+				if (active == MultimediaTyp.IMAGE) viewer = viewImages;
+				if (active == MultimediaTyp.VIDEO) viewer =	viewVideos;
+				if (active == MultimediaTyp.AUDIO) viewer =	viewAudios;
+				
+				ISelection selection = viewer.getSelection();
+				Object obj = ((IStructuredSelection) selection).getFirstElement();
+				Multimedia image = Activator.getDefault().getStore().getMultimediaTitelTyp(obj.toString(), active);
 				if (image != null) {
 					  InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
 					            "", "Change Titel", image.getTitel(), null);
@@ -210,112 +234,34 @@ public class SampleView extends ViewPart {
 			}
 			
 		});
+		
+		Button button3 = new Button(composite, SWT.PUSH);
+		button3.setText("New ...");
+		button3.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				TableViewer viewer = null;
+				if (active == MultimediaTyp.IMAGE) viewer = viewImages;
+				if (active == MultimediaTyp.VIDEO) viewer =	viewVideos;
+				if (active == MultimediaTyp.AUDIO) viewer =	viewAudios;
+				
+				InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
+			            "", "New title", null, null);
+			        if (dlg.open() == Window.OK) {
+			          // User clicked OK; update the label with the input
+			        	Multimedia mlt = new Multimedia(dlg.getValue(), active);
+			        	Activator.getDefault().getStore().addMultimedia(mlt);
+			        	viewer.refresh();
+			        }
+				}
+			
+		});
 	    
+		active = MultimediaTyp.IMAGE;
 	    return composite;
 	  }
 	  
-	  private Control getTabVideoControl(TabFolder tabFolder) {
-		    // Create a composite and add four buttons to it
-		    Composite composite = new Composite(tabFolder, SWT.NONE);
-		    composite.setLayout(new GridLayout());
-		    viewer = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-			viewer.setContentProvider(new ViewContentProvider());
-			viewer.setLabelProvider(new ViewLabelProvider());
-			viewer.setSorter(new NameSorter());
-			viewer.setInput(getViewSite());
-			GridData gd = new GridData();
-			gd.grabExcessHorizontalSpace = true;
-			gd.horizontalAlignment = SWT.FILL;
-			viewer.getControl().setLayoutData(gd);
-			
-			Button button = new Button(composite, SWT.PUSH);
-			button.setText("Load default videos");
-			button.addSelectionListener(new SelectionAdapter() {
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-//					new DataInitializerTask().run();
-					viewer.refresh();
-				}
-				
-			});
-
-			button = new Button(composite, SWT.PUSH);
-			button.setText("Edit Video");
-			button.addSelectionListener(new SelectionAdapter() {
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					Multimedia image = Activator.getDefault().getStore().getMultimedia();
-					if (image != null) {
-						  InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
-						            "", "Change Titel", image.getTitel(), null);
-						        if (dlg.open() == Window.OK) {
-						          // User clicked OK; update the label with the input
-						        	image.setTitel(dlg.getValue());
-						          viewer.refresh();
-						        }
-					}
-				}
-				
-			});
-		    
-		    return composite;
-		  }
-	  
-	  private Control getTabAudioControl(TabFolder tabFolder) {
-		    // Create a composite and add four buttons to it
-		    Composite composite = new Composite(tabFolder, SWT.NONE);
-		    composite.setLayout(new GridLayout());
-		    viewer = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-			viewer.setContentProvider(new ViewContentProvider());
-			viewer.setLabelProvider(new ViewLabelProvider());
-			viewer.setSorter(new NameSorter());
-			viewer.setInput(getViewSite());
-			viewer.setInput("test");
-			GridData gd = new GridData();
-			gd.grabExcessHorizontalSpace = true;
-			gd.horizontalAlignment = SWT.FILL;
-			viewer.getControl().setLayoutData(gd);
-			
-			Button button = new Button(composite, SWT.PUSH);
-			button.setText("Load default audios");
-			button.addSelectionListener(new SelectionAdapter() {
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					//new DataInitializerTask().run();
-					viewer.refresh();
-				}
-				
-			});
-
-			button = new Button(composite, SWT.PUSH);
-			button.setText("Edit Audio");
-			button.addSelectionListener(new SelectionAdapter() {
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					Multimedia image = Activator.getDefault().getStore().getMultimedia();
-					if (image != null) {
-						  InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
-						            "", "Change Titel", image.getTitel(), null);
-						        if (dlg.open() == Window.OK) {
-						          // User clicked OK; update the label with the input
-						        	image.setTitel(dlg.getValue());
-						          viewer.refresh();
-						        }
-					}
-				}
-				
-			});
-		    
-		    return composite;
-		  }			
-
-
-		
-
 
 	private void hookContextMenu() {
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
@@ -325,9 +271,9 @@ public class SampleView extends ViewPart {
 				SampleView.this.fillContextMenu(manager);
 			}
 		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
+		Menu menu = menuMgr.createContextMenu(viewImages.getControl());
+		viewImages.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuMgr, viewImages);
 	}
 
 	private void contributeToActionBars() {
@@ -376,7 +322,7 @@ public class SampleView extends ViewPart {
 				getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
 		doubleClickAction = new Action() {
 			public void run() {
-				ISelection selection = viewer.getSelection();
+				ISelection selection = viewImages.getSelection();
 				Object obj = ((IStructuredSelection)selection).getFirstElement();
 				showMessage("Double-click detected on "+obj.toString());
 			}
@@ -384,7 +330,7 @@ public class SampleView extends ViewPart {
 	}
 
 	private void hookDoubleClickAction() {
-		viewer.addDoubleClickListener(new IDoubleClickListener() {
+		viewImages.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
 				doubleClickAction.run();
 			}
@@ -392,7 +338,7 @@ public class SampleView extends ViewPart {
 	}
 	private void showMessage(String message) {
 		MessageDialog.openInformation(
-			viewer.getControl().getShell(),
+			viewImages.getControl().getShell(),
 			"Multimedia View",
 			message);
 	}
@@ -401,6 +347,6 @@ public class SampleView extends ViewPart {
 	 * Passing the focus request to the viewer's control.
 	 */
 	public void setFocus() {
-		viewer.getControl().setFocus();
+		viewImages.getControl().setFocus();
 	}
 }
