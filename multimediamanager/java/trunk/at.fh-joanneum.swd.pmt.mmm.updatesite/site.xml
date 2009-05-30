@@ -4,4 +4,5 @@
       Multimediamanager Updatesite
    </description>
    <feature url="features/at.fh_joanneum.swd.pmt.mmm.feature_1.0.0.jar" id="at.fh_joanneum.swd.pmt.mmm.feature" version="1.0.0"/>
+   <feature url="features/at.fh_joanneum.swd.pmt.mmm.feature_1.1.0.jar" id="at.fh_joanneum.swd.pmt.mmm.feature" version="1.1.0"/>
 </site>
