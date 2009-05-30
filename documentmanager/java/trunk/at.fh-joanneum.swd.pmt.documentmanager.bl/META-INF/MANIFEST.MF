@@ -4,6 +4,7 @@ Bundle-Name: Bl Plug-in
 Bundle-SymbolicName: at.fh_joanneum.swd.pmt.documentmanager.bl
 Bundle-Version: 1.0.0
 Bundle-Activator: at.fh_joanneum.swd.pmt.documentmanager.bl.Activator
-Require-Bundle: org.eclipse.core.runtime
+Require-Bundle: org.eclipse.core.runtime,
+ at.fh_joanneum.swd.pmt.documentmanager.data;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -4,14 +4,10 @@
 
    <extension
          point="org.eclipse.ui.views">
-      <category
-            name="Sample Category"
-            id="at.fh_joanneum.swd.pmt.documentmanager.ui">
-      </category>
       <view
-            name="Sample View"
+            name="Document View"
             icon="icons/sample.gif"
-            category="at.fh_joanneum.swd.pmt.documentmanager.ui"
+            category="at.fh_joanneum.swd.pmt.ui"
             class="at.fh_joanneum.swd.pmt.documentmanager.ui.views.SampleView"
             id="at.fh_joanneum.swd.pmt.documentmanager.ui.views.SampleView">
       </view>
