@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="at.fh_joanneum.swd.mmm.feature"
+      id="at.fh_joanneum.swd.pmt.mmm.feature"
       label="Multimediamanager Feature"
       version="1.0.0">
 
@@ -21,24 +21,24 @@
    </url>
 
    <plugin
-         id="at.fh_joanneum.swd.mmm.bl"
+         id="at.fh_joanneum.swd.pmt.mmm.bl"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
-         id="at.fh_joanneum.swd.mmm.data"
+         id="at.fh_joanneum.swd.pmt.mmm.data"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
    <plugin
-         id="at.fh_joanneum.swd.mmm.ui"
+         id="at.fh_joanneum.swd.pmt.mmm.ui"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0"
          unpack="false"/>
 
 </feature>
