@@ -13,10 +13,8 @@ public class MultimediaDataInitializer implements DataInitializerInterface {
 	@Override
 	public void initialize() {
 		Multimedia multimedia = new Multimedia();
-		multimedia.setTitel("Ferien am Strand");
-		multimedia.setTyp(MultimediaTyp.AUDIO);
-		System.out.println("MultimediaIniliazer");
-//		UserDataStore.getInstance().setUser(user);
+		multimedia.setTitel("DataInitializer Test");
+		multimedia.setTyp(MultimediaTyp.IMAGE);
 		if (Activator.getDefault().getStore() != null)
 			Activator.getDefault().getStore().addMultimedia(multimedia);
 		
