@@ -23,8 +23,10 @@ import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
 
+import at.fh_joanneum.swd.pmt.mmm.ui.Activator;
 import at.fh_joanneum.swd.pmt.mmm.data.Multimedia;
-import at.fh_joanneum.swd.mmm.bl.Activator;
+//import at.fh_joanneum.swd.pmt.bl.DataInitializerTask;
+import at.fh_joanneum.swd.pmt.mmm.data.MultimediaTyp;
 
 
 /**
@@ -51,7 +53,7 @@ public class SampleView extends ViewPart {
 	private Action action1;
 	private Action action2;
 	private Action doubleClickAction;
-
+	public static final String ID = "at.fh_joanneum.swd.pmt.mmm.ui.views.SampleView";
 	/*
 	 * The content provider class is responsible for
 	 * providing objects to the view. It can wrap
@@ -70,18 +72,27 @@ public class SampleView extends ViewPart {
 		public Object[] getElements(Object parent) {
 			//return new String[] { "One1", "Two2", "Three2" };
 //			return new TestData().getData();
-//			User user = UserDataStore.getInstance().getUser();
+			//User user = UserDataStore.getInstance().getUser();
+			Multimedia multimedia = new Multimedia();
+			multimedia.setTitel("Ferien am Strand");
+			multimedia.setTyp(MultimediaTyp.AUDIO);
+			System.out.println("MultimediaIniliazer");
+//			UserDataStore.getInstance().setUser(user);
+			if (Activator.getDefault().getStore() != null)
+				Activator.getDefault().getStore().setMultimedia(multimedia);
+			
 			if (Activator.getDefault().getStore() == null) {
-				System.out.println("no store loaded!");
+				System.out.println("no store loaded (Sample View)!");
 				return new String[]{};
 			}
-			Multimedia multimedia = Activator.getDefault().getStore().getMultimedia();
+			//Multimedia multimedia = Activator.getDefault().getStore().getMultimedia();
 			if (multimedia != null)
 				return new String[] {multimedia.getTitel()};
 			else
 				return new String[]{};
 		}
 	}
+	
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
 		public String getColumnText(Object obj, int index) {
 			return getText(obj);
@@ -125,6 +136,14 @@ public class SampleView extends ViewPart {
 		buttonAudio.setText ("Page Audios");
 		itemAudio.setControl (getTabAudioControl(tabFolder));
 		
+		// Create the help context id for the viewer's control
+		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.joanneum.fh.swd.ptm.mmm.ui.viewer");
+		makeActions();
+		hookContextMenu();
+		hookDoubleClickAction();
+		contributeToActionBars();
+		
+	}
 		
 
 /*		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
@@ -138,8 +157,8 @@ public class SampleView extends ViewPart {
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
-		contributeToActionBars();*/
-	}
+		contributeToActionBars();
+	}*/
 	
 	/**
 	   * Gets the control for tab one
@@ -153,21 +172,20 @@ public class SampleView extends ViewPart {
 	    composite.setLayout(new GridLayout());
 	    viewer = new TableViewer(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new ViewContentProvider());
-		viewer.setLabelProvider(new ViewLabelProvider());
+	    viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = SWT.FILL;
 		viewer.getControl().setLayoutData(gd);
-		
 		Button button = new Button(composite, SWT.PUSH);
 		button.setText("Load default images");
 		button.addSelectionListener(new SelectionAdapter() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				//new DataInitializerTask().run();
+//				new DataInitializerTask().run();
 				viewer.refresh();
 			}
 			
@@ -216,7 +234,7 @@ public class SampleView extends ViewPart {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					//new DataInitializerTask().run();
+//					new DataInitializerTask().run();
 					viewer.refresh();
 				}
 				
@@ -254,6 +272,7 @@ public class SampleView extends ViewPart {
 			viewer.setLabelProvider(new ViewLabelProvider());
 			viewer.setSorter(new NameSorter());
 			viewer.setInput(getViewSite());
+			viewer.setInput("test");
 			GridData gd = new GridData();
 			gd.grabExcessHorizontalSpace = true;
 			gd.horizontalAlignment = SWT.FILL;
@@ -292,7 +311,10 @@ public class SampleView extends ViewPart {
 			});
 		    
 		    return composite;
-		  }
+		  }			
+
+
+		
 
 
 	private void hookContextMenu() {

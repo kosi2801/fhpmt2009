@@ -7,6 +7,7 @@ import org.osgi.util.tracker.ServiceTracker;
 
 import at.fh_joanneum.swd.pmt.mmm.data.IMultimediaDataStore;
 
+
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -35,6 +36,7 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 		this.multimediaDataTracker = new ServiceTracker(context,at.fh_joanneum.swd.pmt.mmm.data.IMultimediaDataStore.class.getName(),null);
 		multimediaDataTracker.open();
+		System.out.println("Aktivator UI startet plugin!");
 	}
 
 	/*
@@ -68,6 +70,5 @@ public class Activator extends AbstractUIPlugin {
 	
 	public IMultimediaDataStore getStore() {
 		return (IMultimediaDataStore)multimediaDataTracker.getService();
-
 	}
 }

@@ -5,8 +5,7 @@ Bundle-SymbolicName: at.fh_joanneum.swd.pmt.mmm.ui;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: at.fh_joanneum.swd.pmt.mmm.ui.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- at.fh_joanneum.swd.pmt.mmm.bl;bundle-version="1.0.0",
- at.fh_joanneum.swd.pmt.mmm.data;bundle-version="1.0.0"
+ at.fh_joanneum.swd.pmt.mmm.data;bundle-version="1.0.0",
+ org.eclipse.core.runtime;bundle-version="3.4.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
