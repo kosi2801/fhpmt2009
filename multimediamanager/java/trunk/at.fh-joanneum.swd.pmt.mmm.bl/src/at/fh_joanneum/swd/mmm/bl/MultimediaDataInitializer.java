@@ -1,7 +1,6 @@
 package at.fh_joanneum.swd.mmm.bl;
 
 import at.fh_joanneum.swd.pmt.bl.DataInitializerInterface;
-import at.fh_joanneum.swd.mmm.bl.Activator;
 import at.fh_joanneum.swd.pmt.mmm.data.Multimedia;
 import at.fh_joanneum.swd.pmt.mmm.data.MultimediaTyp;
 
