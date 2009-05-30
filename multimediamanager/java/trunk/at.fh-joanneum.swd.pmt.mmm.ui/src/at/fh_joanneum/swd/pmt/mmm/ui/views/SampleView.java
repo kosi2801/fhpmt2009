@@ -28,7 +28,7 @@ import org.eclipse.swt.SWT;
 
 import at.fh_joanneum.swd.pmt.mmm.ui.Activator;
 import at.fh_joanneum.swd.pmt.mmm.data.Multimedia;
-//import at.fh_joanneum.swd.pmt.bl.DataInitializerTask;
+import at.fh_joanneum.swd.pmt.bl.DataInitializerTask;
 import at.fh_joanneum.swd.pmt.mmm.data.MultimediaTyp;
 
 
@@ -202,8 +202,12 @@ public class SampleView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-//				new DataInitializerTask().run();
-				//viewer.refresh();
+				new DataInitializerTask().run();
+				TableViewer viewer = null;
+				if (active == MultimediaTyp.IMAGE) viewer = viewImages;
+				if (active == MultimediaTyp.VIDEO) viewer =	viewVideos;
+				if (active == MultimediaTyp.AUDIO) viewer =	viewAudios;
+				viewer.refresh();
 			}
 			
 		});
