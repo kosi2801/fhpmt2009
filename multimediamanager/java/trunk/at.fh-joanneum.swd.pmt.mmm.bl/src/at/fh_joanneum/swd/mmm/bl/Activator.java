@@ -12,7 +12,7 @@ import at.fh_joanneum.swd.pmt.mmm.data.IMultimediaDataStore;
 public class Activator extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "at.fh_joanneum.swd.mmm.bl";
+	public static final String PLUGIN_ID = "at.fh_joanneum.swd.pmt.mmm.bl";
 
 	// The shared instance
 	private static Activator plugin;

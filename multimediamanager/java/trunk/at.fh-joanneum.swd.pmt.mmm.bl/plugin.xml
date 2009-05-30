@@ -4,7 +4,7 @@
    <extension
          point="at.fh_joanneum.swd.pmt.datainitializer">
       <initializer
-            class="at.fh_joanneum.swd.mmm.bl.MainDataInitializer">
+            class="at.fh_joanneum.swd.mmm.bl.MultimediaDataInitializer">
       </initializer>
    </extension>
 
