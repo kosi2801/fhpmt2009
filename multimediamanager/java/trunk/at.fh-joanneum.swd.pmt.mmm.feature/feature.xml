@@ -21,13 +21,6 @@
    </url>
 
    <plugin
-         id="at.fh_joanneum.swd.pmt.mmm.bl"
-         download-size="0"
-         install-size="0"
-         version="1.0.0"
-         unpack="false"/>
-
-   <plugin
          id="at.fh_joanneum.swd.pmt.mmm.data"
          download-size="0"
          install-size="0"
@@ -36,6 +29,13 @@
 
    <plugin
          id="at.fh_joanneum.swd.pmt.mmm.ui"
+         download-size="0"
+         install-size="0"
+         version="1.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.fh_joanneum.swd.pmt.mmm.bl"
          download-size="0"
          install-size="0"
          version="1.0.0"
