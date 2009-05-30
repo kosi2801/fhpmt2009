@@ -3,6 +3,7 @@ package at.fh_joanneum.swd.pmt.mmm.data;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
+
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -27,8 +28,9 @@ public class Activator extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		IMultimediaDataStore store = new MultimediaDataStore();
-		context.registerService(IMultimediaDataStore.class.getName(), store, null);
+		System.out.println("Context erstellt");
+		context.registerService(IMultimediaDataStore.class.getName(), new MultimediaDataStore(), null);
+		
 	}
 
 	/*

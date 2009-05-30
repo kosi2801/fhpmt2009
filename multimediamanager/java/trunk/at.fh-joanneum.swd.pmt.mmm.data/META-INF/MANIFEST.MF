@@ -1,9 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Data Plug-in
-Bundle-SymbolicName: at.fh_joanneum.swd.pmt.mmm.data
+Bundle-SymbolicName: at.fh_joanneum.swd.pmt.mmm.data;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.eclipse.core.runtime,
- org.osgi.framework
 Export-Package: at.fh_joanneum.swd.pmt.mmm.data
+Bundle-Activator: at.fh_joanneum.swd.pmt.mmm.data.Activator
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0"
+Bundle-ActivationPolicy: lazy
