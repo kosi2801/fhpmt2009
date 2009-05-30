@@ -12,17 +12,16 @@ import org.eclipse.jface.viewers.*;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.RowData;
 import org.eclipse.jface.action.*;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
-import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
 
+import at.fh_joanneum.swd.pmt.addressbook.bl.AddressManipulator;
 import at.fh_joanneum.swd.pmt.addressbook.data.Address;
+import at.fh_joanneum.swd.pmt.bl.DataInitializerTask;
 import at.fh_joanneum.swd.pmt.addressbook.ui.Activator;
 
 
@@ -212,7 +211,8 @@ public class SampleView extends ViewPart {
 				
 				if(!Activator.getDefault().getStore().addAddress(tmp))
 					showMessage("Failed to save this entry!");
-				else{					
+				else{
+					new AddressManipulator().fillEmptyFields(tmp.getName());
 					viewer.add(tmp.getName());
 					viewer.refresh();
 				};
@@ -271,12 +271,21 @@ public class SampleView extends ViewPart {
 				if(!Activator.getDefault().getStore().setAddress((String)name, tmp))
 					showMessage("Unable to update current entry!");
 				else{									
+					new AddressManipulator().fillEmptyFields(tmp.getName());
 					viewer.refresh();
 				}
 			}
 		});
 		
-
+		Button bDefault = new Button(parent, SWT.PUSH);
+		bDefault.setText("Load Default");
+		bDefault.setLayoutData(gd2);
+		bDefault.addSelectionListener(new SelectionAdapter(){
+				public void widgetSelected(SelectionEvent e){
+				new DataInitializerTask().run();
+				viewer.refresh();
+			}
+		});
 		
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "at.fh_joanneum.swd.pmt.adressbook.ui.viewer");
