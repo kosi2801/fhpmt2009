@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://localhost:8080/swd/task2/Taskmanager">
+      Taskmanager 1.0.0
+   </description>
+   <feature url="features/at.fh_joanneum.swd.pmt.taskmanager.feature_1.0.0.jar" id="at.fh_joanneum.swd.pmt.taskmanager.feature" version="1.0.0"/>
+</site>
