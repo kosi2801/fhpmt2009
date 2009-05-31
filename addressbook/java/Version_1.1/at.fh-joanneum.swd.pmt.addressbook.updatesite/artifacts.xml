@@ -3,14 +3,14 @@
 <repository name='file:/E:/FH/SS 2009/Softwareverteilung/SWVert/at.fh-joanneum.swd.pmt.addressbook.updatesite/ - artifacts' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1.0.0'>
   <properties size='2'>
     <property name='p2.compressed' value='false'/>
-    <property name='p2.timestamp' value='1243703970804'/>
+    <property name='p2.timestamp' value='1243768132644'/>
   </properties>
   <mappings size='3'>
     <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
     <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
     <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
   </mappings>
-  <artifacts size='25'>
+  <artifacts size='30'>
     <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.bl' version='1.0.0'>
       <properties size='3'>
         <property name='artifact.size' value='2124'/>
@@ -25,10 +25,10 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.bl' version='1.0.0'>
+    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.mmm.data' version='1.0.0'>
       <properties size='3'>
-        <property name='artifact.size' value='2622'/>
-        <property name='download.size' value='2622'/>
+        <property name='artifact.size' value='5549'/>
+        <property name='download.size' value='5549'/>
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
@@ -36,6 +36,13 @@
       <properties size='3'>
         <property name='artifact.size' value='4400'/>
         <property name='download.size' value='4400'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.bl' version='1.0.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='2622'/>
+        <property name='download.size' value='2622'/>
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
@@ -81,6 +88,13 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.bl' version='1.1.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='4207'/>
+        <property name='download.size' value='4207'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.ui' version='1.0.0'>
       <properties size='3'>
         <property name='artifact.size' value='16581'/>
@@ -95,10 +109,24 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.data' version='1.0.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='4772'/>
+        <property name='download.size' value='4772'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.addressbook.feature' version='1.1.0'>
       <properties size='2'>
         <property name='artifact.size' value='775'/>
         <property name='download.size' value='775'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.ui' version='1.1.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='22188'/>
+        <property name='download.size' value='22188'/>
+        <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.addressbook.feature' version='1.0.0'>
@@ -153,6 +181,13 @@
         <property name='download.size' value='767'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.data' version='1.1.0'>
+      <properties size='3'>
+        <property name='artifact.size' value='4773'/>
+        <property name='download.size' value='4773'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.bl' version='1.1.0'>
       <properties size='3'>
         <property name='artifact.size' value='3245'/>
@@ -160,17 +195,17 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.addressbook.feature' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='768'/>
+        <property name='download.size' value='768'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='at.fh_joanneum.swd.pmt.addressbook.bl' version='1.1.0'>
       <properties size='3'>
         <property name='artifact.size' value='4196'/>
         <property name='download.size' value='4196'/>
         <property name='download.contentType' value='application/zip'/>
-      </properties>
-    </artifact>
-    <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.addressbook.feature' version='1.0.0'>
-      <properties size='2'>
-        <property name='artifact.size' value='768'/>
-        <property name='download.size' value='768'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='at.fh_joanneum.swd.pmt.addressbook.feature' version='1.1.0'>

@@ -3,7 +3,7 @@
 <repository name='file:/E:/FH/SS 2009/Softwareverteilung/SWVert/at.fh-joanneum.swd.pmt.addressbook.updatesite/ - metadata' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'>
   <properties size='2'>
     <property name='p2.compressed' value='false'/>
-    <property name='p2.timestamp' value='1243703970811'/>
+    <property name='p2.timestamp' value='1243768132647'/>
   </properties>
   <references size='6'>
     <repository url='http://localhost:8080/swd/task2/AddressBook' type='1' options='0'/>
