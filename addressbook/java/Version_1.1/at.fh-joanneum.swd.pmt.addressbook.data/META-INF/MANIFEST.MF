@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Data Plug-in
 Bundle-SymbolicName: at.fh_joanneum.swd.pmt.addressbook.data
-Bundle-Version: 1.0.0
+Bundle-Version: 1.1.0
 Bundle-Activator: at.fh_joanneum.swd.pmt.addressbook.data.Activator
 Require-Bundle: org.eclipse.core.runtime,
  at.fh_joanneum.swd.pmt.mmm.data;bundle-version="1.0.0"
