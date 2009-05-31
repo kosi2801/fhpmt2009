@@ -1,5 +1,6 @@
 package at.fh_joanneum.swd.pmt.addressbook.data;
 
+
 public class Address {
 	private String name;
 	private String street;
@@ -9,13 +10,14 @@ public class Address {
 	private String email;
 	private String phone;
 	private String mobile;
+	private String picture;
 	
 	public Address(){		
 		
 	}
 	
 	public Address(String name, String street, String zip, String city,
-			String country, String email, String phone, String mobile) {
+			String country, String email, String phone, String mobile, String picture) {
 		this.name = name;
 		this.street = street;
 		this.zip = zip;
@@ -24,6 +26,7 @@ public class Address {
 		this.email = email;
 		this.phone = phone;
 		this.mobile = mobile;
+		this.picture = picture;
 	}
 	public String getName() {
 		return name;
@@ -72,5 +75,13 @@ public class Address {
 	}
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+	
+	public String getPicture(){
+		return this.picture;
+	}
+	
+	public void setPicture( String picture){
+		this.picture = picture;
 	}
 }

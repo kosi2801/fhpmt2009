@@ -10,7 +10,7 @@ public class AddressBookDataInitializer implements DataInitializerInterface {
 		if(Activator.getDefault().getStore() != null){
 			Activator.getDefault().getStore().addAddress(
 					new Address("name", "street", "zip", "city",
-							"country", "email", "phone", "mobile" )
+							"country", "email", "phone", "mobile", "SamplePic" )
 					);
 		}
 

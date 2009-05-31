@@ -297,9 +297,30 @@ public class SampleView extends ViewPart {
 		bAddPicture.setLayoutData(gd2);
 		bAddPicture.addSelectionListener(new SelectionAdapter(){
 			public void widgetSelected(SelectionEvent e){
+				boolean end = false;
+				Address tmp = null;
+				if(tName.getText().isEmpty())
+					end = true;
+				else{
+					tmp = Activator.getDefault().getStore().getAddressByName(tName.getText());
+					if (tmp == null)
+						end = true;
+				}
+				if(end){
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", "Select an address before adding a picture!");
+					return;
+				}
+				
+				if(tmp.getPicture() != null){
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", "There can be only one picture attached to an Address!");
+					return;
+				}
+				
 				InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(), "Add", "Add Image", null, null);
-			        if (dlg.open() == Window.OK)
-			        	Activator.getDefault().getMMStore().setMultimedia(new Multimedia(dlg.getValue(), MultimediaTyp.IMAGE));			        
+			        if (dlg.open() == Window.OK){			        	
+			        	Activator.getDefault().getMMStore().addMultimedia(new Multimedia(dlg.getValue(), MultimediaTyp.IMAGE));			     
+			        	tmp.setPicture(dlg.getValue());
+			        }
 			}
 		});
 		
@@ -307,24 +328,34 @@ public class SampleView extends ViewPart {
 		bShwPicture.setText("Modify Image");
 		bShwPicture.setLayoutData(gd2);
 		bShwPicture.addSelectionListener(new SelectionAdapter(){
-			public void widgetSelected(SelectionEvent e){
+			public void widgetSelected(SelectionEvent e){				
 				boolean end = false;
-				if(Activator.getDefault().getMMStore().getMultimedia() == null ){
-					end = true;					
-				}else{
-					if(Activator.getDefault().getMMStore().getMultimedia().getTyp() != MultimediaTyp.IMAGE )
+				Address tmp = null;
+				if(tName.getText().isEmpty())
+					end = true;
+				else{
+					tmp = Activator.getDefault().getStore().getAddressByName(tName.getText());
+					if (tmp == null)
 						end = true;
 				}
-				if( end ){
+				if(end){
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", "Select an address before modifying a picture!");
+					return;
+				}
+				
+				if(tmp.getPicture() == null){
 					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", "No picture defined");
 					return;
 				};
 				
 				InputDialog dlg = new InputDialog(Display.getCurrent().getActiveShell(),
-						"Show", "Show Image", 
-						Activator.getDefault().getMMStore().getMultimedia().getTitel(), null);
-				if(dlg.open() == Window.OK)
-					Activator.getDefault().getMMStore().getMultimedia().setTitel(dlg.getValue());
+						"Modify", "Modfiy Image Name", 
+						tmp.getPicture()
+						, null);
+				if(dlg.open() == Window.OK){
+					Activator.getDefault().getMMStore().getMultimediaTitelTyp(tmp.getPicture(), MultimediaTyp.IMAGE).setTitel(dlg.getValue());
+					tmp.setPicture(dlg.getValue());
+				}
 			}
 		});
 		
@@ -334,18 +365,27 @@ public class SampleView extends ViewPart {
 		bDelPicture.addSelectionListener(new SelectionAdapter(){
 			public void widgetSelected(SelectionEvent e){
 				boolean end = false;
-				if(Activator.getDefault().getMMStore().getMultimedia() == null ){
-					end = true;		
-				}else{
-					if(Activator.getDefault().getMMStore().getMultimedia().getTyp() != MultimediaTyp.IMAGE )
-						end = true;		
+				Address tmp = null;
+				if(tName.getText().isEmpty())
+					end = true;
+				else{
+					tmp = Activator.getDefault().getStore().getAddressByName(tName.getText());
+					if (tmp == null)
+						end = true;
 				}
 				if(end){
-					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", "No picture defined");
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", "Select an address before deleting a picture!");
 					return;
 				}
-				if(MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), "Delete?", "Do you really want to delete the picture"))
-					Activator.getDefault().getMMStore().setMultimedia(null);
+				if(tmp.getPicture() == null){
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error", "No picture defined");
+					return;
+				};
+				
+				if(MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), "Delete?", "Do you really want to delete the picture")){
+					Activator.getDefault().getMMStore().getMultimediaTitelTyp(tmp.getPicture(), MultimediaTyp.IMAGE).setTitel(null);
+					tmp.setPicture(null);
+				}
 			}
 		});
 		// Create the help context id for the viewer's control
