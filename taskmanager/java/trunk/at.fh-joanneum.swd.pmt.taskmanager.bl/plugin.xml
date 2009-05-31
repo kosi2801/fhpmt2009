@@ -12,5 +12,11 @@
             primary="true">
       </toc>
    </extension>
+   <extension
+         point="at.fh_joanneum.swd.pmt.datainitializer">
+      <initializer
+            class="at.fh_joanneum.swd.pmt.taskmanager.bl.TaskDataInitializer">
+      </initializer>
+   </extension>
 
 </plugin>

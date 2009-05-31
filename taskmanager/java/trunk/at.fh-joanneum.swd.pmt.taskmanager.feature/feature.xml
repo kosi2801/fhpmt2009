@@ -2,10 +2,10 @@
 <feature
       id="at.fh_joanneum.swd.pmt.taskmanager.feature"
       label="Taskmanager Feature"
-      version="1.0.0">
+      version="1.1.0">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://localhost:8080/swd/task2/Taskmanager">
+      Taskmanager Feature
    </description>
 
    <copyright url="http://www.example.com/copyright">
@@ -19,6 +19,14 @@
    <url>
       <update label="Taskmanager UpdateSite" url="http://localhost:8080/swd/task2/Taskmanager"/>
    </url>
+
+   <requires>
+      <import plugin="at.fh_joanneum.swd.pmt.addressbook.data"/>
+      <import plugin="at.fh_joanneum.swd.pmt.appointmentmanager.data"/>
+      <import plugin="at.fh_joanneum.swd.pmt.documentmanager.data"/>
+      <import plugin="at.fh_joanneum.swd.pmt.main.data"/>
+      <import plugin="at.fh_joanneum.swd.pmt.workmanager.data"/>
+   </requires>
 
    <plugin
          id="at.fh_joanneum.swd.pmt.taskmanager.ui"
