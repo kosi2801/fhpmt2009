@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml">
+      </toc>
+      <toc
+            file="testToc.xml"
+            primary="true">
+      </toc>
+   </extension>
+   <extension
+         point="at.fh_joanneum.swd.pmt.datainitializer">
+      <initializer
+            class="at.fh_joanneum.swd.pmt.taskmanager.bl.TaskDataInitializer">
+      </initializer>
+   </extension>
+
+</plugin>
