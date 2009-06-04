@@ -1,6 +1,6 @@
 ﻿namespace Personal_Management_Tool
 {
-    partial class Form1
+    partial class PMTApplicationForm
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -30,13 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // PMTApplicationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 322);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.IsMdiContainer = true;
+            this.Name = "PMTApplicationForm";
+            this.Text = "Personal Management Tool";
             this.ResumeLayout(false);
 
         }

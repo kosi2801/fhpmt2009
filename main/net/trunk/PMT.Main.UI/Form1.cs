@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Personal_Management_Tool
 {
-    public partial class Form1 : Form
+    public partial class PMTApplicationForm : Form
     {
-        public Form1()
+        public PMTApplicationForm()
         {
             InitializeComponent();
         }
