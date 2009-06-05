@@ -30,31 +30,43 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PMTApplicationForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.mainButton = new System.Windows.Forms.ToolStripButton();
             this.updateButton = new System.Windows.Forms.ToolStripButton();
+            this.chatButton = new System.Windows.Forms.ToolStripButton();
+            this.multimediaManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.taskManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.documentManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.addressBookManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.birthDayManager = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.updateButton});
+            this.updateButton,
+            this.mainButton,
+            this.chatButton,
+            this.multimediaManagerButton,
+            this.taskManagerButton,
+            this.documentManagerButton,
+            this.addressBookManagerButton,
+            this.birthDayManager});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(590, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // mainButton
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.mainButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mainButton.Image = ((System.Drawing.Image)(resources.GetObject("mainButton.Image")));
+            this.mainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mainButton.Name = "mainButton";
+            this.mainButton.Size = new System.Drawing.Size(23, 22);
+            this.mainButton.Text = "toolStripButton1";
+            this.mainButton.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // updateButton
             // 
@@ -65,6 +77,60 @@
             this.updateButton.Size = new System.Drawing.Size(23, 22);
             this.updateButton.Text = "Update";
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
+            // chatButton
+            // 
+            this.chatButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.chatButton.Image = ((System.Drawing.Image)(resources.GetObject("chatButton.Image")));
+            this.chatButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.chatButton.Name = "chatButton";
+            this.chatButton.Size = new System.Drawing.Size(23, 22);
+            this.chatButton.Text = "toolStripButton2";
+            // 
+            // multimediaManagerButton
+            // 
+            this.multimediaManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.multimediaManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("multimediaManagerButton.Image")));
+            this.multimediaManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.multimediaManagerButton.Name = "multimediaManagerButton";
+            this.multimediaManagerButton.Size = new System.Drawing.Size(23, 22);
+            this.multimediaManagerButton.Text = "toolStripButton2";
+            // 
+            // taskManagerButton
+            // 
+            this.taskManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.taskManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("taskManagerButton.Image")));
+            this.taskManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.taskManagerButton.Name = "taskManagerButton";
+            this.taskManagerButton.Size = new System.Drawing.Size(23, 22);
+            this.taskManagerButton.Text = "toolStripButton2";
+            // 
+            // documentManagerButton
+            // 
+            this.documentManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.documentManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("documentManagerButton.Image")));
+            this.documentManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.documentManagerButton.Name = "documentManagerButton";
+            this.documentManagerButton.Size = new System.Drawing.Size(23, 22);
+            this.documentManagerButton.Text = "toolStripButton2";
+            // 
+            // addressBookManagerButton
+            // 
+            this.addressBookManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addressBookManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("addressBookManagerButton.Image")));
+            this.addressBookManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addressBookManagerButton.Name = "addressBookManagerButton";
+            this.addressBookManagerButton.Size = new System.Drawing.Size(23, 22);
+            this.addressBookManagerButton.Text = "toolStripButton2";
+            // 
+            // birthDayManager
+            // 
+            this.birthDayManager.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.birthDayManager.Image = ((System.Drawing.Image)(resources.GetObject("birthDayManager.Image")));
+            this.birthDayManager.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.birthDayManager.Name = "birthDayManager";
+            this.birthDayManager.Size = new System.Drawing.Size(23, 22);
+            this.birthDayManager.Text = "toolStripButton2";
             // 
             // PMTApplicationForm
             // 
@@ -85,8 +151,14 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton mainButton;
         private System.Windows.Forms.ToolStripButton updateButton;
+        private System.Windows.Forms.ToolStripButton chatButton;
+        private System.Windows.Forms.ToolStripButton multimediaManagerButton;
+        private System.Windows.Forms.ToolStripButton taskManagerButton;
+        private System.Windows.Forms.ToolStripButton documentManagerButton;
+        private System.Windows.Forms.ToolStripButton addressBookManagerButton;
+        private System.Windows.Forms.ToolStripButton birthDayManager;
     }
 }
 
