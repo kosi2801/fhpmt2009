@@ -5,7 +5,34 @@ using System.Text;
 
 namespace PMT.Main.Data
 {
-    class DataStore
+    public class DataStore
     {
+        private static DataStore instance;
+
+        public static DataStore Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DataStore();
+                }
+                return instance;
+            }
+        }
+
+        private User user;
+
+        public User User
+        {
+            get
+            {
+                return user;
+            }
+            set
+            {
+                user = value;
+            }
+        }
     }
 }
