@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Deployment.Application;
+using System.Reflection;
 
 namespace PMT.Application
 {
@@ -47,7 +48,33 @@ namespace PMT.Application
 
         public void loadPlugins()
         {
+            try
+            {
+                Assembly asm = Assembly.Load("PMT.Main.UI");
+                if (asm == null)
+                {
+                    throw new Exception("Failed to load Main.UI");
+                }
+                asm = Assembly.Load("PMT.Main.Data");
+                if (asm == null)
+                {
+                    throw new Exception("Failed to load Main.Data");
+                }
+                asm = Assembly.Load("PMT.Main.BL");
+                if (asm == null)
+                {
+                    throw new Exception("Failed to load Main.Bl");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
 
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
