@@ -53,7 +53,6 @@
     <Compile Include="ChatUI.Designer.cs">
       <DependentUpon>ChatUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
