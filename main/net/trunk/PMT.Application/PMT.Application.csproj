@@ -111,9 +111,33 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PMT.Addressbook.UI\PMT.AddressBook.UI.csproj">
+      <Project>{A88EF494-3CF8-47CF-B24C-76FBC2201796}</Project>
+      <Name>PMT.AddressBook.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMT.BirthdayManager.UI\PMT.BirthdayManager.UI\PMT.BirthdayManager.UI.csproj">
+      <Project>{BEAD4211-2BCD-4515-A5DD-96E255E22305}</Project>
+      <Name>PMT.BirthdayManager.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMT.Chat.UI\PMT.Chat.UI.csproj">
+      <Project>{5988C61F-F623-44FF-B1D4-CB22FD543F3D}</Project>
+      <Name>PMT.Chat.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMT.DocumentManager.UI\PMT.DocumentManager.UI.csproj">
+      <Project>{B7B93465-BCFA-4D27-8FDD-1EBA9AA44821}</Project>
+      <Name>PMT.DocumentManager.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PMT.Main.UI\PMT.Main.UI.csproj">
       <Project>{AEC67694-EA5E-4A88-88D9-30C0A81AD450}</Project>
       <Name>PMT.Main.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMT.MultimediaManager.UI\PMT.Multimediamanager.UI.csproj">
+      <Project>{B210184A-BEC5-4C9E-921D-1EA2A6FF5D71}</Project>
+      <Name>PMT.Multimediamanager.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMT.TaskManager.UI\PMT.Taskmanager.UI.csproj">
+      <Project>{ECB99BA3-E839-49C5-B2E4-947289D15C6C}</Project>
+      <Name>PMT.Taskmanager.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
