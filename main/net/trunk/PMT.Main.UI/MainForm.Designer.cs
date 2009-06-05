@@ -30,10 +30,10 @@
         {
             this.closeButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxUserName = new System.Windows.Forms.TextBox();
+            this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxMail = new System.Windows.Forms.TextBox();
             this.resetButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -46,6 +46,7 @@
             this.closeButton.TabIndex = 0;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // label1
             // 
@@ -56,19 +57,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Benutzer";
             // 
-            // textBoxUserName
+            // textBoxFirstName
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(67, 37);
-            this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.ReadOnly = true;
-            this.textBoxUserName.Size = new System.Drawing.Size(133, 20);
-            this.textBoxUserName.TabIndex = 2;
+            this.textBoxFirstName.Location = new System.Drawing.Point(67, 37);
+            this.textBoxFirstName.Name = "textBoxFirstName";
+            this.textBoxFirstName.Size = new System.Drawing.Size(133, 20);
+            this.textBoxFirstName.TabIndex = 2;
             // 
             // textBoxLastName
             // 
             this.textBoxLastName.Location = new System.Drawing.Point(214, 37);
             this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.ReadOnly = true;
             this.textBoxLastName.Size = new System.Drawing.Size(143, 20);
             this.textBoxLastName.TabIndex = 3;
             // 
@@ -81,13 +80,12 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Mail";
             // 
-            // textBox2
+            // textBoxMail
             // 
-            this.textBox2.Location = new System.Drawing.Point(67, 66);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(290, 20);
-            this.textBox2.TabIndex = 5;
+            this.textBoxMail.Location = new System.Drawing.Point(67, 66);
+            this.textBoxMail.Name = "textBoxMail";
+            this.textBoxMail.Size = new System.Drawing.Size(290, 20);
+            this.textBoxMail.TabIndex = 5;
             // 
             // resetButton
             // 
@@ -97,6 +95,7 @@
             this.resetButton.TabIndex = 6;
             this.resetButton.Text = "Load default values";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // saveButton
             // 
@@ -106,6 +105,7 @@
             this.saveButton.TabIndex = 7;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // MainForm
             // 
@@ -114,10 +114,10 @@
             this.ClientSize = new System.Drawing.Size(369, 322);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.resetButton);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxMail);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxLastName);
-            this.Controls.Add(this.textBoxUserName);
+            this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.closeButton);
             this.Name = "MainForm";
@@ -131,10 +131,10 @@
 
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxUserName;
+        private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.TextBox textBoxLastName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxMail;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button saveButton;
     }
