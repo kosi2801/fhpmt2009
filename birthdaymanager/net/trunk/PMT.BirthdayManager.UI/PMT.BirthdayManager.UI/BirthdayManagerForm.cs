@@ -20,5 +20,10 @@ namespace PMT.BirthdayManager.UI
         {
 
         }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
