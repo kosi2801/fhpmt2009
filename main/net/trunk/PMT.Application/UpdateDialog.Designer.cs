@@ -73,6 +73,7 @@
             this.Controls.Add(this.checkBoxMain);
             this.Name = "UpdateDialog";
             this.Text = "UpdateDialog";
+            this.Load += new System.EventHandler(this.UpdateDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

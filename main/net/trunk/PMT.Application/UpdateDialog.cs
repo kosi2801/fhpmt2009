@@ -9,72 +9,91 @@ using System.Windows.Forms;
 using System.Deployment.Application;
 using System.Reflection;
 
+
 namespace PMT.Application
 {
     public partial class UpdateDialog : Form
     {
+        private Dictionary<String,CheckBox> modules = new Dictionary<String, CheckBox>();
+
+        private Dictionary<String, String[]> moduleLibraries = new Dictionary<String, String[]>();
         public UpdateDialog()
         {
             InitializeComponent();
+            modules.Add("Main", checkBoxMain);
+            moduleLibraries.Add("Main", new String[] { "PMT.Main.UI", "PMT.Main.BL", "PMT.Main.Data"});
         }
 
         private void installButton_Click(object sender, EventArgs e)
         {
-            if (ApplicationDeployment.IsNetworkDeployed)
-            {
-                ApplicationDeployment current = ApplicationDeployment.CurrentDeployment;
-
-
-                if (!current.IsFileGroupDownloaded("Main"))
+            foreach (String module in modules.Keys)
                 {
-                    current.DownloadFileGroupCompleted += OnPluginDownloadCompleted;
-                    current.DownloadFileGroupAsync("Main");
+                    if (modules[module].Enabled && modules[module].Checked) {
+
+                        if (ApplicationDeployment.IsNetworkDeployed)
+                        {
+                            ApplicationDeployment current = ApplicationDeployment.CurrentDeployment;
+
+                            if (!current.IsFileGroupDownloaded(module))
+                            {
+                                current.DownloadFileGroupCompleted += OnPluginDownloadCompleted;
+                                current.DownloadFileGroupAsync(module);
+                            }
+                            else
+                            {
+                                loadPlugins(module);
+                            }
+                        }
+                        else
+                        {
+                            loadPlugins(module);
+                        }
+                    }
                 }
-                else
-                {
-                    loadPlugins();
-                }
-            }
-            else
-            {
-                loadPlugins();
-            }
         }
 
         void OnPluginDownloadCompleted(Object sender, DownloadFileGroupCompletedEventArgs e)
         {
-            loadPlugins();
+            loadPlugins(e.Group);
         }
 
-        public void loadPlugins()
+        public void loadPlugins(String module)
         {
             try
             {
-                Assembly asm = Assembly.Load("PMT.Main.UI");
-                if (asm == null)
+                foreach (String library in moduleLibraries[module])
                 {
-                    throw new Exception("Failed to load Main.UI");
-                }
-                asm = Assembly.Load("PMT.Main.Data");
-                if (asm == null)
-                {
-                    throw new Exception("Failed to load Main.Data");
-                }
-                asm = Assembly.Load("PMT.Main.BL");
-                if (asm == null)
-                {
-                    throw new Exception("Failed to load Main.Bl");
+                    Assembly asm = Assembly.Load(library);
+                    if (asm == null)
+                    {
+                        throw new Exception("Failed to load " + library);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error");
             }
+            this.Close();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void UpdateDialog_Load(object sender, EventArgs e)
+        {
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                ApplicationDeployment current = ApplicationDeployment.CurrentDeployment;
+                checkBoxMain.Checked = current.IsFileGroupDownloaded("Main");
+            }
+            else
+            {
+                checkBoxMain.Checked = true;
+            }
+            checkBoxMain.Enabled = !checkBoxMain.Checked;
         }
     }
 }
