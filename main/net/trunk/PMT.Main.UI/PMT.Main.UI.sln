@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C# Express 2008
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Main.Data", "..\PMT.Main.Data\PMT.Main.Data.csproj", "{EF6823AB-4E66-4A0F-B5BD-E509E543879B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Main.BL", "..\PMT.Main.BL\PMT.Main.BL.csproj", "{95AEBBA5-7891-4979-94F2-5C57E81822F4}"
@@ -8,6 +8,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Main.UI", "PMT.Main.UI.csproj", "{AEC67694-EA5E-4A88-88D9-30C0A81AD450}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Application", "..\PMT.Application\PMT.Application.csproj", "{BD45A7E8-FBFA-42D0-B204-36BB3D58C4BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Chat.UI", "..\PMT.Chat.UI\PMT.Chat.UI.csproj", "{5988C61F-F623-44FF-B1D4-CB22FD543F3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{BD45A7E8-FBFA-42D0-B204-36BB3D58C4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD45A7E8-FBFA-42D0-B204-36BB3D58C4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD45A7E8-FBFA-42D0-B204-36BB3D58C4BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5988C61F-F623-44FF-B1D4-CB22FD543F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5988C61F-F623-44FF-B1D4-CB22FD543F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5988C61F-F623-44FF-B1D4-CB22FD543F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5988C61F-F623-44FF-B1D4-CB22FD543F3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
