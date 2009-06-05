@@ -65,7 +65,7 @@
             this.mainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mainButton.Name = "mainButton";
             this.mainButton.Size = new System.Drawing.Size(23, 22);
-            this.mainButton.Text = "toolStripButton1";
+            this.mainButton.Text = "Main";
             this.mainButton.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // updateButton
@@ -85,7 +85,7 @@
             this.chatButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.chatButton.Name = "chatButton";
             this.chatButton.Size = new System.Drawing.Size(23, 22);
-            this.chatButton.Text = "toolStripButton2";
+            this.chatButton.Text = "Chat";
             // 
             // multimediaManagerButton
             // 
@@ -94,7 +94,7 @@
             this.multimediaManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.multimediaManagerButton.Name = "multimediaManagerButton";
             this.multimediaManagerButton.Size = new System.Drawing.Size(23, 22);
-            this.multimediaManagerButton.Text = "toolStripButton2";
+            this.multimediaManagerButton.Text = "MultimediaManager";
             // 
             // taskManagerButton
             // 
@@ -103,7 +103,7 @@
             this.taskManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.taskManagerButton.Name = "taskManagerButton";
             this.taskManagerButton.Size = new System.Drawing.Size(23, 22);
-            this.taskManagerButton.Text = "toolStripButton2";
+            this.taskManagerButton.Text = "TaskManager";
             // 
             // documentManagerButton
             // 
@@ -112,7 +112,7 @@
             this.documentManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.documentManagerButton.Name = "documentManagerButton";
             this.documentManagerButton.Size = new System.Drawing.Size(23, 22);
-            this.documentManagerButton.Text = "toolStripButton2";
+            this.documentManagerButton.Text = "DocumentManager";
             // 
             // addressBookManagerButton
             // 
@@ -121,7 +121,7 @@
             this.addressBookManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addressBookManagerButton.Name = "addressBookManagerButton";
             this.addressBookManagerButton.Size = new System.Drawing.Size(23, 22);
-            this.addressBookManagerButton.Text = "toolStripButton2";
+            this.addressBookManagerButton.Text = "AdressBook";
             // 
             // birthDayManager
             // 
@@ -130,7 +130,7 @@
             this.birthDayManager.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.birthDayManager.Name = "birthDayManager";
             this.birthDayManager.Size = new System.Drawing.Size(23, 22);
-            this.birthDayManager.Text = "toolStripButton2";
+            this.birthDayManager.Text = "BirthDayManager";
             // 
             // PMTApplicationForm
             // 
