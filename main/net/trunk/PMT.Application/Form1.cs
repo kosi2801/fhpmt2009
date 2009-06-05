@@ -29,5 +29,20 @@ namespace PMT.Application
             Form form = new UpdateDialog();
             form.ShowDialog();
         }
+
+        private void chatButton_Click(object sender, EventArgs e)
+        {
+            Form form = new Chat.UI.ChatUI();
+            form.MdiParent = this;
+            form.Show();
+
+        }
+
+        private void multimediaManagerButton_Click(object sender, EventArgs e)
+        {
+            Form form = new Multimediamanager.UI.Formular1();
+            form.MdiParent = this;
+            form.Show();
+        }
     }
 }

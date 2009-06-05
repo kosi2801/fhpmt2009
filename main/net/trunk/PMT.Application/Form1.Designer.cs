@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PMTApplicationForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.mainButton = new System.Windows.Forms.ToolStripButton();
             this.updateButton = new System.Windows.Forms.ToolStripButton();
+            this.mainButton = new System.Windows.Forms.ToolStripButton();
             this.chatButton = new System.Windows.Forms.ToolStripButton();
             this.multimediaManagerButton = new System.Windows.Forms.ToolStripButton();
             this.taskManagerButton = new System.Windows.Forms.ToolStripButton();
@@ -58,15 +58,6 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // mainButton
-            // 
-            this.mainButton.Image = ((System.Drawing.Image)(resources.GetObject("mainButton.Image")));
-            this.mainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.mainButton.Name = "mainButton";
-            this.mainButton.Size = new System.Drawing.Size(49, 22);
-            this.mainButton.Text = "Main";
-            this.mainButton.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // updateButton
             // 
             this.updateButton.Image = ((System.Drawing.Image)(resources.GetObject("updateButton.Image")));
@@ -76,6 +67,15 @@
             this.updateButton.Text = "Update";
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
+            // mainButton
+            // 
+            this.mainButton.Image = ((System.Drawing.Image)(resources.GetObject("mainButton.Image")));
+            this.mainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mainButton.Name = "mainButton";
+            this.mainButton.Size = new System.Drawing.Size(49, 22);
+            this.mainButton.Text = "Main";
+            this.mainButton.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // chatButton
             // 
             this.chatButton.Image = ((System.Drawing.Image)(resources.GetObject("chatButton.Image")));
@@ -83,6 +83,7 @@
             this.chatButton.Name = "chatButton";
             this.chatButton.Size = new System.Drawing.Size(50, 22);
             this.chatButton.Text = "Chat";
+            this.chatButton.Click += new System.EventHandler(this.chatButton_Click);
             // 
             // multimediaManagerButton
             // 
@@ -91,6 +92,7 @@
             this.multimediaManagerButton.Name = "multimediaManagerButton";
             this.multimediaManagerButton.Size = new System.Drawing.Size(119, 22);
             this.multimediaManagerButton.Text = "MultimediaManager";
+            this.multimediaManagerButton.Click += new System.EventHandler(this.multimediaManagerButton_Click);
             // 
             // taskManagerButton
             // 
