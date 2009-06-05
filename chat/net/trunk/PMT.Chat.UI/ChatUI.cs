@@ -15,5 +15,15 @@ namespace PMT.Chat.UI
         {
             InitializeComponent();
         }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonSend_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
