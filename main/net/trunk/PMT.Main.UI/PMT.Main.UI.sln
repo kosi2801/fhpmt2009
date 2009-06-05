@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Main.BL", "..\PMT.Main.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Main.UI", "PMT.Main.UI.csproj", "{AEC67694-EA5E-4A88-88D9-30C0A81AD450}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMT.Application", "..\PMT.Application\PMT.Application.csproj", "{BD45A7E8-FBFA-42D0-B204-36BB3D58C4BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{AEC67694-EA5E-4A88-88D9-30C0A81AD450}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEC67694-EA5E-4A88-88D9-30C0A81AD450}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEC67694-EA5E-4A88-88D9-30C0A81AD450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD45A7E8-FBFA-42D0-B204-36BB3D58C4BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD45A7E8-FBFA-42D0-B204-36BB3D58C4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD45A7E8-FBFA-42D0-B204-36BB3D58C4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD45A7E8-FBFA-42D0-B204-36BB3D58C4BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
