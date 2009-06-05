@@ -23,7 +23,14 @@ namespace PMT.Chat.UI
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
+<<<<<<< .mine
+            if (!string.IsNullOrEmpty(this.textBox1.Text))
+            {
+                this.listBox1.Items.Add(this.textBox1.Text);
+            }
+=======
             listBox1.Items.Add(textBox1.Text);
+>>>>>>> .r409
         }
     }
 }
