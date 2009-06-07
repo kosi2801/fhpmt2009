@@ -54,7 +54,7 @@
             this.birthDayManager});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(590, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(817, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -63,7 +63,7 @@
             this.updateButton.Image = ((System.Drawing.Image)(resources.GetObject("updateButton.Image")));
             this.updateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(62, 22);
+            this.updateButton.Size = new System.Drawing.Size(65, 22);
             this.updateButton.Text = "Update";
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
@@ -72,7 +72,7 @@
             this.mainButton.Image = ((System.Drawing.Image)(resources.GetObject("mainButton.Image")));
             this.mainButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mainButton.Name = "mainButton";
-            this.mainButton.Size = new System.Drawing.Size(49, 22);
+            this.mainButton.Size = new System.Drawing.Size(54, 22);
             this.mainButton.Text = "Main";
             this.mainButton.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -81,7 +81,7 @@
             this.chatButton.Image = ((System.Drawing.Image)(resources.GetObject("chatButton.Image")));
             this.chatButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.chatButton.Name = "chatButton";
-            this.chatButton.Size = new System.Drawing.Size(50, 22);
+            this.chatButton.Size = new System.Drawing.Size(52, 22);
             this.chatButton.Text = "Chat";
             this.chatButton.Click += new System.EventHandler(this.chatButton_Click);
             // 
@@ -90,7 +90,7 @@
             this.multimediaManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("multimediaManagerButton.Image")));
             this.multimediaManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.multimediaManagerButton.Name = "multimediaManagerButton";
-            this.multimediaManagerButton.Size = new System.Drawing.Size(119, 22);
+            this.multimediaManagerButton.Size = new System.Drawing.Size(135, 22);
             this.multimediaManagerButton.Text = "MultimediaManager";
             this.multimediaManagerButton.Click += new System.EventHandler(this.multimediaManagerButton_Click);
             // 
@@ -99,7 +99,7 @@
             this.taskManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("taskManagerButton.Image")));
             this.taskManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.taskManagerButton.Name = "taskManagerButton";
-            this.taskManagerButton.Size = new System.Drawing.Size(91, 22);
+            this.taskManagerButton.Size = new System.Drawing.Size(98, 22);
             this.taskManagerButton.Text = "TaskManager";
             // 
             // documentManagerButton
@@ -107,7 +107,7 @@
             this.documentManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("documentManagerButton.Image")));
             this.documentManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.documentManagerButton.Name = "documentManagerButton";
-            this.documentManagerButton.Size = new System.Drawing.Size(117, 22);
+            this.documentManagerButton.Size = new System.Drawing.Size(130, 22);
             this.documentManagerButton.Text = "DocumentManager";
             // 
             // addressBookManagerButton
@@ -115,7 +115,7 @@
             this.addressBookManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("addressBookManagerButton.Image")));
             this.addressBookManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addressBookManagerButton.Name = "addressBookManagerButton";
-            this.addressBookManagerButton.Size = new System.Drawing.Size(83, 20);
+            this.addressBookManagerButton.Size = new System.Drawing.Size(89, 22);
             this.addressBookManagerButton.Text = "AdressBook";
             // 
             // birthDayManager
@@ -123,14 +123,14 @@
             this.birthDayManager.Image = ((System.Drawing.Image)(resources.GetObject("birthDayManager.Image")));
             this.birthDayManager.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.birthDayManager.Name = "birthDayManager";
-            this.birthDayManager.Size = new System.Drawing.Size(110, 20);
+            this.birthDayManager.Size = new System.Drawing.Size(119, 22);
             this.birthDayManager.Text = "BirthDayManager";
             // 
             // PMTApplicationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 322);
+            this.ClientSize = new System.Drawing.Size(817, 322);
             this.Controls.Add(this.toolStrip1);
             this.IsMdiContainer = true;
             this.Name = "PMTApplicationForm";

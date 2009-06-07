@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>E:\temp\WebSite\|D:\temp\WebSite\|publish\</PublishUrlHistory>
+    <PublishUrlHistory>C:\temp\|E:\temp\WebSite\|D:\temp\WebSite\|publish\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>
