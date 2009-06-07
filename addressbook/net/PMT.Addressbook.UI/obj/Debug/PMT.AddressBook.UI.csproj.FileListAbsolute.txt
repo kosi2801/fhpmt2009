@@ -1,7 +1,0 @@
-E:\FH\SS 2009\Softwareverteilung\swdTask3\swd\PMT.Addressbook.UI\bin\Debug\PMT.AddressBook.UI.dll
-E:\FH\SS 2009\Softwareverteilung\swdTask3\swd\PMT.Addressbook.UI\bin\Debug\PMT.AddressBook.UI.pdb
-E:\FH\SS 2009\Softwareverteilung\swdTask3\swd\PMT.Addressbook.UI\obj\Debug\ResolveAssemblyReference.cache
-E:\FH\SS 2009\Softwareverteilung\swdTask3\swd\PMT.Addressbook.UI\obj\Debug\PMT.AddressBook.UI.dll
-E:\FH\SS 2009\Softwareverteilung\swdTask3\swd\PMT.Addressbook.UI\obj\Debug\PMT.AddressBook.UI.pdb
-E:\FH\SS 2009\Softwareverteilung\swdTask3\swd\PMT.Addressbook.UI\obj\Debug\PMT.AddressBook.UI.AddressBookForm.resources
-E:\FH\SS 2009\Softwareverteilung\swdTask3\swd\PMT.Addressbook.UI\obj\Debug\PMT.AddressBook.UI.csproj.GenerateResource.Cache
