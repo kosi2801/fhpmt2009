@@ -8,19 +8,37 @@ using System.Reflection;
 namespace PMT.Application
 {
 
-
+    /// <summary>
+    /// Class containing the list of assemblies defined for each module in the personal management tool.
+    /// On startup all assemblies are loaded if available and the corresponding flags are set.
+    /// </summary>
     public class ModuleManager
     {
-
-
         private Dictionary<ModuleKey, String[]> moduleLibraries = new Dictionary<ModuleKey, String[]>();
 
+        public const String MODULE_MAIN = "Main";
+        public const String MODULE_CHAT = "Chat";
+        public const String MODULE_BIRTHDAYMANAGER = "BirthdayManager";
+        public const String MODULE_ADDRESSBOOK = "Addressbook";
+        public const String MODULE_DOCUMENTMANAGER = "DocumentManager";
+        public const String MODULE_MULTIMEDIAMANAGER = "MultimediaManager";
+        public const String MODULE_TASKMANAGER = "TaskManager";
 
         public ModuleManager() {
-            moduleLibraries.Add(new ModuleKey("Main"), new String[] { "PMT.Main.UI", "PMT.Main.BL", "PMT.Main.Data"});
-            moduleLibraries.Add(new ModuleKey("Birthdaymanager"), new String[] { "PMT.BirthdayManager.UI"});
-            loadPlugins("Main");
-            loadPlugins("Birthdaymanager");
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_MAIN), new String[] { "PMT.Main.UI", "PMT.Main.BL", "PMT.Main.Data"});
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_BIRTHDAYMANAGER), new String[] { "PMT.BirthdayManager.UI"});
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_CHAT), new String[] { "PMT.Chat.UI" });
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_ADDRESSBOOK), new String[] { "PMT.AddressBook.UI" });
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_DOCUMENTMANAGER), new String[] { "PMT.DocumentManager.UI" });
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_MULTIMEDIAMANAGER), new String[] { "PMT.Multimediamanager.UI" });
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_TASKMANAGER), new String[] { "PMT.Taskmanager.UI" });
+            loadPlugins(ModuleManager.MODULE_MAIN);
+            loadPlugins(ModuleManager.MODULE_BIRTHDAYMANAGER);
+            loadPlugins(ModuleManager.MODULE_CHAT);
+            loadPlugins(ModuleManager.MODULE_ADDRESSBOOK);
+            loadPlugins(ModuleManager.MODULE_DOCUMENTMANAGER);
+            loadPlugins(ModuleManager.MODULE_MULTIMEDIAMANAGER);
+            loadPlugins(ModuleManager.MODULE_TASKMANAGER);
         }
 
         public Boolean checkModuleAvailability(String module)
@@ -67,22 +85,26 @@ namespace PMT.Application
         public void loadPlugins(String module)
         {
             ModuleKey moduleKey = getKey(module);
+            
             if (moduleKey == null || moduleKey.Loaded)
                 return;
             try
             {
                 foreach (String library in moduleLibraries[moduleKey])
                 {
-                    Assembly asm = Assembly.Load(library);
+                    
+                   // Assembly asm = Assembly.Load(library);
+                    Assembly asm = Assembly.LoadFile(System.Windows.Forms.Application.StartupPath + @"\" + library + ".dll");
+
                     if (asm == null)
                     {
-                        moduleKey.Loaded = false; 
-                        throw new Exception("Failed to load " + library);
+                        moduleKey.Loaded = false;
+                        return;
                     }
                 }
                 moduleKey.Loaded = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //System.Windows.Forms.MessageBox.Show(ex.Message, "Error");
             }

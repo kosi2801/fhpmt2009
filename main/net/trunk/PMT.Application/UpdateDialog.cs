@@ -15,45 +15,58 @@ namespace PMT.Application
     {
         private Dictionary<String, CheckBox> modules = new Dictionary<String, CheckBox>();
         private ModuleManager manager;
+        private PMTApplicationForm applicationForm;
 
-        public UpdateDialog(ModuleManager manager)
+        public UpdateDialog(ModuleManager manager, PMTApplicationForm form)
         {
             this.manager = manager;
+            applicationForm = form;
             InitializeComponent();
-            modules.Add("Main", checkBoxMain);
+            modules.Add(ModuleManager.MODULE_MAIN, checkBoxMain);
+            modules.Add(ModuleManager.MODULE_CHAT, checkBoxChat);
+            modules.Add(ModuleManager.MODULE_BIRTHDAYMANAGER, checkBoxBirthDayManager);
+            modules.Add(ModuleManager.MODULE_ADDRESSBOOK, checkBoxAdressBook);
+            modules.Add(ModuleManager.MODULE_DOCUMENTMANAGER, checkBoxDocumentManager);
+            modules.Add(ModuleManager.MODULE_MULTIMEDIAMANAGER, checkBoxMultimediaManager);
+            modules.Add(ModuleManager.MODULE_TASKMANAGER, checkBoxTaskManager);
         }
 
         private void installButton_Click(object sender, EventArgs e)
         {
             foreach (String module in modules.Keys)
+            {
+                if (modules[module].Enabled && modules[module].Checked)
                 {
-                    if (modules[module].Enabled && modules[module].Checked) {
 
-                        if (ApplicationDeployment.IsNetworkDeployed)
+                    if (ApplicationDeployment.IsNetworkDeployed)
+                    {
+                        ApplicationDeployment current = ApplicationDeployment.CurrentDeployment;
+
+                        if (!current.IsFileGroupDownloaded(module))
                         {
-                            ApplicationDeployment current = ApplicationDeployment.CurrentDeployment;
-
-                            if (!current.IsFileGroupDownloaded(module))
-                            {
-                                current.DownloadFileGroupCompleted += OnPluginDownloadCompleted;
-                                current.DownloadFileGroupAsync(module);
-                            }
-                            else
-                            {
-                                manager.loadPlugins(module);
-                            }
+                            current.DownloadFileGroupCompleted += OnPluginDownloadCompleted;
+                            current.DownloadFileGroupAsync(module);
                         }
                         else
                         {
                             manager.loadPlugins(module);
+                            applicationForm.updateToolbar();
                         }
                     }
+                    else
+                    {
+                        manager.loadPlugins(module);
+                        applicationForm.updateToolbar();
+                    }
                 }
+            }
+            this.Close();
         }
 
         void OnPluginDownloadCompleted(Object sender, DownloadFileGroupCompletedEventArgs e)
         {
             manager.loadPlugins(e.Group);
+            applicationForm.updateToolbar();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -66,13 +79,19 @@ namespace PMT.Application
             if (ApplicationDeployment.IsNetworkDeployed)
             {
                 ApplicationDeployment current = ApplicationDeployment.CurrentDeployment;
-                checkBoxMain.Checked = current.IsFileGroupDownloaded("Main");
+                foreach (String module in modules.Keys)
+                {
+                    modules[module].Checked = current.IsFileGroupDownloaded(module);
+                }
             }
             else
             {
                 checkBoxMain.Checked = true;
             }
-            checkBoxMain.Enabled = !checkBoxMain.Checked;
+            foreach (CheckBox checkBox in modules.Values)
+            {
+                checkBox.Enabled = !checkBox.Checked;
+            }
         }
 
     }

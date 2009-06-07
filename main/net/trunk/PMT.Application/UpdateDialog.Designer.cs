@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateDialog));
             this.checkBoxMain = new System.Windows.Forms.CheckBox();
             this.installButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -35,7 +36,7 @@
             this.checkBoxMultimediaManager = new System.Windows.Forms.CheckBox();
             this.checkBoxTaskManager = new System.Windows.Forms.CheckBox();
             this.checkBoxDocumentManager = new System.Windows.Forms.CheckBox();
-            this.AdressBook = new System.Windows.Forms.CheckBox();
+            this.checkBoxAdressBook = new System.Windows.Forms.CheckBox();
             this.checkBoxBirthDayManager = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -109,15 +110,15 @@
             this.checkBoxDocumentManager.Text = "DocumentManager";
             this.checkBoxDocumentManager.UseVisualStyleBackColor = true;
             // 
-            // AdressBook
+            // checkBoxAdressBook
             // 
-            this.AdressBook.AutoSize = true;
-            this.AdressBook.Location = new System.Drawing.Point(34, 144);
-            this.AdressBook.Name = "AdressBook";
-            this.AdressBook.Size = new System.Drawing.Size(82, 17);
-            this.AdressBook.TabIndex = 7;
-            this.AdressBook.Text = "Adressbook";
-            this.AdressBook.UseVisualStyleBackColor = true;
+            this.checkBoxAdressBook.AutoSize = true;
+            this.checkBoxAdressBook.Location = new System.Drawing.Point(34, 144);
+            this.checkBoxAdressBook.Name = "checkBoxAdressBook";
+            this.checkBoxAdressBook.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxAdressBook.TabIndex = 7;
+            this.checkBoxAdressBook.Text = "Adressbook";
+            this.checkBoxAdressBook.UseVisualStyleBackColor = true;
             // 
             // checkBoxBirthDayManager
             // 
@@ -135,7 +136,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(291, 254);
             this.Controls.Add(this.checkBoxBirthDayManager);
-            this.Controls.Add(this.AdressBook);
+            this.Controls.Add(this.checkBoxAdressBook);
             this.Controls.Add(this.checkBoxDocumentManager);
             this.Controls.Add(this.checkBoxTaskManager);
             this.Controls.Add(this.checkBoxMultimediaManager);
@@ -143,6 +144,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.installButton);
             this.Controls.Add(this.checkBoxMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateDialog";
             this.Text = "UpdateDialog";
             this.Load += new System.EventHandler(this.UpdateDialog_Load);
@@ -160,7 +162,7 @@
         private System.Windows.Forms.CheckBox checkBoxMultimediaManager;
         private System.Windows.Forms.CheckBox checkBoxTaskManager;
         private System.Windows.Forms.CheckBox checkBoxDocumentManager;
-        private System.Windows.Forms.CheckBox AdressBook;
+        private System.Windows.Forms.CheckBox checkBoxAdressBook;
         private System.Windows.Forms.CheckBox checkBoxBirthDayManager;
     }
 }
