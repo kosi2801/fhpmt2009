@@ -25,6 +25,7 @@ namespace PMT.Application
         public const String MODULE_TASKMANAGER = "TaskManager";
 
         public ModuleManager() {
+            // Declare here the libraries, which constitute your module
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_MAIN), new String[] { "PMT.Main.UI", "PMT.Main.BL", "PMT.Main.Data"});
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_BIRTHDAYMANAGER), new String[] { "PMT.BirthdayManager.UI"});
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_CHAT), new String[] { "PMT.Chat.UI" });
@@ -32,6 +33,7 @@ namespace PMT.Application
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_DOCUMENTMANAGER), new String[] { "PMT.DocumentManager.UI" });
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_MULTIMEDIAMANAGER), new String[] { "PMT.Multimediamanager.UI" });
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_TASKMANAGER), new String[] { "PMT.Taskmanager.UI" });
+            //try to load all libraries
             loadPlugins(ModuleManager.MODULE_MAIN);
             loadPlugins(ModuleManager.MODULE_BIRTHDAYMANAGER);
             loadPlugins(ModuleManager.MODULE_CHAT);
@@ -41,6 +43,11 @@ namespace PMT.Application
             loadPlugins(ModuleManager.MODULE_TASKMANAGER);
         }
 
+        /// <summary>
+        /// Check if the given module is available by selecting the corresponding key for this module and looking if the libraries are currently loaded.
+        /// </summary>
+        /// <param name="module">String corresponding to one of the MODULE constants</param>
+        /// <returns></returns>
         public Boolean checkModuleAvailability(String module)
         {
             ModuleKey key = getKey(module);
@@ -64,6 +71,11 @@ namespace PMT.Application
             return true;
         }
 
+        /// <summary>
+        /// Checks if a module is loaded by looking at the loaded flag of the module key.
+        /// </summary>
+        /// <param name="module">String corresponding to one of the MODULE constants</param>
+        /// <returns></returns>
         public bool isModuleLoaded(String module)
         {
             ModuleKey key = getKey(module);
@@ -72,6 +84,11 @@ namespace PMT.Application
             return key.Loaded;
         }
 
+        /// <summary>
+        /// Gets the key for the corresponding module from the modulelibraries map
+        /// </summary>
+        /// <param name="module"></param>
+        /// <returns></returns>
         private ModuleKey getKey(String module)
         {
             foreach (ModuleKey key in moduleLibraries.Keys)
@@ -82,6 +99,11 @@ namespace PMT.Application
             return null;
         }
 
+        /// <summary>
+        /// Loads all libraries registered for the given module in the modulelibraries map. If all libraries have been loaded, the loaded flag
+        /// of the module key is set to true.
+        /// </summary>
+        /// <param name="module">String corresponding to one of the MODULE constants</param>
         public void loadPlugins(String module)
         {
             ModuleKey moduleKey = getKey(module);
@@ -111,6 +133,13 @@ namespace PMT.Application
 
         }
 
+        /// <summary>
+        /// Loads a given windows.form from a given assembly. This method is required to allow initialization of forms
+        /// in the application main dialog, which are not contributed by referenced assemblies.
+        /// </summary>
+        /// <param name="assemblyName"></param>
+        /// <param name="qualifiedFormName"></param>
+        /// <returns></returns>
         public System.Windows.Forms.Form loadForm(String assemblyName, String qualifiedFormName)
         {
             
