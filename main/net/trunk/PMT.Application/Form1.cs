@@ -21,15 +21,18 @@ namespace PMT.Application
             updateToolbar();
         }
 
+        /// <summary>
+        /// Activates the toolbar buttons if the corresponding module is loaded
+        /// </summary>
         public void updateToolbar()
         {
-            mainButton.Visible = manager.isModuleLoaded("Main");
-            chatButton.Visible = manager.isModuleLoaded("Chat");
-            multimediaManagerButton.Visible = manager.isModuleLoaded("MultimediaManager");
-            taskManagerButton.Visible = manager.isModuleLoaded("TaskManager");
-            documentManagerButton.Visible = manager.isModuleLoaded("DocumentManager");
-            addressBookManagerButton.Visible = manager.isModuleLoaded("AdressBook");
-            birthDayManager.Visible = manager.isModuleLoaded("BirthdayManager");
+            mainButton.Visible = manager.isModuleLoaded(ModuleManager.MODULE_MAIN);
+            chatButton.Visible = manager.isModuleLoaded(ModuleManager.MODULE_CHAT);
+            multimediaManagerButton.Visible = manager.isModuleLoaded(ModuleManager.MODULE_MULTIMEDIAMANAGER);
+            taskManagerButton.Visible = manager.isModuleLoaded(ModuleManager.MODULE_TASKMANAGER);
+            documentManagerButton.Visible = manager.isModuleLoaded(ModuleManager.MODULE_DOCUMENTMANAGER);
+            addressBookManagerButton.Visible = manager.isModuleLoaded(ModuleManager.MODULE_ADDRESSBOOK);
+            birthDayManager.Visible = manager.isModuleLoaded(ModuleManager.MODULE_BIRTHDAYMANAGER);
         }
 
         /// <summary>
