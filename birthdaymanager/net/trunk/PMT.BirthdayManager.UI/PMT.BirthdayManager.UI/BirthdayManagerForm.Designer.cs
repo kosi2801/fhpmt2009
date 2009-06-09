@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.Close = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,15 +47,15 @@
             this.label1.Text = "Firstname";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // Close
+            // closeButton
             // 
-            this.Close.Location = new System.Drawing.Point(125, 283);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(75, 23);
-            this.Close.TabIndex = 2;
-            this.Close.Text = "Close";
-            this.Close.UseVisualStyleBackColor = true;
-            this.Close.Click += new System.EventHandler(this.Close_Click);
+            this.closeButton.Location = new System.Drawing.Point(125, 283);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 2;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.Close_Click);
             // 
             // maskedTextBox1
             // 
@@ -105,7 +105,7 @@
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.Close);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.label1);
             this.Name = "BirthdayManagerForm";
             this.Text = "Birthday Manager";
@@ -117,7 +117,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Close;
+        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Label label2;
