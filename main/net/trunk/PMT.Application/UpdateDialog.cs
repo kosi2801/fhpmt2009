@@ -81,7 +81,14 @@ namespace PMT.Application
                 ApplicationDeployment current = ApplicationDeployment.CurrentDeployment;
                 foreach (String module in modules.Keys)
                 {
-                    modules[module].Checked = current.IsFileGroupDownloaded(module);
+                    try
+                    {
+                        modules[module].Checked = current.IsFileGroupDownloaded(module);
+                    }
+                    catch (Exception)
+                    {
+                        modules[module].Enabled = false;
+                    }
                 }
             }
             else
@@ -90,7 +97,8 @@ namespace PMT.Application
             }
             foreach (CheckBox checkBox in modules.Values)
             {
-                checkBox.Enabled = !checkBox.Checked;
+                if (checkBox.Enabled)
+                    checkBox.Enabled = !checkBox.Checked;
             }
         }
 
