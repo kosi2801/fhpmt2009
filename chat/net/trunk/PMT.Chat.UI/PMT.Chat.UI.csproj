@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5988C61F-F623-44FF-B1D4-CB22FD543F3D}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -53,6 +53,8 @@
     <Compile Include="ChatUI.Designer.cs">
       <DependentUpon>ChatUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="IRequestsLogUpdate.cs" />
+    <Compile Include="Presenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +62,16 @@
       <DependentUpon>ChatUI.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMT.Chat.BL\PMT.Chat.BL.csproj">
+      <Project>{5E415502-BD77-4C4C-9F75-538784F33933}</Project>
+      <Name>PMT.Chat.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMT.Chat.Data\PMT.Chat.Data.csproj">
+      <Project>{71CD5B26-EA1C-4FDD-A72D-956F6CC97237}</Project>
+      <Name>PMT.Chat.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
