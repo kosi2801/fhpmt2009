@@ -1,0 +1,5 @@
+D:\Users\Michael\Documents\Visual Studio 2008\Projects\SWD_09_Task3\PMT.Library.UI\bin\Release\PMT.Library.UI.dll
+D:\Users\Michael\Documents\Visual Studio 2008\Projects\SWD_09_Task3\PMT.Library.UI\bin\Release\PMT.Library.UI.pdb
+D:\Users\Michael\Documents\Visual Studio 2008\Projects\SWD_09_Task3\PMT.Library.UI\obj\Release\ResolveAssemblyReference.cache
+D:\Users\Michael\Documents\Visual Studio 2008\Projects\SWD_09_Task3\PMT.Library.UI\obj\Release\PMT.Library.UI.dll
+D:\Users\Michael\Documents\Visual Studio 2008\Projects\SWD_09_Task3\PMT.Library.UI\obj\Release\PMT.Library.UI.pdb
