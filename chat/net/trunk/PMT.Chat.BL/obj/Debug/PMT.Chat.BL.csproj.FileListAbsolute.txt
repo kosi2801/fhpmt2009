@@ -1,7 +1,0 @@
-D:\Dokumente\SWVert\PMT.Chat.BL\obj\Debug\ResolveAssemblyReference.cache
-D:\Dokumente\SWVert\PMT.Chat.BL\bin\Debug\PMT.Chat.BL.dll
-D:\Dokumente\SWVert\PMT.Chat.BL\bin\Debug\PMT.Chat.BL.pdb
-D:\Dokumente\SWVert\PMT.Chat.BL\bin\Debug\PMT.Chat.Data.dll
-D:\Dokumente\SWVert\PMT.Chat.BL\bin\Debug\PMT.Chat.Data.pdb
-D:\Dokumente\SWVert\PMT.Chat.BL\obj\Debug\PMT.Chat.BL.dll
-D:\Dokumente\SWVert\PMT.Chat.BL\obj\Debug\PMT.Chat.BL.pdb
