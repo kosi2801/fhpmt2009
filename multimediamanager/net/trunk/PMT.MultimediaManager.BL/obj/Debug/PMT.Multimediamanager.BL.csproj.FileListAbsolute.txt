@@ -1,0 +1,7 @@
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\bin\Debug\PMT.Multimediamanager.BL.dll
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\bin\Debug\PMT.Multimediamanager.BL.pdb
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\bin\Debug\PMT.Multimediamanager.Data.dll
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\bin\Debug\PMT.Multimediamanager.Data.pdb
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\obj\Debug\PMT.Multimediamanager.BL.dll
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\obj\Debug\PMT.Multimediamanager.BL.pdb

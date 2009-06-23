@@ -1,0 +1,14 @@
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\bin\Release\PMT.Multimediamanager.BL.dll
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\bin\Release\PMT.Multimediamanager.BL.pdb
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\bin\Release\PMT.Multimediamanager.Data.dll
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\bin\Release\PMT.Multimediamanager.Data.pdb
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\obj\Release\ResolveAssemblyReference.cache
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\obj\Release\PMT.Multimediamanager.BL.dll
+C:\Users\maja\Desktop\Task3_090611\PMT.Multimediamanager.BL\obj\Release\PMT.Multimediamanager.BL.pdb
+C:\Users\maja\Desktop\Task3_090611 - Kopie\PMT.Multimediamanager.BL\bin\Release\PMT.Multimediamanager.BL.dll
+C:\Users\maja\Desktop\Task3_090611 - Kopie\PMT.Multimediamanager.BL\bin\Release\PMT.Multimediamanager.BL.pdb
+C:\Users\maja\Desktop\Task3_090611 - Kopie\PMT.Multimediamanager.BL\bin\Release\PMT.Multimediamanager.Data.dll
+C:\Users\maja\Desktop\Task3_090611 - Kopie\PMT.Multimediamanager.BL\bin\Release\PMT.Multimediamanager.Data.pdb
+C:\Users\maja\Desktop\Task3_090611 - Kopie\PMT.Multimediamanager.BL\obj\Release\ResolveAssemblyReference.cache
+C:\Users\maja\Desktop\Task3_090611 - Kopie\PMT.Multimediamanager.BL\obj\Release\PMT.Multimediamanager.BL.dll
+C:\Users\maja\Desktop\Task3_090611 - Kopie\PMT.Multimediamanager.BL\obj\Release\PMT.Multimediamanager.BL.pdb
