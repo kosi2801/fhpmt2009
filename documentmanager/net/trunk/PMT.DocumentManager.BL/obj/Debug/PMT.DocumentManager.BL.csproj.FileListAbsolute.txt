@@ -1,7 +1,0 @@
-E:\FH\software-verteilung\.NET-Projekt\PMT.DocumentManager.BL\obj\Debug\ResolveAssemblyReference.cache
-E:\FH\software-verteilung\.NET-Projekt\PMT.DocumentManager.BL\bin\Debug\PMT.DocumentManager.BL.dll
-E:\FH\software-verteilung\.NET-Projekt\PMT.DocumentManager.BL\bin\Debug\PMT.DocumentManager.BL.pdb
-E:\FH\software-verteilung\.NET-Projekt\PMT.DocumentManager.BL\bin\Debug\PMT.DocumentManager.Data.dll
-E:\FH\software-verteilung\.NET-Projekt\PMT.DocumentManager.BL\bin\Debug\PMT.DocumentManager.Data.pdb
-E:\FH\software-verteilung\.NET-Projekt\PMT.DocumentManager.BL\obj\Debug\PMT.DocumentManager.BL.dll
-E:\FH\software-verteilung\.NET-Projekt\PMT.DocumentManager.BL\obj\Debug\PMT.DocumentManager.BL.pdb
