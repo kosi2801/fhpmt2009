@@ -3,9 +3,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{16752DEC-833D-4946-888A-74A17E23DC33}</ProjectGuid>
+    <ProjectGuid>{B7B93465-BCFA-4D27-8FDD-1EBA9AA44821}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PMT.DocumentManager.UI</RootNamespace>
@@ -35,6 +35,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -46,7 +48,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DocumentManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentManagerForm.Designer.cs">
+      <DependentUpon>DocumentManagerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMT.DocumentManager.BL\PMT.DocumentManager.BL.csproj">
+      <Project>{F6515577-FED6-4536-89DB-1D571A5B1807}</Project>
+      <Name>PMT.DocumentManager.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMT.DocumentManager.Data\PMT.DocumentManager.Data.csproj">
+      <Project>{72DC2C25-3B84-48C3-AFFC-40A7477723E9}</Project>
+      <Name>PMT.DocumentManager.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DocumentManagerForm.resx">
+      <DependentUpon>DocumentManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
