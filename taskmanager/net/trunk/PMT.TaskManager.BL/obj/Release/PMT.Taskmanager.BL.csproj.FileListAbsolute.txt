@@ -1,7 +1,0 @@
-C:\Dokumente und Einstellungen\Administrator\Eigene Dateien\pmt_windows\PMT.TaskManager.BL\bin\Release\PMT.TaskManager.BL.dll
-C:\Dokumente und Einstellungen\Administrator\Eigene Dateien\pmt_windows\PMT.TaskManager.BL\bin\Release\PMT.TaskManager.BL.pdb
-C:\Dokumente und Einstellungen\Administrator\Eigene Dateien\pmt_windows\PMT.TaskManager.BL\bin\Release\PMT.TaskManager.Data.dll
-C:\Dokumente und Einstellungen\Administrator\Eigene Dateien\pmt_windows\PMT.TaskManager.BL\bin\Release\PMT.TaskManager.Data.pdb
-C:\Dokumente und Einstellungen\Administrator\Eigene Dateien\pmt_windows\PMT.TaskManager.BL\obj\Release\ResolveAssemblyReference.cache
-C:\Dokumente und Einstellungen\Administrator\Eigene Dateien\pmt_windows\PMT.TaskManager.BL\obj\Release\PMT.TaskManager.BL.dll
-C:\Dokumente und Einstellungen\Administrator\Eigene Dateien\pmt_windows\PMT.TaskManager.BL\obj\Release\PMT.TaskManager.BL.pdb
