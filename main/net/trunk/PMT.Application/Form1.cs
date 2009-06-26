@@ -85,5 +85,10 @@ namespace PMT.Application
         {
             showForm("PMT.AddressBook.UI", "PMT.AddressBook.UI.AddressBookForm");
         }
+
+        private void documentManagerButton_Click(object sender, EventArgs e)
+        {
+            showForm("PMT.DocumentManager.UI", "PMT.DocumentManager.UI.DocumentManagerForm");
+        }
     }
 }

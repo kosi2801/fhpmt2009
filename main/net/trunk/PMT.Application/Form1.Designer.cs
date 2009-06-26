@@ -109,6 +109,7 @@
             this.documentManagerButton.Name = "documentManagerButton";
             this.documentManagerButton.Size = new System.Drawing.Size(130, 22);
             this.documentManagerButton.Text = "DocumentManager";
+            this.documentManagerButton.Click += new System.EventHandler(this.documentManagerButton_Click);
             // 
             // addressBookManagerButton
             // 
