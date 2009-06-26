@@ -31,6 +31,11 @@ namespace PMT.AddressBook.UI
                 MessageBox.Show("At least a name must be given!");
                 return;
             }
+            if (AddressDataStore.Instance.findAddress(tb_name.Text) != null)
+            {
+                MessageBox.Show("This person with this name already exists in your addressbook!");
+                return;
+            };
 
             Address tmp = new Address();
             tmp.Name = tb_name.Text;
@@ -63,6 +68,7 @@ namespace PMT.AddressBook.UI
             init.initialize();
             lv_Addresses.Items.Clear();
             lv_Addresses.Items.Add(AddressDataStore.Instance.getElementAt(0).Name);
+            initControlls();
         }
 
         private void fillControlls(Address addr)
@@ -116,7 +122,6 @@ namespace PMT.AddressBook.UI
                 return;
             };
 
-            AddressDataStore.Instance.findAddress(selectedName).Name = tb_name.Text;
             AddressDataStore.Instance.findAddress(selectedName).Street = tb_street.Text;
             AddressDataStore.Instance.findAddress(selectedName).Zip = tb_zip.Text;
             AddressDataStore.Instance.findAddress(selectedName).City = tb_city.Text;
@@ -124,7 +129,10 @@ namespace PMT.AddressBook.UI
             AddressDataStore.Instance.findAddress(selectedName).Email = tb_email.Text;
             AddressDataStore.Instance.findAddress(selectedName).Phone = tb_phone.Text;
             AddressDataStore.Instance.findAddress(selectedName).Mobile = tb_mobile.Text;
-            
+            AddressDataStore.Instance.findAddress(selectedName).Name = tb_name.Text;
+            lv_Addresses.Items.Remove(lv_Addresses.SelectedItems[0]);
+            lv_Addresses.Items.Add(tb_name.Text);
+            initControlls();
         }
     }
 }
