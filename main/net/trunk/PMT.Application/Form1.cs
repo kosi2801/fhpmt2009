@@ -81,9 +81,9 @@ namespace PMT.Application
             showForm("PMT.BirthdayManager.UI", "PMT.BirthdayManager.UI.BirthdayManagerForm");
         }
 
-        private void documentManagerButton_Click(object sender, EventArgs e)
+        private void addressBookManagerButton_Click(object sender, EventArgs e)
         {
-            showForm("PMT.DocumentManager.UI", "PMT.DocumentManager.UI.DocumentManagerForm");
+            showForm("PMT.AddressBook.UI", "PMT.AddressBook.UI.AddressBookForm");
         }
     }
 }

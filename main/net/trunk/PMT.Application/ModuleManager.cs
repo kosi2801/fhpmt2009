@@ -28,9 +28,9 @@ namespace PMT.Application
             // Declare here the libraries, which constitute your module
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_MAIN), new String[] { "PMT.Main.UI", "PMT.Main.BL", "PMT.Main.Data"});
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_BIRTHDAYMANAGER), new String[] { "PMT.BirthdayManager.UI"});
-            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_CHAT), new String[] { "PMT.Chat.UI", "PMT.Chat.BL", "PMT.Chat.Data" });
-            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_ADDRESSBOOK), new String[] { "PMT.AddressBook.UI" });
-            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_DOCUMENTMANAGER), new String[] { "PMT.DocumentManager.UI", "PMT.DocumentManager.BL", "PMT.DocumentManager.Data" });
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_CHAT), new String[] { "PMT.Chat.UI" });
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_ADDRESSBOOK), new String[] { "PMT.AddressBook.UI", "PMT.AddressBook.BL", "PMT.AddressBook.Data" });            
+            moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_DOCUMENTMANAGER), new String[] { "PMT.DocumentManager.UI" });
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_MULTIMEDIAMANAGER), new String[] { "PMT.Multimediamanager.UI" });
             moduleLibraries.Add(new ModuleKey(ModuleManager.MODULE_TASKMANAGER), new String[] { "PMT.Taskmanager.UI" });
             //try to load all libraries

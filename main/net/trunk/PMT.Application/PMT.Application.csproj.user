@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>C:\temp\</PublishUrlHistory>
+    <PublishUrlHistory>E:\FH\SS 2009\Softwareverteilung\Publish\|C:\temp\|E:\temp\WebSite\|D:\temp\WebSite\|publish\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>
@@ -9,9 +9,9 @@
     </UpdateUrlHistory>
     <BootstrapperUrlHistory>
     </BootstrapperUrlHistory>
+    <FallbackCulture>de-DE</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
     <ErrorReportUrlHistory>
     </ErrorReportUrlHistory>
-    <FallbackCulture>en-US</FallbackCulture>
-    <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
 </Project>
