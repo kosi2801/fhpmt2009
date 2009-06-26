@@ -1,5 +1,0 @@
-E:\FH\SS 2009\Softwareverteilung\Task3_090611\PMT.AddressBook.Data\obj\Debug\ResolveAssemblyReference.cache
-E:\FH\SS 2009\Softwareverteilung\Task3_090611\PMT.AddressBook.Data\bin\Debug\PMT.AddressBook.Data.dll
-E:\FH\SS 2009\Softwareverteilung\Task3_090611\PMT.AddressBook.Data\bin\Debug\PMT.AddressBook.Data.pdb
-E:\FH\SS 2009\Softwareverteilung\Task3_090611\PMT.AddressBook.Data\obj\Debug\PMT.AddressBook.Data.dll
-E:\FH\SS 2009\Softwareverteilung\Task3_090611\PMT.AddressBook.Data\obj\Debug\PMT.AddressBook.Data.pdb
