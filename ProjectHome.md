@@ -1,0 +1,1 @@
+Different Eclipse plugins realizing a personal management tool library. This is an educational project to teach the plugin development possibilities of the Eclipse p2 platform.
